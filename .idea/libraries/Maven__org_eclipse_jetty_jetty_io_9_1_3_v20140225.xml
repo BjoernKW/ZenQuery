@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.eclipse.jetty:jetty-io:9.1.3.v20140225">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.1.3.v20140225/jetty-io-9.1.3.v20140225.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.1.3.v20140225/jetty-io-9.1.3.v20140225-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-io/9.1.3.v20140225/jetty-io-9.1.3.v20140225-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
