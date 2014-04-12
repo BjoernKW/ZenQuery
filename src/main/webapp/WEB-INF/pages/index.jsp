@@ -11,6 +11,6 @@
     <title></title>
   </head>
   <body>
-    Hello world!
+    ${message}
   </body>
 </html>
