@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>com.postgresql.jdbc.Driver</driver>
-        <url>jdbc:postgresql://localhost/ZenQuery</url>
+        <url>jdbc:postgresql://localhost:5432/ZenQuery</url>
         <user>willy</user>
         <password>willy</password>
     </jdbc>
@@ -35,7 +35,7 @@
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>test.generated</packageName>
+            <packageName>test</packageName>
 
             <!-- The destination directory of your generated classes -->
             <directory>/src</directory>
