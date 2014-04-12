@@ -2,7 +2,7 @@
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.3.0.xsd">
     <!-- Configure the database connection here -->
     <jdbc>
-        <driver>com.postgresql.jdbc.Driver</driver>
+        <driver>org.postgresql.Driver</driver>
         <url>jdbc:postgresql://localhost:5432/ZenQuery</url>
         <user>willy</user>
         <password>willy</password>
@@ -35,7 +35,7 @@
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>test</packageName>
+            <packageName>com.zenquery.sql</packageName>
 
             <!-- The destination directory of your generated classes -->
             <directory>/src</directory>
