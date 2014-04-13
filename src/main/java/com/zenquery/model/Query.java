@@ -9,6 +9,7 @@ import java.util.List;
 public class Query implements Serializable {
     Integer id;
     String key;
+    Integer databaseConnectionId;
 
     public Integer getId() {
         return id;
@@ -24,5 +25,13 @@ public class Query implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public Integer getDatabaseConnectionId() {
+        return databaseConnectionId;
+    }
+
+    public void setDatabaseConnectionId(Integer databaseConnectionId) {
+        this.databaseConnectionId = databaseConnectionId;
     }
 }

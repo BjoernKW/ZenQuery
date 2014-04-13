@@ -10,6 +10,7 @@ public class QueryVersion implements Serializable {
     String content;
     Integer version;
     Boolean isCurrentVersion;
+    Integer queryId;
 
     public Integer getId() {
         return id;
@@ -41,5 +42,13 @@ public class QueryVersion implements Serializable {
 
     public void setIsCurrentVersion(Boolean isCurrentVersion) {
         this.isCurrentVersion = isCurrentVersion;
+    }
+
+    public Integer getQueryId() {
+        return queryId;
+    }
+
+    public void setQueryId(Integer queryId) {
+        this.queryId = queryId;
     }
 }
