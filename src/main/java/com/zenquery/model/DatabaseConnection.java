@@ -1,6 +1,7 @@
 package com.zenquery.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by willy on 13.04.14.
@@ -11,6 +12,7 @@ public class DatabaseConnection implements Serializable {
     String url;
     String username;
     String password;
+    List<Query> queries;
 
     public Integer getId() {
         return id;
@@ -50,5 +52,13 @@ public class DatabaseConnection implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Query> getQueries() {
+        return queries;
+    }
+
+    public void setQueries(List<Query> queries) {
+        this.queries = queries;
     }
 }
