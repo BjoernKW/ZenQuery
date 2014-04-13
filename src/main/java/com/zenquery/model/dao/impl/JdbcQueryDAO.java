@@ -1,10 +1,7 @@
 package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.Query;
-import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryDAO;
-import com.zenquery.model.dao.QueryVersionDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
@@ -19,16 +16,10 @@ import java.util.List;
 public class JdbcQueryDAO implements QueryDAO {
     private DataSource dataSource;
 
-    private QueryVersionDAO queryVersionDAO;
-
     private JdbcTemplate jdbcTemplate;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public void setQueryVersionDAO(QueryVersionDAO queryVersionDAO) {
-        this.queryVersionDAO = queryVersionDAO;
     }
 
     public Query find(Integer id) {
@@ -95,17 +86,11 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     private static class QueryMapper implements ParameterizedRowMapper<Query> {
-        @Autowired
-        private QueryVersionDAO queryVersionDAO;
-
         public Query mapRow(ResultSet rs, int rowNum) throws SQLException {
             Query query = new Query();
 
             query.setId(rs.getInt("id"));
             query.setKey(rs.getString("key"));
-
-            List<QueryVersion> queryVersions = queryVersionDAO.findByQueryId(query.getId());
-            query.setQueryVersions(queryVersions);
 
             return query;
         }
