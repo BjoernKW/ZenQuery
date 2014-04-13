@@ -17,13 +17,18 @@ import java.util.List;
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
-    @Autowired
     private DataSource dataSource;
+
+    private QueryDAO queryDAO;
 
     private JdbcTemplate jdbcTemplate;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setQueryDAO(QueryDAO queryDAO) {
+        this.queryDAO = queryDAO;
     }
 
     public DatabaseConnection find(Integer id) {
