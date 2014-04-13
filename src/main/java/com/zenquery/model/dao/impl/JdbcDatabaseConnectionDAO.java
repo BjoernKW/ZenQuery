@@ -1,10 +1,7 @@
 package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
-import com.zenquery.model.Query;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
-import com.zenquery.model.dao.QueryDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
@@ -19,16 +16,10 @@ import java.util.List;
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     private DataSource dataSource;
 
-    private QueryDAO queryDAO;
-
     private JdbcTemplate jdbcTemplate;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public void setQueryDAO(QueryDAO queryDAO) {
-        this.queryDAO = queryDAO;
     }
 
     public DatabaseConnection find(Integer id) {
@@ -89,9 +80,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     }
 
     private static class DatabaseConnectionMapper implements ParameterizedRowMapper<DatabaseConnection> {
-        @Autowired
-        private QueryDAO queryDAO;
-
         public DatabaseConnection mapRow(ResultSet rs, int rowNum) throws SQLException {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -100,9 +88,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
             databaseConnection.setUrl(rs.getString("url"));
             databaseConnection.setUsername(rs.getString("username"));
             databaseConnection.setPassword(rs.getString("password"));
-
-            List<Query> queries = queryDAO.findByDatabaseConnectionId(databaseConnection.getId());
-            databaseConnection.setQueries(queries);
 
             return databaseConnection;
         }

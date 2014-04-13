@@ -23,12 +23,10 @@
 
     <bean id="databaseConnectionDAO" class="com.zenquery.model.dao.impl.JdbcDatabaseConnectionDAO">
         <property name="dataSource" ref="dataSource" />
-        <property name="queryDAO" ref="queryDAO" />
     </bean>
 
     <bean id="queryDAO" class="com.zenquery.model.dao.impl.JdbcQueryDAO">
         <property name="dataSource" ref="dataSource" />
-        <property name="queryVersionDAO" ref="queryVersionDAO" />
     </bean>
 
     <bean id="queryVersionDAO" class="com.zenquery.model.dao.impl.JdbcQueryVersionDAO">
