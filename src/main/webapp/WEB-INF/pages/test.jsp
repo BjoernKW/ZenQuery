@@ -21,6 +21,6 @@
     <link rel="apple-touch-icon" sizes="144x144" href="" />
   </head>
   <body>
-    ${message}
+    ${result}
   </body>
 </html>
