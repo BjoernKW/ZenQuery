@@ -1,16 +1,95 @@
 package com.zenquery;
 
+import com.hp.gagawa.java.elements.Table;
+import com.hp.gagawa.java.elements.Tr;
+import com.hp.gagawa.java.elements.Th;
+import com.hp.gagawa.java.elements.Td;
+import com.zenquery.model.DatabaseConnection;
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/")
 public class StartController {
+    private static final Logger logger = Logger.getLogger(StartController.class);
+
+    @Autowired
+    private PropertiesFactoryBean driverClassNameProperties;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "Hello world!");
+        Map<String, Integer> variables = new HashMap<String, Integer>();
+        variables.put("databaseConnectionId", 1);
+
+        RestTemplate restTemplate = new RestTemplate();
+        DatabaseConnection databaseConnection = restTemplate.getForObject(
+                "http://localhost:8080/databaseConnections/{databaseConnectionId}",
+                DatabaseConnection.class, variables
+        );
+
+        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
+        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
+        matcher.find();
+
+        try {
+            String driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
+
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setDriverClassName(driverClassName);
+            dataSource.setUsername(databaseConnection.getUsername());
+            dataSource.setPassword(databaseConnection.getPassword());
+            dataSource.setUrl(databaseConnection.getUrl());
+            dataSource.setMaxIdle(5);
+            dataSource.setValidationQuery("SELECT 1");
+
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+            List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM database_connections");
+
+            Table table = new Table();
+            Tr tableHeader = new Tr();
+            Boolean firstRow = true;
+
+            for (Map<String, Object> row : rows) {
+                Tr tableRow = new Tr();
+
+                for (String key : row.keySet()) {
+                    if (firstRow) {
+                        Th th = new Th();
+                        th.appendText(key);
+                        tableHeader.appendChild(th);
+                    }
+
+                    Td td = new Td();
+                    td.appendText(row.get(key).toString());
+                    tableRow.appendChild(td);
+                }
+
+                if (firstRow) {
+                    table.appendChild(tableHeader);
+                    firstRow = false;
+                }
+                table.appendChild(tableRow);
+            }
+
+            model.addAttribute("result", table.write());
+        } catch (Exception e) {
+            logger.debug(e);
+        }
+
 		return "index";
 	}
 }

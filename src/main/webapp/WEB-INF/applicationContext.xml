@@ -3,13 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="driverClassNameProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:driverClassNames.properties"/>
+    </bean>
+
     <bean id="databasePropertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:database.properties</value>
-            </list>
-        </property>
+        <property name="location" value="classpath:database.properties"/>
     </bean>
 
     <bean id="dataSource"
