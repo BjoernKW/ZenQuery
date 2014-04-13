@@ -19,7 +19,7 @@ CREATE TABLE database_connections1_id_seq
   is_cycled BOOL NOT NULL,
   is_called BOOL NOT NULL
 );
-CREATE TABLE qugfheries
+CREATE TABLE queries
 (
   id INT PRIMARY KEY NOT NULL,
   key VARCHAR NOT NULL,
