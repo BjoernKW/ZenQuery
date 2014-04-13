@@ -2,8 +2,11 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.QueryDAO;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -22,6 +25,7 @@ public class JdbcQueryDAO implements QueryDAO {
         this.dataSource = dataSource;
     }
 
+    @Cacheable("sql.queries")
     public Query find(Integer id) {
         String sql = "SELECT * FROM queries WHERE id = ?";
 
@@ -33,11 +37,11 @@ public class JdbcQueryDAO implements QueryDAO {
         return query;
     }
 
+    @Cacheable("sql.queries")
     public List<Query> findByDatabaseConnectionId(Integer id) {
         String sql = "SELECT * FROM queries WHERE database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.setFetchSize(1);
 
         List<Query> queries =
                 jdbcTemplate.query(sql, new Object[] { id }, new QueryMapper());
@@ -56,14 +60,17 @@ public class JdbcQueryDAO implements QueryDAO {
         return queries;
     }
 
-    public void insert(Query query) {
+    public Number insert(Query query) {
         String sql = "INSERT INTO queries (key) VALUES (?)";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(sql, new Object[] {
                 query.getKey()
-        });
+        }, keyHolder);
+
+        return keyHolder.getKey();
     }
 
     public void update(Integer id, Query query) {
@@ -91,6 +98,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
             query.setId(rs.getInt("id"));
             query.setKey(rs.getString("key"));
+            query.setDatabaseConnectionId(rs.getInt("database_connection_id"));
 
             return query;
         }

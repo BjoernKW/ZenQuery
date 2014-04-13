@@ -5,6 +5,8 @@ import com.hp.gagawa.java.elements.Tr;
 import com.hp.gagawa.java.elements.Th;
 import com.hp.gagawa.java.elements.Td;
 import com.zenquery.model.DatabaseConnection;
+import com.zenquery.model.Query;
+import com.zenquery.model.QueryVersion;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,9 +90,27 @@ public class StartController {
 
         RestTemplate restTemplate = new RestTemplate();
         DatabaseConnection databaseConnection = restTemplate.getForObject(
-                "http://localhost:8080//api/v1/databaseConnections/{databaseConnectionId}",
+                "http://localhost:8080/api/v1/databaseConnections/{databaseConnectionId}",
                 DatabaseConnection.class, variables
         );
+
+        Query[] queries = restTemplate.getForObject(
+                "http://localhost:8080/api/v1/queries/findByDatabaseConnectionId/{databaseConnectionId}",
+                Query[].class, variables
+        );
+
+        variables.remove("databaseConnectionId");
+        variables.put("queryId", queries[0].getId());
+        QueryVersion[] queryVersions = restTemplate.getForObject(
+                "http://localhost:8080/api/v1/queryVersions/findByQueryId/{queryId}",
+                QueryVersion[].class, variables
+        );
+        String queryContent = "";
+        for (QueryVersion queryVersion : queryVersions) {
+            if (queryVersion.getIsCurrentVersion()) {
+                queryContent = queryVersion.getContent();
+            }
+        }
 
         Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
         Matcher matcher = pattern.matcher(databaseConnection.getUrl());
@@ -114,7 +131,7 @@ public class StartController {
             dataSource.setValidationQuery("SELECT 1");
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            rows = jdbcTemplate.queryForList("SELECT * FROM database_connections");
+            rows = jdbcTemplate.queryForList(queryContent);
         } catch (Exception e) {
             logger.debug(e);
         }

@@ -14,7 +14,7 @@ public interface QueryVersionDAO {
 
     public List<QueryVersion> findAll();
 
-    public void insert(QueryVersion QueryVersion);
+    public Number insert(QueryVersion QueryVersion);
 
     public void update(Integer id, QueryVersion QueryVersion);
 

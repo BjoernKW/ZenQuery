@@ -2,8 +2,11 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -22,6 +25,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         this.dataSource = dataSource;
     }
 
+    @Cacheable("sql.databaseConnections")
     public DatabaseConnection find(Integer id) {
         String sql = "SELECT * FROM database_connections WHERE id = ?";
 
@@ -33,6 +37,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnection;
     }
 
+    @Cacheable("sql.databaseConnections")
     public List<DatabaseConnection> findAll() {
         String sql = "SELECT * FROM database_connections";
 
@@ -44,17 +49,20 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnections;
     }
 
-    public void insert(DatabaseConnection databaseConnection) {
+    public Number insert(DatabaseConnection databaseConnection) {
         String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(sql, new Object[] {
                 databaseConnection.getName(),
                 databaseConnection.getUrl(),
                 databaseConnection.getUsername(),
                 databaseConnection.getPassword()
-        });
+        }, keyHolder);
+
+        return keyHolder.getKey();
     }
 
     public void update(Integer id, DatabaseConnection databaseConnection) {
