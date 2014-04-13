@@ -9,7 +9,6 @@ import java.util.List;
 public class Query implements Serializable {
     Integer id;
     String key;
-    List<QueryVersion> queryVersions;
 
     public Integer getId() {
         return id;
@@ -25,13 +24,5 @@ public class Query implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public List<QueryVersion> getQueryVersions() {
-        return queryVersions;
-    }
-
-    public void setQueryVersions(List<QueryVersion> queryVersions) {
-        this.queryVersions = queryVersions;
     }
 }
