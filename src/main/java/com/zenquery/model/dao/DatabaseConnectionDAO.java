@@ -12,7 +12,7 @@ public interface DatabaseConnectionDAO {
 
     public List<DatabaseConnection> findAll();
 
-    public void insert(DatabaseConnection databaseConnection);
+    public Number insert(DatabaseConnection databaseConnection);
 
     public void update(Integer id, DatabaseConnection databaseConnection);
 

@@ -14,7 +14,7 @@ public interface QueryDAO {
 
     public List<Query> findAll();
 
-    public void insert(Query query);
+    public Number insert(Query query);
 
     public void update(Integer id, Query query);
 
