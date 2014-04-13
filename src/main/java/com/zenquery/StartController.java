@@ -9,13 +9,17 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,8 +34,58 @@ public class StartController {
     @Autowired
     private PropertiesFactoryBean driverClassNameProperties;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String welcome(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+
+        return "index";
+    }
+
+	@RequestMapping(value = "/test")
+	public String test(ModelMap model) {
+        List<Map<String, Object>> rows = getDatabaseConnections(model);
+
+        Table table = new Table();
+        Tr tableHeader = new Tr();
+        Boolean firstRow = true;
+
+        for (Map<String, Object> row : rows) {
+            Tr tableRow = new Tr();
+
+            for (String key : row.keySet()) {
+                if (firstRow) {
+                    Th th = new Th();
+                    th.appendText(key);
+                    tableHeader.appendChild(th);
+                }
+
+                Td td = new Td();
+                td.appendText(row.get(key).toString());
+                tableRow.appendChild(td);
+            }
+
+            if (firstRow) {
+                table.appendChild(tableHeader);
+                firstRow = false;
+            }
+            table.appendChild(tableRow);
+        }
+
+        model.addAttribute("result", table.write());
+
+		return "test";
+	}
+
+    @RequestMapping(value = "/test", produces = { "application/xml", "application/json", "text/csv" })
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    List<Map<String, Object>> testAPI(ModelMap model) {
+        List<Map<String, Object>> rows = getDatabaseConnections(model);
+
+        return rows;
+    }
+
+    private List<Map<String, Object>> getDatabaseConnections(ModelMap model) {
         Map<String, Integer> variables = new HashMap<String, Integer>();
         variables.put("databaseConnectionId", 1);
 
@@ -43,10 +97,13 @@ public class StartController {
 
         Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
         Matcher matcher = pattern.matcher(databaseConnection.getUrl());
-        matcher.find();
 
+        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
         try {
-            String driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
+            String driverClassName = "";
+            if (matcher.find()) {
+                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
+            }
 
             BasicDataSource dataSource = new BasicDataSource();
             dataSource.setDriverClassName(driverClassName);
@@ -57,39 +114,11 @@ public class StartController {
             dataSource.setValidationQuery("SELECT 1");
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM database_connections");
-
-            Table table = new Table();
-            Tr tableHeader = new Tr();
-            Boolean firstRow = true;
-
-            for (Map<String, Object> row : rows) {
-                Tr tableRow = new Tr();
-
-                for (String key : row.keySet()) {
-                    if (firstRow) {
-                        Th th = new Th();
-                        th.appendText(key);
-                        tableHeader.appendChild(th);
-                    }
-
-                    Td td = new Td();
-                    td.appendText(row.get(key).toString());
-                    tableRow.appendChild(td);
-                }
-
-                if (firstRow) {
-                    table.appendChild(tableHeader);
-                    firstRow = false;
-                }
-                table.appendChild(tableRow);
-            }
-
-            model.addAttribute("result", table.write());
+            rows = jdbcTemplate.queryForList("SELECT * FROM database_connections");
         } catch (Exception e) {
             logger.debug(e);
         }
 
-		return "index";
-	}
+        return rows;
+    }
 }
