@@ -61,3 +61,5 @@ CREATE TABLE query_versions_id_seq
 );
 ALTER TABLE queries ADD FOREIGN KEY ( database_connection_id ) REFERENCES database_connections ( id );
 CREATE UNIQUE INDEX unique_key ON queries ( key );
+ALTER TABLE query_versions ADD FOREIGN KEY ( query_id ) REFERENCES queries ( id );
+ALTER TABLE query_versions ADD FOREIGN KEY ( query_id ) REFERENCES queries ( id );
