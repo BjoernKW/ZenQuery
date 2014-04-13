@@ -18,10 +18,17 @@ import java.util.List;
  */
 public class JdbcQueryDAO implements QueryDAO {
     private DataSource dataSource;
+
+    private QueryVersionDAO queryVersionDAO;
+
     private JdbcTemplate jdbcTemplate;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setQueryVersionDAO(QueryVersionDAO queryVersionDAO) {
+        this.queryVersionDAO = queryVersionDAO;
     }
 
     public Query find(Integer id) {
