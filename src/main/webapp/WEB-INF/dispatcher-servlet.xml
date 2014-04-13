@@ -29,9 +29,7 @@
         <property name="mediaTypes">
             <map>
                 <entry key="html" value="text/html" />
-                <entry key="csv" value="text/csv" />
                 <entry key="json" value="application/json" />
-                <entry key="xml" value="application/xml" />
             </map>
         </property>
     </bean>
