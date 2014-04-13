@@ -2,6 +2,7 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
+import org.apache.log4j.Logger;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -9,6 +10,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +20,8 @@ import java.util.List;
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
+    private static final Logger logger = Logger.getLogger(DatabaseConnectionDAO.class);
+
     private DataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
@@ -52,6 +57,14 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     public Number insert(DatabaseConnection databaseConnection) {
         String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(databaseConnection.getName().getBytes("UTF-8"));
+            databaseConnection.setPassword(new String(messageDigest.digest()));
+        } catch (Exception e) {
+            logger.debug(e);
+        }
+
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -67,6 +80,14 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
     public void update(Integer id, DatabaseConnection databaseConnection) {
         String sql = "UPDATE database_connections SET name = ?, url = ?, username = ?, password = ? WHERE id = ?";
+
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(databaseConnection.getName().getBytes("UTF-8"));
+            databaseConnection.setPassword(new String(messageDigest.digest()));
+        } catch (Exception e) {
+            logger.debug(e);
+        }
 
         jdbcTemplate = new JdbcTemplate(dataSource);
 
