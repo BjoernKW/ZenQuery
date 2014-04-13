@@ -46,16 +46,11 @@ public class QueryController {
         return queryDAO.find(new Long(id.longValue()).intValue());
     }
 
-    @RequestMapping(value = "{id}/{key}", method = RequestMethod.PUT)
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public @ResponseBody String update(
-            @PathVariable Integer id,
-            @PathVariable String key,
-            @PathVariable String url,
-            @PathVariable String username,
-            @PathVariable String password
+            @PathVariable Integer id
     ) {
         Query query = new Query();
-        query.setKey(key);
 
         queryDAO.update(id, query);
 
