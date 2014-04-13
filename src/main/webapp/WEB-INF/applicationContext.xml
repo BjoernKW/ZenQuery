@@ -3,8 +3,24 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="databaseProperties"
-          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:database.properties"/>
+    <bean id="databasePropertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <bean id="databaseConnectionDAO" class="com.zenquery.model.dao.impl.JdbcDatabaseConnectionDAO">
+        <property name="dataSource" ref="dataSource" />
     </bean>
 </beans>
