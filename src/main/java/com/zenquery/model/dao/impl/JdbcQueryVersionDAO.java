@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class JdbcQueryVersionDAO implements QueryVersionDAO {
     private DataSource dataSource;
+
     private JdbcTemplate jdbcTemplate;
 
     public void setDataSource(DataSource dataSource) {
