@@ -76,7 +76,7 @@ public class StartController {
 		return "test";
 	}
 
-    @RequestMapping(value = "/test", produces = { "application/xml", "application/json", "text/csv" })
+    @RequestMapping(value = "/test", produces = { "application/json" })
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     List<Map<String, Object>> testAPI(ModelMap model) {
@@ -91,7 +91,7 @@ public class StartController {
 
         RestTemplate restTemplate = new RestTemplate();
         DatabaseConnection databaseConnection = restTemplate.getForObject(
-                "http://localhost:8080/databaseConnections/{databaseConnectionId}",
+                "http://localhost:8080//api/v1/databaseConnections/{databaseConnectionId}",
                 DatabaseConnection.class, variables
         );
 

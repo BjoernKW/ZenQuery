@@ -1,4 +1,4 @@
-package com.zenquery;
+package com.zenquery.api;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/databaseConnections")
+@RequestMapping("/api/v1/databaseConnections")
 public class DatabaseConnectionController {
     @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
