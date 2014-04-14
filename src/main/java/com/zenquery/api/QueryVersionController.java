@@ -16,20 +16,20 @@ public class QueryVersionController {
     private QueryVersionDAO queryVersionDAO;
 
     @Cacheable("api.queryVersions")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     QueryVersion find(@PathVariable Integer id) {
 		return queryVersionDAO.find(id);
 	}
 
     @Cacheable("api.queryVersions")
-    @RequestMapping(value = "/findByQueryId/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/findByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
     public @ResponseBody
     List<QueryVersion> findByQueryId(@PathVariable Integer id) {
         return queryVersionDAO.findByQueryId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = { "application/xml", "application/json" })
     public @ResponseBody
     QueryVersion create(
             @RequestBody QueryVersion queryVersion
