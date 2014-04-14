@@ -30,7 +30,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "SELECT * FROM query_versions WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         QueryVersion queryVersion =
                 jdbcTemplate.query(sql, new Object[] { id }, new QueryVersionMapper()).get(0);
 
@@ -42,7 +41,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "SELECT * FROM query_versions WHERE query_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         List<QueryVersion> queryVersions =
                 jdbcTemplate.query(sql, new Object[] { id }, new QueryVersionMapper());
 
@@ -53,7 +51,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "SELECT * FROM query_versions";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         List<QueryVersion> queryVersions =
                 jdbcTemplate.query(sql, new QueryVersionMapper());
 
@@ -65,7 +62,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
         jdbcTemplate.update(sql, new Object[] {
                 queryVersion.getContent(),
                 queryVersion.getVersion(),
@@ -79,7 +75,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "UPDATE query_versions SET content = ?, version = ?, is_current_version = ? WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql, new Object[]{
                 queryVersion.getContent(),
                 queryVersion.getVersion(),
@@ -92,7 +87,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "DELETE FROM query_versions WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql);
     }
 

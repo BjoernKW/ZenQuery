@@ -2,7 +2,7 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.QueryDAO;
-import org.apache.log4j.Logger;
+import com.zenquery.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -19,8 +19,6 @@ import java.util.List;
  * Created by willy on 13.04.14.
  */
 public class JdbcQueryDAO implements QueryDAO {
-    private static final Logger logger = Logger.getLogger(QueryDAO.class);
-
     private DataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
@@ -34,7 +32,6 @@ public class JdbcQueryDAO implements QueryDAO {
         String sql = "SELECT * FROM queries WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         Query query =
                 jdbcTemplate.query(sql, new Object[] { id }, new QueryMapper()).get(0);
 
@@ -46,7 +43,6 @@ public class JdbcQueryDAO implements QueryDAO {
         String sql = "SELECT * FROM queries WHERE database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         List<Query> queries =
                 jdbcTemplate.query(sql, new Object[] { id }, new QueryMapper());
 
@@ -57,7 +53,6 @@ public class JdbcQueryDAO implements QueryDAO {
         String sql = "SELECT * FROM queries";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         List<Query> queries =
                 jdbcTemplate.query(sql, new QueryMapper());
 
@@ -67,17 +62,10 @@ public class JdbcQueryDAO implements QueryDAO {
     public Number insert(Query query) {
         String sql = "INSERT INTO queries (key) VALUES (?)";
 
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(query.getKey().getBytes("UTF-8"));
-            query.setKey(new String(messageDigest.digest()));
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+        query.setKey(StringUtil.hashWithSha256(query.getKey()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
         jdbcTemplate.update(sql, new Object[] {
                 query.getKey()
         }, keyHolder);
@@ -88,16 +76,9 @@ public class JdbcQueryDAO implements QueryDAO {
     public void update(Integer id, Query query) {
         String sql = "UPDATE queries SET key = ? WHERE id = ?";
 
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(query.getKey().getBytes("UTF-8"));
-            query.setKey(new String(messageDigest.digest()));
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+        query.setKey(StringUtil.hashWithSha256(query.getKey()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql, new Object[]{
                 query.getKey(),
                 id
@@ -108,7 +89,6 @@ public class JdbcQueryDAO implements QueryDAO {
         String sql = "DELETE FROM queries WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql);
     }
 
