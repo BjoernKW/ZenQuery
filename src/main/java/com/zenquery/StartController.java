@@ -75,6 +75,57 @@ public class StartController {
 		return "test";
 	}
 
+    @RequestMapping(value = "/updateTest")
+    public String update(ModelMap model) {
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("databaseConnectionId", 1);
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        databaseConnection.setName("ccc");
+        databaseConnection.setUrl("jdbc:postgresql://localhost:5432/ZenQuery");
+        databaseConnection.setUsername("willy");
+        databaseConnection.setPassword("willy");
+
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(
+                "http://localhost:8080/api/v1/databaseConnections/{databaseConnectionId}",
+                databaseConnection,
+                variables
+        );
+
+        List<Map<String, Object>> rows = getDatabaseConnections(model);
+
+        Table table = new Table();
+        Tr tableHeader = new Tr();
+        Boolean firstRow = true;
+
+        for (Map<String, Object> row : rows) {
+            Tr tableRow = new Tr();
+
+            for (String key : row.keySet()) {
+                if (firstRow) {
+                    Th th = new Th();
+                    th.appendText(key);
+                    tableHeader.appendChild(th);
+                }
+
+                Td td = new Td();
+                td.appendText(row.get(key).toString());
+                tableRow.appendChild(td);
+            }
+
+            if (firstRow) {
+                table.appendChild(tableHeader);
+                firstRow = false;
+            }
+            table.appendChild(tableRow);
+        }
+
+        model.addAttribute("result", table.write());
+
+        return "test";
+    }
+
     @RequestMapping(value = "/test", produces = { "application/json" })
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
