@@ -29,7 +29,7 @@ public class QueryVersionController {
         return queryVersionDAO.findByQueryId(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     QueryVersion create(
             @RequestBody QueryVersion queryVersion
