@@ -29,7 +29,7 @@ public class QueryController {
         return queryDAO.findByDatabaseConnectionId(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     Query create(
             @RequestBody Query query
