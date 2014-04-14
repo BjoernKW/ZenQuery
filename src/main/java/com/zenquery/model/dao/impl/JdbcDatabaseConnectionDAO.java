@@ -2,7 +2,7 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
-import org.apache.log4j.Logger;
+import com.zenquery.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -10,8 +10,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,8 +18,6 @@ import java.util.List;
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
-    private static final Logger logger = Logger.getLogger(DatabaseConnectionDAO.class);
-
     private DataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
@@ -35,7 +31,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         String sql = "SELECT * FROM database_connections WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         DatabaseConnection databaseConnection =
                 jdbcTemplate.query(sql, new Object[] { id }, new DatabaseConnectionMapper()).get(0);
 
@@ -47,7 +42,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         String sql = "SELECT * FROM database_connections";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         List<DatabaseConnection> databaseConnections =
                 jdbcTemplate.query(sql, new DatabaseConnectionMapper());
 
@@ -57,17 +51,10 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     public Number insert(DatabaseConnection databaseConnection) {
         String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(databaseConnection.getName().getBytes("UTF-8"));
-            databaseConnection.setPassword(new String(messageDigest.digest()));
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+        databaseConnection.setPassword(StringUtil.hashWithSha256(databaseConnection.getPassword()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
         jdbcTemplate.update(sql, new Object[] {
                 databaseConnection.getName(),
                 databaseConnection.getUrl(),
@@ -81,16 +68,9 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     public void update(Integer id, DatabaseConnection databaseConnection) {
         String sql = "UPDATE database_connections SET name = ?, url = ?, username = ?, password = ? WHERE id = ?";
 
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(databaseConnection.getName().getBytes("UTF-8"));
-            databaseConnection.setPassword(new String(messageDigest.digest()));
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+        databaseConnection.setPassword(StringUtil.hashWithSha256(databaseConnection.getPassword()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql, new Object[]{
                 databaseConnection.getName(),
                 databaseConnection.getUrl(),
@@ -104,7 +84,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         String sql = "DELETE FROM database_connections WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-
         jdbcTemplate.update(sql);
     }
 
