@@ -16,20 +16,20 @@ public class DatabaseConnectionController {
     private DatabaseConnectionDAO databaseConnectionDAO;
 
     @Cacheable("api.databaseConnections")
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
     public @ResponseBody
     List<DatabaseConnection> findAll() {
         return databaseConnectionDAO.findAll();
     }
 
     @Cacheable("api.databaseConnections")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     DatabaseConnection find(@PathVariable Integer id) {
 		return databaseConnectionDAO.find(id);
 	}
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = { "application/xml", "application/json" })
     public @ResponseBody
     DatabaseConnection create(
             @RequestBody DatabaseConnection databaseConnection

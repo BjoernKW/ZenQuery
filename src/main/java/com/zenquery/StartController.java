@@ -126,7 +126,7 @@ public class StartController {
         return "test";
     }
 
-    @RequestMapping(value = "/test", produces = { "application/json" })
+    @RequestMapping(value = "/testAPI", produces = { "application/json" })
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     List<Map<String, Object>> testAPI(ModelMap model) {

@@ -1,10 +1,12 @@
 package com.zenquery.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * Created by willy on 13.04.14.
  */
+@XmlRootElement
 public class QueryVersion implements Serializable {
     Integer id;
     String content;

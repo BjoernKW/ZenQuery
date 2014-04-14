@@ -16,20 +16,20 @@ public class QueryController {
     private QueryDAO queryDAO;
 
     @Cacheable("api.queries")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     Query find(@PathVariable Integer id) {
 		return queryDAO.find(id);
 	}
 
     @Cacheable("api.queries")
-    @RequestMapping(value = "/findByDatabaseConnectionId/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/findByDatabaseConnectionId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
     public @ResponseBody
     List<Query> findByDatabaseConnectionId(@PathVariable Integer id) {
         return queryDAO.findByDatabaseConnectionId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = { "application/xml", "application/json" })
     public @ResponseBody
     Query create(
             @RequestBody Query query
