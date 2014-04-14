@@ -2,7 +2,6 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
-import com.zenquery.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -51,8 +50,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     public Number insert(DatabaseConnection databaseConnection) {
         String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
-        databaseConnection.setPassword(StringUtil.hashWithSha256(databaseConnection.getPassword()));
-
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(sql, new Object[] {
@@ -67,8 +64,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
     public void update(Integer id, DatabaseConnection databaseConnection) {
         String sql = "UPDATE database_connections SET name = ?, url = ?, username = ?, password = ? WHERE id = ?";
-
-        databaseConnection.setPassword(StringUtil.hashWithSha256(databaseConnection.getPassword()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.update(sql, new Object[]{

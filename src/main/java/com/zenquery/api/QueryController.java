@@ -5,10 +5,7 @@ import com.zenquery.model.dao.QueryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class QueryController {
     private QueryDAO queryDAO;
 
     @Cacheable("api.queries")
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody
     Query find(@PathVariable Integer id) {
 		return queryDAO.find(id);
@@ -32,32 +29,27 @@ public class QueryController {
         return queryDAO.findByDatabaseConnectionId(id);
     }
 
-    @RequestMapping(value = "{key}/{databaseConnectionId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public @ResponseBody
     Query create(
-            @PathVariable String key,
-            @PathVariable Integer databaseConnectionId
+            @RequestBody Query query
     ) {
-        Query query = new Query();
-        query.setKey(key);
-
         Number id = queryDAO.insert(query);
 
         return queryDAO.find(new Long(id.longValue()).intValue());
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public @ResponseBody String update(
-            @PathVariable Integer id
+            @PathVariable Integer id,
+            @RequestBody Query query
     ) {
-        Query query = new Query();
-
         queryDAO.update(id, query);
 
         return "OK";
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody String delete(@PathVariable Integer id) {
         queryDAO.delete(id);
 
