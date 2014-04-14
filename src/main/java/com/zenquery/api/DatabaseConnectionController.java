@@ -7,14 +7,23 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/api/v1/databaseConnections/{id}")
+@RequestMapping("/api/v1/databaseConnections")
 public class DatabaseConnectionController {
     @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
 
     @Cacheable("api.databaseConnections")
-	@RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    public @ResponseBody
+    List<DatabaseConnection> findAll() {
+        return databaseConnectionDAO.findAll();
+    }
+
+    @Cacheable("api.databaseConnections")
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody
     DatabaseConnection find(@PathVariable Integer id) {
 		return databaseConnectionDAO.find(id);
@@ -30,7 +39,7 @@ public class DatabaseConnectionController {
         return databaseConnectionDAO.find(new Long(id.longValue()).intValue());
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public @ResponseBody String update(
             @PathVariable Integer id,
             @RequestBody DatabaseConnection databaseConnection
@@ -40,7 +49,7 @@ public class DatabaseConnectionController {
         return "OK";
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody String delete(@PathVariable Integer id) {
         databaseConnectionDAO.delete(id);
 
