@@ -24,12 +24,14 @@
         <property name="favorPathExtension" value="true" />
         <property name="favorParameter" value="false" />
         <property name="parameterName" value="mediaType" />
-        <property name="ignoreAcceptHeader" value="false"/>
+        <property name="ignoreAcceptHeader" value="true"/>
         <property name="useJaf" value="false"/>
         <property name="mediaTypes">
             <map>
                 <entry key="html" value="text/html" />
                 <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+                <entry key="csv" value="text/csv" />
             </map>
         </property>
     </bean>
