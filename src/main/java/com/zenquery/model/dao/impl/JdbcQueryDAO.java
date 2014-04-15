@@ -38,6 +38,17 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     @Cacheable("sql.queries")
+    public Query findByKey(String key) {
+        String sql = "SELECT * FROM queries WHERE key = ?";
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        Query query =
+                jdbcTemplate.query(sql, new Object[] { key }, new QueryMapper()).get(0);
+
+        return query;
+    }
+
+    @Cacheable("sql.queries")
     public List<Query> findByDatabaseConnectionId(Integer id) {
         String sql = "SELECT * FROM queries WHERE database_connection_id = ?";
 
