@@ -5,14 +5,14 @@ import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.security.MessageDigest;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -59,16 +59,29 @@ public class JdbcQueryDAO implements QueryDAO {
         return queries;
     }
 
-    public Number insert(Query query) {
-        String sql = "INSERT INTO queries (key) VALUES (?)";
+    public Number insert(final Query query) {
+        final String sql = "INSERT INTO queries (key) VALUES (?)";
 
         query.setKey(StringUtil.hashWithSha256(query.getKey()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(sql, new Object[] {
-                query.getKey()
-        }, keyHolder);
+
+        PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString(), new String[] { "id" });
+
+                preparedStatement.setString(1, query.getKey());
+
+                return preparedStatement;
+            }
+        };
+        jdbcTemplate.update(
+                preparedStatementCreator,
+                keyHolder
+        );
 
         return keyHolder.getKey();
     }
@@ -79,17 +92,20 @@ public class JdbcQueryDAO implements QueryDAO {
         query.setKey(StringUtil.hashWithSha256(query.getKey()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql, new Object[]{
-                query.getKey(),
-                id
-        });
+        jdbcTemplate.update(
+                sql,
+                new Object[] {
+                        query.getKey(),
+                        id
+                }
+        );
     }
 
     public void delete(Integer id) {
         String sql = "DELETE FROM queries WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql);
+        jdbcTemplate.update(sql, new Object[] { id });
     }
 
     private static class QueryMapper implements ParameterizedRowMapper<Query> {
