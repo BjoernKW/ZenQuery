@@ -67,7 +67,7 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection)
                     throws SQLException {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString(), new String[] { "id" });
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, new String[] { "id" });
 
                 preparedStatement.setString(1, queryVersion.getContent());
                 preparedStatement.setInt(2, queryVersion.getVersion());
