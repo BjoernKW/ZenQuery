@@ -4,13 +4,13 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryVersionDAO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -57,16 +57,29 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersions;
     }
 
-    public Number insert(QueryVersion queryVersion) {
-        String sql = "INSERT INTO query_versions (content, version, is_current_version) VALUES (?, ?, ?)";
+    public Number insert(final QueryVersion queryVersion) {
+        final String sql = "INSERT INTO query_versions (content, version, is_current_version) VALUES (?, ?, ?)";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(sql, new Object[] {
-                queryVersion.getContent(),
-                queryVersion.getVersion(),
-                queryVersion.getIsCurrentVersion()
-        }, keyHolder);
+
+        PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString(), new String[] { "id" });
+
+                preparedStatement.setString(1, queryVersion.getContent());
+                preparedStatement.setInt(2, queryVersion.getVersion());
+                preparedStatement.setBoolean(3, queryVersion.getIsCurrentVersion());
+
+                return preparedStatement;
+            }
+        };
+        jdbcTemplate.update(
+                preparedStatementCreator,
+                keyHolder
+        );
 
         return keyHolder.getKey();
     }
@@ -75,19 +88,22 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         String sql = "UPDATE query_versions SET content = ?, version = ?, is_current_version = ? WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql, new Object[]{
-                queryVersion.getContent(),
-                queryVersion.getVersion(),
-                queryVersion.getIsCurrentVersion(),
-                id
-        });
+        jdbcTemplate.update(
+                sql,
+                new Object[] {
+                        queryVersion.getContent(),
+                        queryVersion.getVersion(),
+                        queryVersion.getIsCurrentVersion(),
+                        id
+                }
+        );
     }
 
     public void delete(Integer id) {
         String sql = "DELETE FROM query_versions WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql);
+        jdbcTemplate.update(sql, new Object[] { id });
     }
 
     private static class QueryVersionMapper implements ParameterizedRowMapper<QueryVersion> {

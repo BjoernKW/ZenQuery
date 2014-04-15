@@ -4,13 +4,13 @@ import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -47,17 +47,30 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnections;
     }
 
-    public Number insert(DatabaseConnection databaseConnection) {
-        String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
+    public Number insert(final DatabaseConnection databaseConnection) {
+        final String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(sql, new Object[] {
-                databaseConnection.getName(),
-                databaseConnection.getUrl(),
-                databaseConnection.getUsername(),
-                databaseConnection.getPassword()
-        }, keyHolder);
+
+        PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection)
+                    throws SQLException {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString(), new String[] { "id" });
+
+                preparedStatement.setString(1, databaseConnection.getName());
+                preparedStatement.setString(2, databaseConnection.getUrl());
+                preparedStatement.setString(3, databaseConnection.getUsername());
+                preparedStatement.setString(4, databaseConnection.getPassword());
+
+                return preparedStatement;
+            }
+        };
+        jdbcTemplate.update(
+                preparedStatementCreator,
+                keyHolder
+        );
 
         return keyHolder.getKey();
     }
@@ -66,20 +79,23 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         String sql = "UPDATE database_connections SET name = ?, url = ?, username = ?, password = ? WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql, new Object[]{
-                databaseConnection.getName(),
-                databaseConnection.getUrl(),
-                databaseConnection.getUsername(),
-                databaseConnection.getPassword(),
-                id
-        });
+        jdbcTemplate.update(
+                sql,
+                new Object[] {
+                        databaseConnection.getName(),
+                        databaseConnection.getUrl(),
+                        databaseConnection.getUsername(),
+                        databaseConnection.getPassword(),
+                        id
+                }
+        );
     }
 
     public void delete(Integer id) {
         String sql = "DELETE FROM database_connections WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql);
+        jdbcTemplate.update(sql, new Object[] { id });
     }
 
     private static class DatabaseConnectionMapper implements ParameterizedRowMapper<DatabaseConnection> {
