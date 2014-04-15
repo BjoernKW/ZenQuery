@@ -29,7 +29,10 @@ public class QueryVersionController {
         return queryVersionDAO.findByQueryId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = { "application/xml", "application/json" })
+    @RequestMapping(
+            method = RequestMethod.POST,
+            consumes = { "application/xml", "application/json" },
+            produces = { "application/xml", "application/json" })
     public @ResponseBody
     QueryVersion create(
             @RequestBody QueryVersion queryVersion
@@ -39,7 +42,10 @@ public class QueryVersionController {
         return queryVersionDAO.find(new Long(id.longValue()).intValue());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(
+            value = "/{id}",
+            consumes = { "application/xml", "application/json" },
+            method = RequestMethod.PUT)
     public @ResponseBody String update(
             @PathVariable Integer id,
             @RequestBody QueryVersion queryVersion
