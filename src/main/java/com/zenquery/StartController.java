@@ -81,7 +81,7 @@ public class StartController {
         variables.put("databaseConnectionId", 1);
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        databaseConnection.setName("ccc");
+        databaseConnection.setName("eee");
         databaseConnection.setUrl("jdbc:postgresql://localhost:5432/ZenQuery");
         databaseConnection.setUsername("willy");
         databaseConnection.setPassword("willy");

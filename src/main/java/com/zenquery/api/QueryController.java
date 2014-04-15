@@ -3,7 +3,6 @@ package com.zenquery.api;
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.QueryDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,14 +14,12 @@ public class QueryController {
     @Autowired
     private QueryDAO queryDAO;
 
-    @Cacheable("api.queries")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     Query find(@PathVariable Integer id) {
 		return queryDAO.find(id);
 	}
 
-    @Cacheable("api.queries")
     @RequestMapping(value = "/findByDatabaseConnectionId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
     public @ResponseBody
     List<Query> findByDatabaseConnectionId(@PathVariable Integer id) {
