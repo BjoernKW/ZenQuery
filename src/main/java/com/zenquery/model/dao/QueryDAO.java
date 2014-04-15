@@ -10,6 +10,8 @@ import java.util.List;
 public interface QueryDAO {
     public Query find(Integer id);
 
+    public Query findByKey(String key);
+
     public List<Query> findByDatabaseConnectionId(Integer id);
 
     public List<Query> findAll();
