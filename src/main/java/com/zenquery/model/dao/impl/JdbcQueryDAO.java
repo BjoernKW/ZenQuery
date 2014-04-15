@@ -11,7 +11,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.security.MessageDigest;
 import java.sql.*;
 import java.util.List;
 
@@ -71,7 +70,7 @@ public class JdbcQueryDAO implements QueryDAO {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection)
                     throws SQLException {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql.toString(), new String[] { "id" });
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, new String[] { "id" });
 
                 preparedStatement.setString(1, query.getKey());
 
