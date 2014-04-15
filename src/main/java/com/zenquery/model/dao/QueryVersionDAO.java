@@ -10,6 +10,8 @@ import java.util.List;
 public interface QueryVersionDAO {
     public QueryVersion find(Integer id);
 
+    public QueryVersion findByQueryIdAndVersion(Integer id, Integer version);
+
     public List<QueryVersion> findByQueryId(Integer id);
 
     public List<QueryVersion> findAll();
