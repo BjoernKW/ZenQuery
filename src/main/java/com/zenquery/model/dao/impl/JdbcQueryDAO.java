@@ -2,6 +2,7 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.QueryDAO;
+import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.StringUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +12,10 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,8 +26,14 @@ public class JdbcQueryDAO implements QueryDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    private QueryVersionDAO queryVersionDAO;
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setQueryVersionDAO(QueryVersionDAO queryVersionDAO) {
+        this.queryVersionDAO = queryVersionDAO;
     }
 
     @Cacheable("sql.queries")
@@ -112,7 +122,16 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public void delete(Integer id) {
+        queryVersionDAO.deleteByQueryId(id);
+
         String sql = "DELETE FROM queries WHERE id = ?";
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update(sql, new Object[] { id });
+    }
+
+    public void deleteByDatabaseConnectionId(Integer id) {
+        String sql = "DELETE FROM queries WHERE database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.update(sql, new Object[] { id });
