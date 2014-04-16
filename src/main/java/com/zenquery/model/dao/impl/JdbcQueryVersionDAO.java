@@ -72,7 +72,7 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
     }
 
     public Number insert(final QueryVersion queryVersion) {
-        final String sql = "INSERT INTO query_versions (content, version, is_current_version) VALUES (?, ?, ?)";
+        final String sql = "INSERT INTO query_versions (content, version, is_current_version, query_id) VALUES (?, ?, ?, ?)";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -86,6 +86,7 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
                 preparedStatement.setString(1, queryVersion.getContent());
                 preparedStatement.setInt(2, queryVersion.getVersion());
                 preparedStatement.setBoolean(3, queryVersion.getIsCurrentVersion());
+                preparedStatement.setInt(4, queryVersion.getQueryId());
 
                 return preparedStatement;
             }
