@@ -80,9 +80,9 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public Number insert(final Query query) {
-        final String sql = "INSERT INTO queries (key) VALUES (?)";
+        final String sql = "INSERT INTO queries (key, database_connection_id) VALUES (?, ?)";
 
-        query.setKey(StringUtil.hashWithSha256(query.getKey()));
+        query.setKey(StringUtil.hashWithSha256(new Double(Math.random()).toString() + System.currentTimeMillis()));
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -94,6 +94,7 @@ public class JdbcQueryDAO implements QueryDAO {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql, new String[] { "id" });
 
                 preparedStatement.setString(1, query.getKey());
+                preparedStatement.setInt(2, query.getDatabaseConnectionId());
 
                 return preparedStatement;
             }
