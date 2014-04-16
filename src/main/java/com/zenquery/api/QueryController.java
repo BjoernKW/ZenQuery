@@ -14,6 +14,12 @@ public class QueryController {
     @Autowired
     private QueryDAO queryDAO;
 
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    public @ResponseBody
+    List<Query> findAll() {
+        return queryDAO.findAll();
+    }
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     Query find(@PathVariable Integer id) {

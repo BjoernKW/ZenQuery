@@ -14,6 +14,12 @@ public class QueryVersionController {
     @Autowired
     private QueryVersionDAO queryVersionDAO;
 
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    public @ResponseBody
+    List<QueryVersion> findAll() {
+        return queryVersionDAO.findAll();
+    }
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
     QueryVersion find(@PathVariable Integer id) {
