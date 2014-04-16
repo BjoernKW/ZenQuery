@@ -10,7 +10,10 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -112,6 +115,13 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
 
     public void delete(Integer id) {
         String sql = "DELETE FROM query_versions WHERE id = ?";
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update(sql, new Object[] { id });
+    }
+
+    public void deleteByQueryId(Integer id) {
+        String sql = "DELETE FROM query_versions WHERE query_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.update(sql, new Object[] { id });

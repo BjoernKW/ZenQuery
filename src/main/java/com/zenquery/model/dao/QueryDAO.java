@@ -21,4 +21,6 @@ public interface QueryDAO {
     public void update(Integer id, Query query);
 
     public void delete(Integer id);
+
+    public void deleteByDatabaseConnectionId(Integer id);
 }

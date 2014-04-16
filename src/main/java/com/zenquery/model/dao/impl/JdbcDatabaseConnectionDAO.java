@@ -2,6 +2,7 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
+import com.zenquery.model.dao.QueryDAO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -10,7 +11,10 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -21,8 +25,14 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    private QueryDAO queryDAO;
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setQueryDAO(QueryDAO queryDAO) {
+        this.queryDAO = queryDAO;
     }
 
     @Cacheable("sql.databaseConnections")
@@ -92,6 +102,8 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     }
 
     public void delete(Integer id) {
+        queryDAO.deleteByDatabaseConnectionId(id);
+
         String sql = "DELETE FROM database_connections WHERE id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);

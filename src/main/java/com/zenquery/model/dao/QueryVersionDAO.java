@@ -21,4 +21,6 @@ public interface QueryVersionDAO {
     public void update(Integer id, QueryVersion QueryVersion);
 
     public void delete(Integer id);
+
+    public void deleteByQueryId(Integer id);
 }
