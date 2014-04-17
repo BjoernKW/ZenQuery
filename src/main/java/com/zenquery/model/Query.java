@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class Query implements Serializable {
     Integer id;
     String key;
+    String content;
     Integer databaseConnectionId;
 
     public Integer getId() {
@@ -26,6 +27,14 @@ public class Query implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getDatabaseConnectionId() {
