@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +40,48 @@ public class ResultSetController {
     @Autowired
     private QueryVersionDAO queryVersionDAO;
 
-	@RequestMapping(value = "/{key}/{version}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    public @ResponseBody
+    List<Map<String, Object>> queryCurrent(
+            @PathVariable Integer id
+    ) {
+        Query query = queryDAO.find(id);
+        DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
+
+        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
+        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
+
+        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+        try {
+            String driverClassName = "";
+            if (matcher.find()) {
+                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
+            }
+
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setDriverClassName(driverClassName);
+            dataSource.setUsername(databaseConnection.getUsername());
+            dataSource.setPassword(databaseConnection.getPassword());
+            dataSource.setUrl(databaseConnection.getUrl());
+            dataSource.setMaxIdle(5);
+            dataSource.setValidationQuery("SELECT 1");
+
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+            rows = jdbcTemplate.queryForList(query.getContent());
+        } catch (Exception e) {
+            logger.debug(e);
+        }
+
+        return rows;
+    }
+
+	@RequestMapping(value = "/{id}/{version}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
 	public @ResponseBody
-    List<Map<String, Object>> query(
-            @PathVariable String key,
+    List<Map<String, Object>> queryByVersion(
+            @PathVariable Integer id,
             @PathVariable Integer version
     ) {
-        Query query = queryDAO.findByKey(key);
+        Query query = queryDAO.find(id);
         DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
         QueryVersion queryVersion = queryVersionDAO.findByQueryIdAndVersion(query.getId(), version);
 
