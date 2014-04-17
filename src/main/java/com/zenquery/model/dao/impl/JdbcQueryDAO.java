@@ -38,7 +38,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
     @Cacheable("sql.queries")
     public Query find(Integer id) {
-        String sql = "SELECT * FROM queries WHERE id = ?";
+        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         Query query =
@@ -49,7 +49,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
     @Cacheable("sql.queries")
     public Query findByKey(String key) {
-        String sql = "SELECT * FROM queries WHERE key = ?";
+        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.key = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         Query query =
@@ -60,7 +60,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
     @Cacheable("sql.queries")
     public List<Query> findByDatabaseConnectionId(Integer id) {
-        String sql = "SELECT * FROM queries AS q, query_versions as qv WHERE q.database_connection_id = ? AND q.id = qv.query_id AND qv.is_current_version = TRUE";
+        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
@@ -70,7 +70,8 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public List<Query> findAll() {
-        String sql = "SELECT * FROM queries";
+        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE";
+
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
@@ -144,6 +145,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
             query.setId(rs.getInt("id"));
             query.setKey(rs.getString("key"));
+            query.setContent(rs.getString("content"));
             query.setDatabaseConnectionId(rs.getInt("database_connection_id"));
 
             return query;
