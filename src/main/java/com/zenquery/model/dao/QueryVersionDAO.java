@@ -12,6 +12,8 @@ public interface QueryVersionDAO {
 
     public QueryVersion findByQueryIdAndVersion(Integer id, Integer version);
 
+    public QueryVersion findCurrentByQueryId(Integer id);
+
     public List<QueryVersion> findByQueryId(Integer id);
 
     public List<QueryVersion> findAll();

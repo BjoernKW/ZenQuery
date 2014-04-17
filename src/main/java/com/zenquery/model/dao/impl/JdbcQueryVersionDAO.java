@@ -51,6 +51,17 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
     }
 
     @Cacheable("sql.queryVersions")
+    public QueryVersion findCurrentByQueryId(Integer id) {
+        String sql = "SELECT * FROM query_versions WHERE query_id = ? AND is_current_version = TRUE";
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        QueryVersion queryVersion =
+                jdbcTemplate.query(sql, new Object[] { id }, new QueryVersionMapper()).get(0);
+
+        return queryVersion;
+    }
+
+    @Cacheable("sql.queryVersions")
     public List<QueryVersion> findByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ?";
 

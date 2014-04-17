@@ -26,6 +26,12 @@ public class QueryVersionController {
 		return queryVersionDAO.find(id);
 	}
 
+    @RequestMapping(value = "/findCurrentByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    public @ResponseBody
+    QueryVersion findCurrentByQueryId(@PathVariable Integer id) {
+        return queryVersionDAO.findCurrentByQueryId(id);
+    }
+
     @RequestMapping(value = "/findByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
     public @ResponseBody
     List<QueryVersion> findByQueryId(@PathVariable Integer id) {

@@ -60,7 +60,7 @@ public class JdbcQueryDAO implements QueryDAO {
 
     @Cacheable("sql.queries")
     public List<Query> findByDatabaseConnectionId(Integer id) {
-        String sql = "SELECT * FROM queries WHERE database_connection_id = ?";
+        String sql = "SELECT * FROM queries AS q, query_versions as qv WHERE q.database_connection_id = ? AND q.id = qv.query_id AND qv.is_current_version = TRUE";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
