@@ -45,7 +45,7 @@ public class ResultSetController {
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.GET,
-            produces = { "application/json" })
+            produces = { "application/json; charset=utf-8" })
     public @ResponseBody
     List<Map<String, Object>> currentQuery(
             @PathVariable Integer id
@@ -83,7 +83,7 @@ public class ResultSetController {
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.GET,
-            produces = { "text/csv" })
+            produces = { "text/csv; charset=utf-8" })
     public @ResponseBody
     String currentQueryAsCSV(
             @PathVariable Integer id
@@ -139,7 +139,7 @@ public class ResultSetController {
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.GET,
-            produces = { "application/xml" })
+            produces = { "application/xml; charset=utf-8" })
     public @ResponseBody
     String currentQueryAsXML(
             @PathVariable Integer id
@@ -177,44 +177,4 @@ public class ResultSetController {
 
         return stream.toXML(rows);
     }
-
-	@RequestMapping(
-            value = "/{id}/{version}",
-            method = RequestMethod.GET,
-            produces = { "application/xml", "application/json", "text/csv" })
-	public @ResponseBody
-    List<Map<String, Object>> queryByVersion(
-            @PathVariable Integer id,
-            @PathVariable Integer version
-    ) {
-        Query query = queryDAO.find(id);
-        DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
-        QueryVersion queryVersion = queryVersionDAO.findByQueryIdAndVersion(query.getId(), version);
-
-        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
-        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
-
-        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
-        try {
-            String driverClassName = "";
-            if (matcher.find()) {
-                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
-            }
-
-            BasicDataSource dataSource = new BasicDataSource();
-            dataSource.setDriverClassName(driverClassName);
-            dataSource.setUsername(databaseConnection.getUsername());
-            dataSource.setPassword(databaseConnection.getPassword());
-            dataSource.setUrl(databaseConnection.getUrl());
-            dataSource.setMaxIdle(5);
-            dataSource.setValidationQuery("SELECT 1");
-
-            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            rows = jdbcTemplate.queryForList(queryVersion.getContent());
-        } catch (Exception e) {
-            logger.debug(e);
-        }
-
-        return rows;
-	}
 }

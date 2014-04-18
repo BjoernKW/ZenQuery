@@ -14,19 +14,19 @@ public class QueryController {
     @Autowired
     private QueryDAO queryDAO;
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<Query> findAll() {
         return queryDAO.findAll();
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
 	public @ResponseBody
     Query find(@PathVariable Integer id) {
 		return queryDAO.find(id);
 	}
 
-    @RequestMapping(value = "/findByDatabaseConnectionId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findByDatabaseConnectionId/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<Query> findByDatabaseConnectionId(@PathVariable Integer id) {
         return queryDAO.findByDatabaseConnectionId(id);
@@ -34,8 +34,8 @@ public class QueryController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            consumes = { "application/xml", "application/json" },
-            produces = { "application/xml", "application/json" })
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
+            produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     Query create(
             @RequestBody Query query
@@ -47,7 +47,7 @@ public class QueryController {
 
     @RequestMapping(
             value = "/{id}",
-            consumes = { "application/xml", "application/json" },
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
             method = RequestMethod.PUT)
     public @ResponseBody String update(
             @PathVariable Integer id,
