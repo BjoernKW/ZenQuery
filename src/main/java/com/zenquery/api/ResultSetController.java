@@ -8,9 +8,7 @@ import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.MapEntryConverter;
-import com.zenquery.util.StringUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
@@ -173,11 +171,11 @@ public class ResultSetController {
             logger.debug(e);
         }
 
-        XStream magicApi = new XStream();
-        magicApi.registerConverter(new MapEntryConverter());
-        magicApi.alias("root", Map.class);
+        XStream stream = new XStream();
+        stream.registerConverter(new MapEntryConverter());
+        stream.alias("root", Map.class);
 
-        return magicApi.toXML(rows);
+        return stream.toXML(rows);
     }
 
 	@RequestMapping(

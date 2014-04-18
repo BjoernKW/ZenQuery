@@ -1,6 +1,7 @@
 package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.Query;
+import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.StringUtil;
@@ -109,18 +110,16 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public void update(Integer id, Query query) {
-        String sql = "UPDATE queries SET key = ? WHERE id = ?";
+        QueryVersion previousQueryVersion = queryVersionDAO.findCurrentByQueryId(id);
+        previousQueryVersion.setIsCurrentVersion(false);
+        queryVersionDAO.update(previousQueryVersion.getId(), previousQueryVersion);
 
-        query.setKey(StringUtil.hashWithSha256(query.getKey()));
-
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(
-                sql,
-                new Object[] {
-                        query.getKey(),
-                        id
-                }
-        );
+        QueryVersion queryVersion = new QueryVersion();
+        queryVersion.setQueryId(id);
+        queryVersion.setContent(query.getContent());
+        queryVersion.setIsCurrentVersion(true);
+        queryVersion.setVersion(previousQueryVersion.getVersion() + 1);
+        queryVersionDAO.insert(queryVersion);
     }
 
     public void delete(Integer id) {
