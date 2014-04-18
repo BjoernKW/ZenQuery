@@ -14,13 +14,13 @@ public class DatabaseConnectionController {
     @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<DatabaseConnection> findAll() {
         return databaseConnectionDAO.findAll();
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
 	public @ResponseBody
     DatabaseConnection find(@PathVariable Integer id) {
 		return databaseConnectionDAO.find(id);
@@ -28,8 +28,8 @@ public class DatabaseConnectionController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            consumes = { "application/xml", "application/json" },
-            produces = { "application/xml", "application/json" })
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
+            produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     DatabaseConnection create(
             @RequestBody DatabaseConnection databaseConnection
@@ -41,7 +41,7 @@ public class DatabaseConnectionController {
 
     @RequestMapping(
             value = "/{id}",
-            consumes = { "application/xml", "application/json" },
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
             method = RequestMethod.PUT)
     public @ResponseBody String update(
             @PathVariable Integer id,

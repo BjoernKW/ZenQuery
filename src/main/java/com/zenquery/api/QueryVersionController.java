@@ -14,31 +14,31 @@ public class QueryVersionController {
     @Autowired
     private QueryVersionDAO queryVersionDAO;
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<QueryVersion> findAll() {
         return queryVersionDAO.findAll();
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
 	public @ResponseBody
     QueryVersion find(@PathVariable Integer id) {
 		return queryVersionDAO.find(id);
 	}
 
-    @RequestMapping(value = "/findCurrentByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findCurrentByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     QueryVersion findCurrentByQueryId(@PathVariable Integer id) {
         return queryVersionDAO.findCurrentByQueryId(id);
     }
 
-    @RequestMapping(value = "/findByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<QueryVersion> findByQueryId(@PathVariable Integer id) {
         return queryVersionDAO.findByQueryId(id);
     }
 
-    @RequestMapping(value = "/findPreviousVersionsByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @RequestMapping(value = "/findPreviousVersionsByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     List<QueryVersion> findPreviousVersionsByQueryId(@PathVariable Integer id) {
         return queryVersionDAO.findPreviousVersionsByQueryId(id);
@@ -46,8 +46,8 @@ public class QueryVersionController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            consumes = { "application/xml", "application/json" },
-            produces = { "application/xml", "application/json" })
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
+            produces = { "application/xml; charset=utf-8", "application/json; charset=utf-8" })
     public @ResponseBody
     QueryVersion create(
             @RequestBody QueryVersion queryVersion
@@ -59,7 +59,7 @@ public class QueryVersionController {
 
     @RequestMapping(
             value = "/{id}",
-            consumes = { "application/xml", "application/json" },
+            consumes = { "application/xml; charset=utf-8", "application/json; charset=utf-8" },
             method = RequestMethod.PUT)
     public @ResponseBody String update(
             @PathVariable Integer id,
