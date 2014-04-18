@@ -38,6 +38,12 @@ public class QueryVersionController {
         return queryVersionDAO.findByQueryId(id);
     }
 
+    @RequestMapping(value = "/findPreviousVersionsByQueryId/{id}", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    public @ResponseBody
+    List<QueryVersion> findPreviousVersionsByQueryId(@PathVariable Integer id) {
+        return queryVersionDAO.findPreviousVersionsByQueryId(id);
+    }
+
     @RequestMapping(
             method = RequestMethod.POST,
             consumes = { "application/xml", "application/json" },
