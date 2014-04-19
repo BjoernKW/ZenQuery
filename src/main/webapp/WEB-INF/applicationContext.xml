@@ -10,7 +10,13 @@
 
     <bean id="databasePropertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:database.properties"/>
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+                <value>file:${configFile}</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
     </bean>
 
     <bean id="dataSource"
