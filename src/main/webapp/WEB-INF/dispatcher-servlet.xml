@@ -43,4 +43,6 @@
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehCache"/>
 
     <bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="/WEB-INF/ehCache.xml"/>
+
+    <mvc:resources mapping="/ui/**" location="/WEB-INF/ui/" />
 </beans>
