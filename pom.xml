@@ -281,7 +281,7 @@
                     <systemProperties>
                         <systemProperty>
                             <name>spring.profiles.active</name>
-                            <value>development</value>
+                            <value>local</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
