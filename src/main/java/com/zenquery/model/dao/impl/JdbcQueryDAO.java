@@ -73,7 +73,6 @@ public class JdbcQueryDAO implements QueryDAO {
     public List<Query> findAll() {
         String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE";
 
-
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
                 jdbcTemplate.query(sql, new QueryMapper());
@@ -132,10 +131,20 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public void deleteByDatabaseConnectionId(Integer id) {
-        String sql = "DELETE FROM queries WHERE database_connection_id = ?";
+        String deleteQueryVsionsSql = "SELECT * FROM query_versions WHERE query_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(sql, new Object[] { id });
+        List<Query> queries =
+                jdbcTemplate.query(deleteQueryVsionsSql, new QueryMapper());
+
+        for (Query query : queries) {
+            queryVersionDAO.deleteByQueryId(query.getId());
+        }
+
+        String deleteDatabaseConnectionSql = "DELETE FROM queries WHERE database_connection_id = ?";
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        jdbcTemplate.update(deleteDatabaseConnectionSql, new Object[] { id });
     }
 
     private static class QueryMapper implements ParameterizedRowMapper<Query> {
