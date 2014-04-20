@@ -131,11 +131,11 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public void deleteByDatabaseConnectionId(Integer id) {
-        String deleteQueryVsionsSql = "SELECT * FROM query_versions WHERE query_id = ?";
+        String selectQueriesSql = "SELECT * FROM queries WHERE database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
-                jdbcTemplate.query(deleteQueryVsionsSql, new QueryMapper());
+                jdbcTemplate.query(selectQueriesSql, new Object[] { id }, new QueryMapper());
 
         for (Query query : queries) {
             queryVersionDAO.deleteByQueryId(query.getId());
