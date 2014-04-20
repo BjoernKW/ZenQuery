@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system.properties" afterPath="$PROJECT_DIR$/system.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZenQuery.iws" />
@@ -27,53 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4" vertical-offset="0" max-vertical-offset="780">
-              <caret line="18" column="62" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
-              <folding>
-                <element signature="e#1185#1210#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dispatcher-servlet.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="spring-security-production.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.19736843" vertical-offset="0" max-vertical-offset="435">
-              <caret line="1" column="26" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spring-security-development.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spring-security-3.2.xsd" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/3.2.3.RELEASE/spring-security-config-3.2.3.RELEASE.jar!/org/springframework/security/config/spring-security-3.2.xsd">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15269" max-vertical-offset="38100">
-              <caret line="1040" column="6" selection-start-line="1040" selection-start-column="6" selection-end-line="1040" selection-end-column="6" />
+            <state vertical-scroll-proportion="-3.5526316" vertical-offset="0" max-vertical-offset="435">
+              <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -99,10 +56,86 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResultSetController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="382" max-vertical-offset="2430">
+              <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JdbcDatabaseConnectionDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1008" max-vertical-offset="1635">
+              <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="50" />
+              <folding>
+                <marker date="1397665884000" expanded="true" signature="1225:1272" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1397665884000" expanded="true" signature="1633:1667" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1397665884000" expanded="true" signature="1996:2080" placeholder="INSERT INTO ..." />
+                <marker date="1397665884000" expanded="true" signature="3183:3273" placeholder="UPDATE datab..." />
+                <marker date="1397665884000" expanded="true" signature="3808:3853" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QueryController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/QueryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+              <caret line="16" column="147" selection-start-line="16" selection-start-column="147" selection-end-line="16" selection-end-column="147" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JdbcQueryDAO.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32475883" vertical-offset="1523" max-vertical-offset="2145">
+              <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+              <folding>
+                <marker date="1398009438000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398009438000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398009438000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398009438000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398009438000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
+                <marker date="1398009438000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
+                <marker date="1398009438000" expanded="true" signature="4948:4995" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1398009438000" expanded="true" signature="5315:5367" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JdbcQueryVersionDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryVersionDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1387" max-vertical-offset="2280">
+              <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+              <folding>
+                <marker date="1397824192000" expanded="true" signature="1027:1068" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="1430:1493" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="1844:1921" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="2262:2309" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="2667:2762" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="3052:3080" placeholder="SELECT * FRO..query_versions..." />
+                <marker date="1397824192000" expanded="true" signature="3373:3468" placeholder="INSERT INTO ..." />
+                <marker date="1397824192000" expanded="true" signature="4544:4631" placeholder="UPDATE query..." />
+                <marker date="1397824192000" expanded="true" signature="5053:5092" placeholder="DELETE FROM ..." />
+                <marker date="1397824192000" expanded="true" signature="5279:5324" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0154958675" vertical-offset="0" max-vertical-offset="968">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
@@ -114,16 +147,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-8.076923" vertical-offset="0" max-vertical-offset="840">
               <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web-common_3_0.xsd" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-common_3_0.xsd">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11391" max-vertical-offset="23715">
-              <caret line="773" column="6" selection-start-line="773" selection-start-column="6" selection-end-line="773" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -163,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/util/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/Query.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/util/CsvMessageConverter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryVersionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/QueryVersionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/filter/EncodingPostProcessor.java" />
@@ -189,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/system.properties" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
       </list>
     </option>
   </component>
@@ -468,6 +491,108 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zenquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zenquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zenquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zenquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -779,7 +904,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282876" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32796207" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13715886" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -966,13 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.538462" vertical-offset="425" max-vertical-offset="1770">
-          <caret line="59" column="85" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/DatabaseConnectionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
@@ -1001,31 +1119,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="994" max-vertical-offset="2010">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/QueryVersionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryVersionDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="427" max-vertical-offset="2280">
-          <caret line="76" column="117" selection-start-line="76" selection-start-column="117" selection-end-line="76" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/QueryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="900">
-          <caret line="16" column="147" selection-start-line="16" selection-start-column="147" selection-end-line="16" selection-end-column="147" />
         </state>
       </provider>
     </entry>
@@ -1117,14 +1214,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1786" max-vertical-offset="2430">
-          <caret line="174" column="44" selection-start-line="174" selection-start-column="44" selection-end-line="174" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/util/MapEntryConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
@@ -1167,14 +1256,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.19736843" vertical-offset="0" max-vertical-offset="435">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
@@ -1209,9 +1290,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0154958675" vertical-offset="0" max-vertical-offset="968">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5526316" vertical-offset="0" max-vertical-offset="435">
+          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="382" max-vertical-offset="2430">
+          <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/QueryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <caret line="16" column="147" selection-start-line="16" selection-start-column="147" selection-end-line="16" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1008" max-vertical-offset="1635">
+          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="50" />
+          <folding>
+            <marker date="1397665884000" expanded="true" signature="1225:1272" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1397665884000" expanded="true" signature="1633:1667" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1397665884000" expanded="true" signature="1996:2080" placeholder="INSERT INTO ..." />
+            <marker date="1397665884000" expanded="true" signature="3183:3273" placeholder="UPDATE datab..." />
+            <marker date="1397665884000" expanded="true" signature="3808:3853" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryVersionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1387" max-vertical-offset="2280">
+          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+          <folding>
+            <marker date="1397824192000" expanded="true" signature="1027:1068" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="1430:1493" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="1844:1921" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="2262:2309" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="2667:2762" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="3052:3080" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1397824192000" expanded="true" signature="3373:3468" placeholder="INSERT INTO ..." />
+            <marker date="1397824192000" expanded="true" signature="4544:4631" placeholder="UPDATE query..." />
+            <marker date="1397824192000" expanded="true" signature="5053:5092" placeholder="DELETE FROM ..." />
+            <marker date="1397824192000" expanded="true" signature="5279:5324" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32475883" vertical-offset="1523" max-vertical-offset="2145">
+          <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+          <folding>
+            <marker date="1398009438000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398009438000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398009438000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398009438000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398009438000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
+            <marker date="1398009438000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
+            <marker date="1398009438000" expanded="true" signature="4948:4995" placeholder="SELECT * FRO..query_versions..." />
+            <marker date="1398009438000" expanded="true" signature="5315:5367" placeholder="DELETE FROM ..." />
+          </folding>
         </state>
       </provider>
     </entry>
