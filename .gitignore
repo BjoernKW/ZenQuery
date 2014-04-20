@@ -19,9 +19,6 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 
-# AngularJS build directory
-src/main/webapp/WEB-INF/ui
-
 # Intellij IDEA
 /.idea
 /*.iml
