@@ -21,6 +21,7 @@
           <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml</file>
         </fileset>
       </configuration>
     </facet>
