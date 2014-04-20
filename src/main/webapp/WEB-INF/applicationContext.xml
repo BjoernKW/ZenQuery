@@ -23,13 +23,14 @@
         <constructor-arg value="${DATABASE_URL}"/>
     </bean>
 
-    <bean id="herokuDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
         <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
     </bean>
 
+    <!--
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -37,6 +38,7 @@
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
     </bean>
+    -->
 
     <bean id="databaseConnectionDAO" class="com.zenquery.model.dao.impl.JdbcDatabaseConnectionDAO">
         <property name="dataSource" ref="dataSource" />
