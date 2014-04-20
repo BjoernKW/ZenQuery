@@ -24,7 +24,7 @@ public class MapEntryConverter implements Converter {
         for (Object obj : map.entrySet()) {
             Map.Entry entry = (Map.Entry) obj;
             writer.startNode(entry.getKey().toString());
-            writer.setValue(entry.getValue().toString());
+            writer.setValue(entry.getValue() != null ? entry.getValue().toString() : "");
             writer.endNode();
         }
     }
