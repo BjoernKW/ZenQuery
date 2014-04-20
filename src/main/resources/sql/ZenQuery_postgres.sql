@@ -6,9 +6,6 @@ CREATE TABLE database_connections (
     password character varying NOT NULL
 );
 
-
-ALTER TABLE public.database_connections OWNER TO willy;
-
 --
 -- TOC entry 170 (class 1259 OID 16770)
 -- Name: database_connections_id_seq; Type: SEQUENCE; Schema: public; Owner: willy
@@ -20,9 +17,6 @@ CREATE SEQUENCE database_connections_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-ALTER TABLE public.database_connections_id_seq OWNER TO willy;
 
 --
 -- TOC entry 2238 (class 0 OID 0)
@@ -44,9 +38,6 @@ CREATE TABLE queries (
     database_connection_id integer NOT NULL
 );
 
-
-ALTER TABLE public.queries OWNER TO willy;
-
 --
 -- TOC entry 172 (class 1259 OID 16781)
 -- Name: queries_id_seq; Type: SEQUENCE; Schema: public; Owner: willy
@@ -58,9 +49,6 @@ CREATE SEQUENCE queries_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-ALTER TABLE public.queries_id_seq OWNER TO willy;
 
 --
 -- TOC entry 2239 (class 0 OID 0)
@@ -84,9 +72,6 @@ CREATE TABLE query_versions (
     query_id integer NOT NULL
 );
 
-
-ALTER TABLE public.query_versions OWNER TO willy;
-
 --
 -- TOC entry 174 (class 1259 OID 16792)
 -- Name: query_versions_id_seq; Type: SEQUENCE; Schema: public; Owner: willy
@@ -98,9 +83,6 @@ CREATE SEQUENCE query_versions_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-ALTER TABLE public.query_versions_id_seq OWNER TO willy;
 
 --
 -- TOC entry 2240 (class 0 OID 0)
