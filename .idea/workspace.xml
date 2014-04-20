@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZenQuery.iml" afterPath="$PROJECT_DIR$/ZenQuery.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZenQuery.iws" />
@@ -31,7 +29,7 @@
       <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="780">
+            <state vertical-scroll-proportion="-2.0" vertical-offset="115" max-vertical-offset="780">
               <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
               <folding>
                 <element signature="e#1000#1017#0" expanded="true" />
@@ -51,11 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-security.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="spring-security.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4694168" vertical-offset="0" max-vertical-offset="703">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+              <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,16 +89,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="system.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/system.properties">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.properties" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="database.properties" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,7 +122,7 @@
       <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="825">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
               <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
@@ -181,7 +179,6 @@
         <option value="$PROJECT_DIR$/config.properties" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/system.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/filter/CORSFilter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -189,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/sql/ZenQuery_postgres.sql" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
       </list>
     </option>
   </component>
@@ -210,8 +208,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="410" />
-    <option name="y" value="129" />
+    <option name="x" value="670" />
+    <option name="y" value="99" />
     <option name="width" value="1471" />
     <option name="height" value="1147" />
   </component>
@@ -330,6 +328,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZenQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -708,7 +740,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="410" y="129" width="1471" height="1147" extended-state="0" />
+    <frame x="670" y="99" width="1471" height="1147" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -765,7 +797,8 @@
     <MESSAGE value="Encoding" />
     <MESSAGE value="Clean-up" />
     <MESSAGE value="Heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="Heroku" />
+    <MESSAGE value="Security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Security" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -777,14 +810,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3390">
-          <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/StartController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="270">
@@ -1065,14 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
@@ -1097,14 +1114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/filter/CORSFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
@@ -1113,29 +1122,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/ui/views/databaseConnections.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="780">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding>
-            <element signature="e#1000#1017#0" expanded="true" />
-            <element signature="e#1185#1210#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="825">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="2209" max-vertical-offset="4755">
-          <caret line="162" column="44" selection-start-line="162" selection-start-column="39" selection-end-line="162" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <caret line="0" column="897" selection-start-line="0" selection-start-column="894" selection-end-line="0" selection-end-column="897" />
           <folding />
         </state>
       </provider>
@@ -1148,10 +1138,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5" vertical-offset="2209" max-vertical-offset="4755">
+          <caret line="162" column="44" selection-start-line="162" selection-start-column="39" selection-end-line="162" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4694168" vertical-offset="0" max-vertical-offset="703">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="825">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0" vertical-offset="115" max-vertical-offset="780">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <folding>
+            <element signature="e#1000#1017#0" expanded="true" />
+            <element signature="e#1185#1210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
