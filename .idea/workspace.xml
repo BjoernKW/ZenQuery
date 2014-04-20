@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZenQuery.iws" />
@@ -106,20 +102,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JdbcQueryDAO.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="JdbcQueryDAO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1473" max-vertical-offset="2145">
-              <caret line="137" column="53" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.7245409" vertical-offset="1231" max-vertical-offset="2070">
+              <caret line="136" column="9" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
               <folding>
-                <marker date="1398011473000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
-                <marker date="1398011473000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
-                <marker date="1398011473000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
-                <marker date="1398011473000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
-                <marker date="1398011473000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
-                <marker date="1398011473000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
-                <marker date="1398011473000" expanded="true" signature="4944:4998" placeholder="SELECT * FRO..queries..." />
-                <marker date="1398011473000" expanded="true" signature="5335:5387" placeholder="DELETE FROM ..." />
+                <marker date="1398011876000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398011876000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398011876000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398011876000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
+                <marker date="1398011876000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
+                <marker date="1398011876000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
+                <marker date="1398011876000" expanded="true" signature="5102:5154" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -146,10 +141,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.025041737" vertical-offset="0" max-vertical-offset="599">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
@@ -212,11 +207,11 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/system.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-development.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java" />
       </list>
     </option>
   </component>
@@ -1319,23 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1473" max-vertical-offset="2145">
-          <caret line="137" column="53" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="53" />
-          <folding>
-            <marker date="1398011473000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398011473000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398011473000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398011473000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398011473000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
-            <marker date="1398011473000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
-            <marker date="1398011473000" expanded="true" signature="4944:4998" placeholder="SELECT * FRO..queries..." />
-            <marker date="1398011473000" expanded="true" signature="5335:5387" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-security-production.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.19736843" vertical-offset="0" max-vertical-offset="435">
@@ -1370,9 +1348,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025041737" vertical-offset="0" max-vertical-offset="599">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7245409" vertical-offset="1231" max-vertical-offset="2070">
+          <caret line="136" column="9" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+          <folding>
+            <marker date="1398011876000" expanded="true" signature="1281:1428" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398011876000" expanded="true" signature="1718:1866" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398011876000" expanded="true" signature="2180:2347" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398011876000" expanded="true" signature="2604:2736" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398011876000" expanded="true" signature="2989:3052" placeholder="INSERT INTO ..." />
+            <marker date="1398011876000" expanded="true" signature="4699:4731" placeholder="DELETE FROM ..." />
+            <marker date="1398011876000" expanded="true" signature="5102:5154" placeholder="DELETE FROM ..." />
+          </folding>
         </state>
       </provider>
     </entry>

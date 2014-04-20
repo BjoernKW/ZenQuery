@@ -131,20 +131,15 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public void deleteByDatabaseConnectionId(Integer id) {
-        String selectQueriesSql = "SELECT * FROM queries WHERE database_connection_id = ?";
-
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        List<Query> queries =
-                jdbcTemplate.query(selectQueriesSql, new Object[] { id }, new QueryMapper());
-
+        List<Query> queries = findByDatabaseConnectionId(id);
         for (Query query : queries) {
             queryVersionDAO.deleteByQueryId(query.getId());
         }
 
-        String deleteDatabaseConnectionSql = "DELETE FROM queries WHERE database_connection_id = ?";
+        String sql = "DELETE FROM queries WHERE database_connection_id = ?";
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update(deleteDatabaseConnectionSql, new Object[] { id });
+        jdbcTemplate.update(sql, new Object[] { id });
     }
 
     private static class QueryMapper implements ParameterizedRowMapper<Query> {
