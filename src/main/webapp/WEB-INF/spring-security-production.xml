@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http auto-config="true">
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <security:intercept-url pattern="/**" access="ROLE_USER" requires-channel="https" />
         <security:http-basic />
     </security:http>
 
