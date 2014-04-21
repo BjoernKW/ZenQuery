@@ -44,9 +44,5 @@
 
     <bean id="ehCache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="/WEB-INF/ehCache.xml"/>
 
-    <mvc:interceptors>
-        <bean  class="com.zenquery.interceptor.ForceHerokuSSL"/>
-    </mvc:interceptors>
-
     <mvc:resources mapping="/ui/**" location="/WEB-INF/ui/" />
 </beans>
