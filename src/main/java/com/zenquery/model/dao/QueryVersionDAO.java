@@ -15,7 +15,6 @@ public interface QueryVersionDAO {
     @Cacheable("sql.queryVersions")
     public QueryVersion findByQueryIdAndVersion(Integer id, Integer version);
 
-    @Cacheable("sql.queryVersions")
     public QueryVersion findCurrentByQueryId(Integer id);
 
     public List<QueryVersion> findByQueryId(Integer id);
