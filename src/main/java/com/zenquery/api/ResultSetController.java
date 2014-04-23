@@ -5,7 +5,7 @@ import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
-import com.zenquery.util.DataSourceFactory;
+import com.zenquery.util.BasicDataSourceFactory;
 import com.zenquery.util.MapEntryConverter;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
@@ -39,7 +39,7 @@ public class ResultSetController {
     private QueryDAO queryDAO;
 
     @Autowired
-    private DataSourceFactory dataSourceFactory;
+    private BasicDataSourceFactory dataSourceFactory;
 
     @RequestMapping(
             value = "/{id}",

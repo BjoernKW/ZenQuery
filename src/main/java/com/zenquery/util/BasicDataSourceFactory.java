@@ -1,12 +1,11 @@
-package com.zenquery.util.impl;
+package com.zenquery.util;
 
-import com.zenquery.util.DataSourceFactory;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
  * Created by willy on 23.04.14.
  */
-public class BasicDataSourceFactory implements DataSourceFactory {
+public class BasicDataSourceFactory {
     public BasicDataSource getBasicDataSource(
             String driverClassName,
             String url,
