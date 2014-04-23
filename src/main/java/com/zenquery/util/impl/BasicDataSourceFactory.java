@@ -1,12 +1,12 @@
 package com.zenquery.util.impl;
 
-import com.zenquery.util.DatabaseConnectionStore;
+import com.zenquery.util.DataSourceFactory;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
  * Created by willy on 23.04.14.
  */
-public class CachedDatabaseConnectionStore implements DatabaseConnectionStore {
+public class BasicDataSourceFactory implements DataSourceFactory {
     public BasicDataSource getBasicDataSource(
             String driverClassName,
             String url,

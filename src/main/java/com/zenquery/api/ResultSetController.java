@@ -5,7 +5,7 @@ import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.Query;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
-import com.zenquery.util.DatabaseConnectionStore;
+import com.zenquery.util.DataSourceFactory;
 import com.zenquery.util.MapEntryConverter;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
@@ -39,7 +39,7 @@ public class ResultSetController {
     private QueryDAO queryDAO;
 
     @Autowired
-    private DatabaseConnectionStore databaseConnectionStore;
+    private DataSourceFactory dataSourceFactory;
 
     @RequestMapping(
             value = "/{id}",
@@ -62,7 +62,7 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+            BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                     driverClassName,
                     databaseConnection.getUrl(),
                     databaseConnection.getUsername(),
@@ -71,6 +71,9 @@ public class ResultSetController {
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
+
+            dataSource.getConnection().close();
+            dataSource.close();
         } catch (Exception e) {
             logger.debug(e);
         }
@@ -99,7 +102,7 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+            BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                     driverClassName,
                     databaseConnection.getUrl(),
                     databaseConnection.getUsername(),
@@ -108,8 +111,9 @@ public class ResultSetController {
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
-            
-            jdbcTemplate.getDataSource().getConnection().close();
+
+            dataSource.getConnection().close();
+            dataSource.close();
         } catch (Exception e) {
             logger.debug(e);
         }
@@ -156,7 +160,7 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+            BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                     driverClassName,
                     databaseConnection.getUrl(),
                     databaseConnection.getUsername(),
@@ -165,6 +169,9 @@ public class ResultSetController {
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
+
+            dataSource.getConnection().close();
+            dataSource.close();
         } catch (Exception e) {
             logger.debug(e);
         }
