@@ -111,6 +111,8 @@ public class ResultSetController {
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
+            
+            jdbcTemplate.getDataSource().getConnection().close();
         } catch (Exception e) {
             logger.debug(e);
         }
