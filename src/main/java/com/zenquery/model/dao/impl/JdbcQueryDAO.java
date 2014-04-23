@@ -101,6 +101,13 @@ public class JdbcQueryDAO implements QueryDAO {
                 keyHolder
         );
 
+        QueryVersion queryVersion = new QueryVersion();
+        queryVersion.setQueryId(keyHolder.getKey().intValue());
+        queryVersion.setContent(query.getContent());
+        queryVersion.setIsCurrentVersion(true);
+        queryVersion.setVersion(1);
+        queryVersionDAO.insert(queryVersion);
+
         return keyHolder.getKey();
     }
 
@@ -114,6 +121,7 @@ public class JdbcQueryDAO implements QueryDAO {
         queryVersion.setContent(query.getContent());
         queryVersion.setIsCurrentVersion(true);
         queryVersion.setVersion(previousQueryVersion.getVersion() + 1);
+
         queryVersionDAO.insert(queryVersion);
     }
 
