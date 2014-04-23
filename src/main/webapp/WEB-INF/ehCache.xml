@@ -1,5 +1,23 @@
-<ehcache>
+<ehcache
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="ehcache.xsd"
+        updateCheck="true"
+        monitoring="autodetect"
+        dynamicConfig="true">
+
     <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            maxElementsInMemory="100"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="api.databaseConnections"
            maxElementsInMemory="100"
            eternal="false"
@@ -10,6 +28,7 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="api.queries"
            maxElementsInMemory="100"
            eternal="false"
@@ -20,6 +39,7 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="api.queryVersions"
            maxElementsInMemory="100"
            eternal="false"
@@ -30,6 +50,7 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="sql.databaseConnections"
            maxElementsInMemory="100"
            eternal="false"
@@ -40,6 +61,7 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="sql.queries"
            maxElementsInMemory="100"
            eternal="false"
@@ -50,6 +72,7 @@
            diskPersistent="false"
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
+
     <cache name="sql.queryVersions"
            maxElementsInMemory="100"
            eternal="false"
@@ -61,4 +84,14 @@
            diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LRU"/>
 
+    <cache name="databaseConnections"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           overflowToDisk="true"
+           maxElementsOnDisk="10000000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU"/>
 </ehcache>

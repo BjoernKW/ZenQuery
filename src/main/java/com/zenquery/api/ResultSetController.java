@@ -3,10 +3,9 @@ package com.zenquery.api;
 import com.thoughtworks.xstream.XStream;
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.Query;
-import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
-import com.zenquery.model.dao.QueryVersionDAO;
+import com.zenquery.util.DatabaseConnectionStore;
 import com.zenquery.util.MapEntryConverter;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
@@ -40,7 +39,7 @@ public class ResultSetController {
     private QueryDAO queryDAO;
 
     @Autowired
-    private QueryVersionDAO queryVersionDAO;
+    private DatabaseConnectionStore databaseConnectionStore;
 
     @RequestMapping(
             value = "/{id}",
@@ -63,13 +62,12 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = new BasicDataSource();
-            dataSource.setDriverClassName(driverClassName);
-            dataSource.setUsername(databaseConnection.getUsername());
-            dataSource.setPassword(databaseConnection.getPassword());
-            dataSource.setUrl(databaseConnection.getUrl());
-            dataSource.setMaxIdle(5);
-            dataSource.setValidationQuery("SELECT 1");
+            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+                    driverClassName,
+                    databaseConnection.getUrl(),
+                    databaseConnection.getUsername(),
+                    databaseConnection.getPassword()
+            );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
@@ -101,13 +99,12 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = new BasicDataSource();
-            dataSource.setDriverClassName(driverClassName);
-            dataSource.setUsername(databaseConnection.getUsername());
-            dataSource.setPassword(databaseConnection.getPassword());
-            dataSource.setUrl(databaseConnection.getUrl());
-            dataSource.setMaxIdle(5);
-            dataSource.setValidationQuery("SELECT 1");
+            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+                    driverClassName,
+                    databaseConnection.getUrl(),
+                    databaseConnection.getUsername(),
+                    databaseConnection.getPassword()
+            );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());
@@ -159,13 +156,12 @@ public class ResultSetController {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
             }
 
-            BasicDataSource dataSource = new BasicDataSource();
-            dataSource.setDriverClassName(driverClassName);
-            dataSource.setUsername(databaseConnection.getUsername());
-            dataSource.setPassword(databaseConnection.getPassword());
-            dataSource.setUrl(databaseConnection.getUrl());
-            dataSource.setMaxIdle(5);
-            dataSource.setValidationQuery("SELECT 1");
+            BasicDataSource dataSource = databaseConnectionStore.getBasicDataSource(
+                    driverClassName,
+                    databaseConnection.getUrl(),
+                    databaseConnection.getUsername(),
+                    databaseConnection.getPassword()
+            );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             rows = jdbcTemplate.queryForList(query.getContent());

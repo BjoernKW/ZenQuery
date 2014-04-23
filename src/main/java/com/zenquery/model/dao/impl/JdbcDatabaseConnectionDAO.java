@@ -3,7 +3,6 @@ package com.zenquery.model.dao.impl;
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -35,7 +34,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         this.queryDAO = queryDAO;
     }
 
-    @Cacheable("sql.databaseConnections")
     public DatabaseConnection find(Integer id) {
         String sql = "SELECT * FROM database_connections WHERE id = ?";
 
@@ -46,7 +44,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnection;
     }
 
-    @Cacheable("sql.databaseConnections")
     public List<DatabaseConnection> findAll() {
         String sql = "SELECT * FROM database_connections";
 
