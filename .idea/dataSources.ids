@@ -7,15 +7,15 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
     <schema name="public" catalog="ZenQuery"/>
     <table name="database_connections" schema="public" catalog="ZenQuery" type="TABLE">
-      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZGF0YWJhc2VfY29ubmVjdGlvbnMxX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZGF0YWJhc2VfY29ubmVjdGlvbnNfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
       <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="url" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="username" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="password" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="database_connections1_pkey" columns="id"/>
+      <primary-key name="database_connections_pkey" columns="id"/>
       <exported-key name="queries_database_connection_id_fkey" table="queries" schema="public" catalog="ZenQuery" columns="database_connection_id"/>
     </table>
-    <table name="database_connections1_id_seq" schema="public" catalog="ZenQuery" type="SEQUENCE">
+    <table name="database_connections_id_seq" schema="public" catalog="ZenQuery" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>

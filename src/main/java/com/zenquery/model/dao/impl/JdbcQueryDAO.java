@@ -5,7 +5,6 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.StringUtil;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -37,7 +36,6 @@ public class JdbcQueryDAO implements QueryDAO {
         this.queryVersionDAO = queryVersionDAO;
     }
 
-    @Cacheable("sql.queries")
     public Query find(Integer id) {
         String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.id = ?";
 
@@ -48,7 +46,6 @@ public class JdbcQueryDAO implements QueryDAO {
         return query;
     }
 
-    @Cacheable("sql.queries")
     public Query findByKey(String key) {
         String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.key = ?";
 
@@ -59,7 +56,6 @@ public class JdbcQueryDAO implements QueryDAO {
         return query;
     }
 
-    @Cacheable("sql.queries")
     public List<Query> findByDatabaseConnectionId(Integer id) {
         String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.database_connection_id = ?";
 

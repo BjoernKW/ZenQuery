@@ -2,7 +2,6 @@ package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryVersionDAO;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -28,7 +27,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         this.dataSource = dataSource;
     }
 
-    @Cacheable("sql.queryVersions")
     public QueryVersion find(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE id = ?";
 
@@ -39,7 +37,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Cacheable("sql.queryVersions")
     public QueryVersion findByQueryIdAndVersion(Integer id, Integer version) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND version = ?";
 
@@ -50,7 +47,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Cacheable("sql.queryVersions")
     public QueryVersion findCurrentByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND is_current_version = TRUE";
 
@@ -61,7 +57,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Cacheable("sql.queryVersions")
     public List<QueryVersion> findByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ?";
 
@@ -72,7 +67,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersions;
     }
 
-    @Cacheable("sql.queryVersions")
     public List<QueryVersion> findPreviousVersionsByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND is_current_version = FALSE ORDER BY ID DESC";
 

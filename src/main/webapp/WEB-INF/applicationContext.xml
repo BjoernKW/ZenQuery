@@ -44,4 +44,6 @@
     <bean id="queryVersionDAO" class="com.zenquery.model.dao.impl.JdbcQueryVersionDAO">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <bean class="com.zenquery.util.impl.CachedDatabaseConnectionStore" id="databaseConnectionCache"/>
 </beans>
