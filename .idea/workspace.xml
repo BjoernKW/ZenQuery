@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="Caching">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/util/DataSourceFactory.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/util/impl/BasicDataSourceFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/util/BasicDataSourceFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+    <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ehcache.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ehcache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZenQuery.iws" />
@@ -114,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultSetController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResultSetController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3671875" vertical-offset="470" max-vertical-offset="2850">
-              <caret line="47" column="0" selection-start-line="43" selection-start-column="19" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="755" max-vertical-offset="2850">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasicDataSource.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-dbcp2/2.0/commons-dbcp2-2.0.jar!/org/apache/commons/dbcp2/BasicDataSource.class">
+      <file leaf-file-name="ehcache.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/ehcache.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="4605">
-              <caret line="6" column="50" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="60" />
+            <state vertical-scroll-proportion="1.6431853" vertical-offset="187" max-vertical-offset="1380">
+              <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -169,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/DatabaseConnectionController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/api/QueryHistoryController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/ZenQuery.sql" />
@@ -220,6 +216,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/util/impl/BasicDataSourceFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/ehcache.xml" />
       </list>
     </option>
   </component>
@@ -973,7 +970,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="920" y="145" width="1471" height="1158" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.4996501" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -987,7 +984,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31801125" sideWeight="0.5003499" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28530806" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31801125" sideWeight="0.4996501" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31801125" sideWeight="0.4996501" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1337,23 +1334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1447" max-vertical-offset="2385">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1398290293000" expanded="true" signature="1196:1343" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398290293000" expanded="true" signature="1603:1751" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398290293000" expanded="true" signature="2035:2202" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398290293000" expanded="true" signature="2459:2591" placeholder="SELECT q.*, ..queries..." />
-            <marker date="1398290293000" expanded="true" signature="2844:2907" placeholder="INSERT INTO ..." />
-            <marker date="1398290293000" expanded="true" signature="4859:4891" placeholder="DELETE FROM ..." />
-            <marker date="1398290293000" expanded="true" signature="5262:5314" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/QueryVersionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
@@ -1426,6 +1406,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcQueryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1447" max-vertical-offset="2385">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1398290293000" expanded="true" signature="1196:1343" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398290293000" expanded="true" signature="1603:1751" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398290293000" expanded="true" signature="2035:2202" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398290293000" expanded="true" signature="2459:2591" placeholder="SELECT q.*, ..queries..." />
+            <marker date="1398290293000" expanded="true" signature="2844:2907" placeholder="INSERT INTO ..." />
+            <marker date="1398290293000" expanded="true" signature="4859:4891" placeholder="DELETE FROM ..." />
+            <marker date="1398290293000" expanded="true" signature="5262:5314" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="470" max-vertical-offset="2850">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.4" vertical-offset="235" max-vertical-offset="825">
@@ -1442,13 +1449,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/ehcache.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3671875" vertical-offset="470" max-vertical-offset="2850">
-          <caret line="47" column="0" selection-start-line="43" selection-start-column="19" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="1.6431853" vertical-offset="187" max-vertical-offset="1380">
+          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
