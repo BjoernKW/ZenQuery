@@ -113,16 +113,19 @@ public class JdbcQueryDAO implements QueryDAO {
 
     public void update(Integer id, Query query) {
         QueryVersion previousQueryVersion = queryVersionDAO.findCurrentByQueryId(id);
-        previousQueryVersion.setIsCurrentVersion(false);
-        queryVersionDAO.update(previousQueryVersion.getId(), previousQueryVersion);
 
-        QueryVersion queryVersion = new QueryVersion();
-        queryVersion.setQueryId(id);
-        queryVersion.setContent(query.getContent());
-        queryVersion.setIsCurrentVersion(true);
-        queryVersion.setVersion(previousQueryVersion.getVersion() + 1);
+        if (!query.getContent().equals(previousQueryVersion.getContent())) {
+            previousQueryVersion.setIsCurrentVersion(false);
+            queryVersionDAO.update(previousQueryVersion.getId(), previousQueryVersion);
 
-        queryVersionDAO.insert(queryVersion);
+            QueryVersion queryVersion = new QueryVersion();
+            queryVersion.setQueryId(id);
+            queryVersion.setContent(query.getContent());
+            queryVersion.setIsCurrentVersion(true);
+            queryVersion.setVersion(previousQueryVersion.getVersion() + 1);
+
+            queryVersionDAO.insert(queryVersion);
+        }
     }
 
     public void delete(Integer id) {
