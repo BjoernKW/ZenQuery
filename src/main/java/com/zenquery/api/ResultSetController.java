@@ -49,34 +49,21 @@ public class ResultSetController {
     List<Map<String, Object>> currentQuery(
             @PathVariable Integer id
     ) {
-        Query query = queryDAO.find(id);
-        DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
+        List<Map<String, Object>> rows = getResultRows(id, null);
 
-        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
-        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
+        return rows;
+    }
 
-        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
-        try {
-            String driverClassName = "";
-            if (matcher.find()) {
-                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
-            }
-
-            BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
-                    driverClassName,
-                    databaseConnection.getUrl(),
-                    databaseConnection.getUsername(),
-                    databaseConnection.getPassword()
-            );
-
-            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            rows = jdbcTemplate.queryForList(query.getContent());
-
-            dataSource.getConnection().close();
-            dataSource.close();
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+    @RequestMapping(
+            value = "/{id}/{variables}",
+            method = RequestMethod.GET,
+            produces = { "application/json; charset=utf-8" })
+    public @ResponseBody
+    List<Map<String, Object>> currentQuery(
+            @PathVariable Integer id,
+            @PathVariable String variables
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, variables);
 
         return rows;
     }
@@ -89,6 +76,61 @@ public class ResultSetController {
     String currentQueryAsCSV(
             @PathVariable Integer id
     ) {
+        List<Map<String, Object>> rows = getResultRows(id, null);
+
+        StringBuilder csvBuilder = getCsvBuilder(rows);
+
+        return csvBuilder.toString();
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}",
+            method = RequestMethod.GET,
+            produces = { "text/csv; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsCSV(
+            @PathVariable Integer id,
+            @PathVariable String variables
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, variables);
+
+        StringBuilder csvBuilder = getCsvBuilder(rows);
+
+        return csvBuilder.toString();
+    }
+
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET,
+            produces = { "application/xml; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsXML(
+            @PathVariable Integer id
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, null);
+
+        XStream stream = getXMLStream();
+
+        return stream.toXML(rows);
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}",
+            method = RequestMethod.GET,
+            produces = { "application/xml; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsXML(
+            @PathVariable Integer id,
+            @PathVariable String variables
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, variables);
+
+        XStream stream = getXMLStream();
+
+        return stream.toXML(rows);
+    }
+
+    private List<Map<String, Object>> getResultRows(Integer id, String variables) {
         Query query = queryDAO.find(id);
         DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
 
@@ -110,7 +152,26 @@ public class ResultSetController {
             );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            rows = jdbcTemplate.queryForList(query.getContent());
+            if (variables != null) {
+                List<Object> arguments = new ArrayList<Object>();
+                String[] extractedVariables = variables.split(",");
+
+                for (String variable : extractedVariables) {
+                    try {
+                        arguments.add(Long.parseLong(variable));
+                    } catch(NumberFormatException noLong) {
+                        try {
+                            arguments.add(Double.parseDouble(variable));
+                        } catch(NumberFormatException noDouble) {
+                            arguments.add(variable);
+                        }
+                    }
+                }
+
+                rows = jdbcTemplate.queryForList(query.getContent(), arguments.toArray());
+            } else {
+                rows = jdbcTemplate.queryForList(query.getContent());
+            }
 
             dataSource.getConnection().close();
             dataSource.close();
@@ -118,6 +179,10 @@ public class ResultSetController {
             logger.debug(e);
         }
 
+        return rows;
+    }
+
+    private StringBuilder getCsvBuilder(List<Map<String, Object>> rows) {
         StringBuilder csvBuilder = new StringBuilder();
         Boolean first = true;
 
@@ -135,51 +200,13 @@ public class ResultSetController {
             }
             csvBuilder.append("\r\n");
         }
-
-        return csvBuilder.toString();
+        return csvBuilder;
     }
 
-    @RequestMapping(
-            value = "/{id}",
-            method = RequestMethod.GET,
-            produces = { "application/xml; charset=utf-8" })
-    public @ResponseBody
-    String currentQueryAsXML(
-            @PathVariable Integer id
-    ) {
-        Query query = queryDAO.find(id);
-        DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
-
-        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
-        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
-
-        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
-        try {
-            String driverClassName = "";
-            if (matcher.find()) {
-                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
-            }
-
-            BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
-                    driverClassName,
-                    databaseConnection.getUrl(),
-                    databaseConnection.getUsername(),
-                    databaseConnection.getPassword()
-            );
-
-            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            rows = jdbcTemplate.queryForList(query.getContent());
-
-            dataSource.getConnection().close();
-            dataSource.close();
-        } catch (Exception e) {
-            logger.debug(e);
-        }
-
+    private XStream getXMLStream() {
         XStream stream = new XStream();
         stream.registerConverter(new MapEntryConverter());
         stream.alias("root", Map.class);
-
-        return stream.toXML(rows);
+        return stream;
     }
 }
