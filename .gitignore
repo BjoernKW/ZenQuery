@@ -22,3 +22,6 @@ release.properties
 # Intellij IDEA
 /.idea
 /*.iml
+
+# Logs
+*.log
