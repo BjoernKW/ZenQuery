@@ -30,10 +30,7 @@ public class ResultSetController {
     private static final Logger logger = Logger.getLogger(ResultSetController.class);
 
     @Autowired
-    private PropertiesFactoryBean driverClassNameProperties;
-
-    @Autowired
-    private PropertiesFactoryBean validationQueryProperties;
+    private PropertiesFactoryBean databaseDriverProperties;
 
     @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
@@ -145,8 +142,8 @@ public class ResultSetController {
             String driverClassName = "";
             String validationQuery = "";
             if (matcher.find()) {
-                driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
-                validationQuery = validationQueryProperties.getObject().getProperty(matcher.group(1));
+                driverClassName = databaseDriverProperties.getObject().getProperty("drivers." + matcher.group(1));
+                validationQuery = databaseDriverProperties.getObject().getProperty("validationQueries." + matcher.group(1));
             }
 
             BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
