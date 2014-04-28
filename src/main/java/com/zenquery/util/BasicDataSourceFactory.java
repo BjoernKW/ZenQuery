@@ -10,7 +10,8 @@ public class BasicDataSourceFactory {
             String driverClassName,
             String url,
             String username,
-            String password
+            String password,
+            String validationQuery
     ) {
         BasicDataSource dataSource = new BasicDataSource();
 
@@ -19,7 +20,7 @@ public class BasicDataSourceFactory {
         dataSource.setPassword(password);
         dataSource.setUrl(url);
         dataSource.setMaxIdle(5);
-        dataSource.setValidationQuery("SELECT 1");
+        dataSource.setValidationQuery(validationQuery);
 
         return dataSource;
     }
