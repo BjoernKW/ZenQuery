@@ -33,6 +33,9 @@ public class ResultSetController {
     private PropertiesFactoryBean driverClassNameProperties;
 
     @Autowired
+    private PropertiesFactoryBean validationQueryProperties;
+
+    @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
 
     @Autowired
@@ -140,15 +143,18 @@ public class ResultSetController {
         List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
         try {
             String driverClassName = "";
+            String validationQuery = "";
             if (matcher.find()) {
                 driverClassName = driverClassNameProperties.getObject().getProperty(matcher.group(1));
+                validationQuery = validationQueryProperties.getObject().getProperty(matcher.group(1));
             }
 
             BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                     driverClassName,
                     databaseConnection.getUrl(),
                     databaseConnection.getUsername(),
-                    databaseConnection.getPassword()
+                    databaseConnection.getPassword(),
+                    validationQuery
             );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);

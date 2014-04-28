@@ -8,6 +8,11 @@
         <property name="location" value="classpath:driverClassNames.properties"/>
     </bean>
 
+    <bean id="validationQueryProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:validationQueries.properties"/>
+    </bean>
+
     <bean id="databasePropertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
