@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16f87fcd-97fa-4a0a-ae2a-a1da14a5d1a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/databaseDriver.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/driverClassNames.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/validationQueries.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZenQuery.iml" afterPath="$PROJECT_DIR$/ZenQuery.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/databaseDriver.properties" afterPath="$PROJECT_DIR$/src/main/resources/databaseDriver.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ui/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ui/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ui/views/queries.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ui/views/queries.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZenQuery.iws" />
@@ -51,16 +48,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultSetController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ResultSetController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6923077" vertical-offset="1785" max-vertical-offset="3300">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3300">
               <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4437#4458#0" expanded="true" />
                 <element signature="e#5333#5341#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+              <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="databaseDriver.properties" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="databaseDriver.properties" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/databaseDriver.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.3736952" vertical-offset="271" max-vertical-offset="750">
+              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -88,7 +95,7 @@
       <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="825">
+            <state vertical-scroll-proportion="0.5" vertical-offset="355" max-vertical-offset="825">
               <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
               <folding>
                 <element signature="e#1182#1207#0" expanded="true" />
@@ -130,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/XmlList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/util/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/model/Query.java" />
@@ -181,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/driverClassNames.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/databaseDriver.properties" />
       </list>
     </option>
   </component>
@@ -202,7 +209,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="374" />
+    <option name="x" value="186" />
     <option name="y" value="22" />
     <option name="width" value="1471" />
     <option name="height" value="956" />
@@ -970,7 +977,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="374" y="22" width="1471" height="956" extended-state="0" />
+    <frame x="186" y="22" width="1471" height="956" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.4996501" order="7" side_tool="false" content_ui="tabs" />
@@ -1036,9 +1043,9 @@
     <MESSAGE value="#2" />
     <MESSAGE value="#3" />
     <MESSAGE value="#6" />
-    <MESSAGE value="#4" />
     <MESSAGE value="#5" />
-    <option name="LAST_COMMIT_MESSAGE" value="#5" />
+    <MESSAGE value="#4" />
+    <option name="LAST_COMMIT_MESSAGE" value="#4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1117,13 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
           <caret line="0" column="897" selection-start-line="0" selection-start-column="894" selection-end-line="0" selection-end-column="897" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="657">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1391,17 +1391,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/databaseDriver.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3300">
+          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4437#4458#0" expanded="true" />
+            <element signature="e#5333#5341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="533">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="825">
+        <state vertical-scroll-proportion="0.5" vertical-offset="355" max-vertical-offset="825">
           <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
           <folding>
             <element signature="e#1182#1207#0" expanded="true" />
@@ -1409,15 +1421,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/api/ResultSetController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/databaseDriver.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6923077" vertical-offset="1785" max-vertical-offset="3300">
-          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4437#4458#0" expanded="true" />
-            <element signature="e#5333#5341#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.3736952" vertical-offset="271" max-vertical-offset="750">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
