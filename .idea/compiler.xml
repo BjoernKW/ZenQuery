@@ -25,6 +25,9 @@
         <module name="ZenQuery" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ZenQuery" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
