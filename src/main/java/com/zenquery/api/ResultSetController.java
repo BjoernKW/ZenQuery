@@ -175,9 +175,6 @@ public class ResultSetController {
             } else {
                 rows = jdbcTemplate.queryForList(query.getContent());
             }
-
-            dataSource.getConnection().close();
-            dataSource.close();
         } catch (Exception e) {
             logger.debug(e);
         }
