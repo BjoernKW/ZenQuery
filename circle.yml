@@ -2,15 +2,11 @@ deployment:
   staging:
     branch: master
     commands:
-      - heroku maintenance:on --app zenquery-staging
       - git push git@heroku.com:zenquery-staging.git $CIRCLE_SHA1:refs/heads/master
-      - heroku maintenance:off --app zenquery-staging
   production:
     branch: production
     commands:
-      - heroku maintenance:on --app zenquery
       - git push git@heroku.com:zenquery.git $CIRCLE_SHA1:refs/heads/master
-      - heroku maintenance:off --app zenquery
 notify:
   webhooks:
     - url: https://zapier.com/hooks/catch/gx1vx/
