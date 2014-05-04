@@ -1,6 +1,6 @@
 package com.zenquery.util;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSource;
 
 /**
  * Created by willy on 23.04.14.
