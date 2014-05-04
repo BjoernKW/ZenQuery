@@ -1,0 +1,12 @@
+deployment:
+  staging:
+    branch: master
+    commands:
+      - git push git@heroku.com:zenquery-staging.git $CIRCLE_SHA1:refs/heads/master
+  production:
+    branch: production
+    commands:
+      - git push git@heroku.com:zenquery.git $CIRCLE_SHA1:refs/heads/master
+notify:
+  webhooks:
+    - url: https://zapier.com/hooks/catch/gx1vx/
