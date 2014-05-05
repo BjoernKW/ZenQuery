@@ -5,6 +5,7 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.StringUtil;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -12,21 +13,35 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by willy on 13.04.14.
  */
 public class JdbcQueryDAO implements QueryDAO {
+    private URI dbUrl;
+
+    private Properties databaseDriverProperties;
+
     private DataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
 
     private QueryVersionDAO queryVersionDAO;
+
+    public void setDbUrl(URI dbUrl) {
+        this.dbUrl = dbUrl;
+    }
+
+    public void setDatabaseDriverProperties(Properties databaseDriverProperties) {
+        this.databaseDriverProperties = databaseDriverProperties;
+    }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -37,7 +52,7 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public Query find(Integer id) {
-        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.id = ?";
+        String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.find");
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         Query query =
@@ -47,7 +62,7 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public Query findByKey(String key) {
-        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.key = ?";
+        String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findByKey");
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         Query query =
@@ -57,7 +72,7 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public List<Query> findByDatabaseConnectionId(Integer id) {
-        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.database_connection_id = ?";
+        String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findByDatabaseConnectionId");
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
@@ -67,7 +82,7 @@ public class JdbcQueryDAO implements QueryDAO {
     }
 
     public List<Query> findAll() {
-        String sql = "SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE";
+        String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findAll");
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Query> queries =
