@@ -5,7 +5,12 @@
 
     <bean id="databaseDriverProperties"
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:databaseDriver.properties"/>
+        <property name="locations">
+            <list>
+                <value>classpath:databaseDriver.properties</value>
+                <value>classpath:queries.properties</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="databasePropertyConfigurer"
@@ -37,6 +42,8 @@
     </bean>
 
     <bean id="queryDAO" class="com.zenquery.model.dao.impl.JdbcQueryDAO">
+        <property name="dbUrl" ref="dbUrl" />
+        <property name="databaseDriverProperties" ref="databaseDriverProperties" />
         <property name="dataSource" ref="dataSource" />
         <property name="queryVersionDAO" ref="queryVersionDAO" />
     </bean>
