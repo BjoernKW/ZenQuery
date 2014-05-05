@@ -285,8 +285,12 @@ public class ResultSetController {
                 }
 
                 Td td = new Td();
-                td.appendText(row.get(key).toString());
                 tableRow.appendChild(td);
+
+                Object value = row.get(key);
+                if (value != null) {
+                    td.appendText(value.toString());
+                }
             }
 
             if (firstRow) {
@@ -322,8 +326,12 @@ public class ResultSetController {
                 attributeRow.appendChild(tdKey);
 
                 Td tdValue = new Td();
-                tdValue.appendText(row.get(key).toString());
                 attributeRow.appendChild(tdValue);
+
+                Object value = row.get(key);
+                if (value != null) {
+                    tdValue.appendText(value.toString());
+                }
 
                 entryTable.appendChild(attributeRow);
             }
