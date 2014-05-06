@@ -6,7 +6,7 @@ import com.zenquery.model.Table;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.util.BasicDataSourceFactory;
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -21,8 +21,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by willy on 13.04.14.
