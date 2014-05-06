@@ -16,7 +16,6 @@ import com.zenquery.util.MapEntryConverter;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,16 +23,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/api/v1/resultSetForQuery")
 public class ResultSetController {
     private static final Logger logger = Logger.getLogger(ResultSetController.class);
-
-    @Autowired
-    private PropertiesFactoryBean databaseDriverProperties;
 
     @Autowired
     private DatabaseConnectionDAO databaseConnectionDAO;
@@ -172,24 +166,12 @@ public class ResultSetController {
         Query query = queryDAO.find(id);
         DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
 
-        Pattern pattern = Pattern.compile("jdbc:(\\w+?):");
-        Matcher matcher = pattern.matcher(databaseConnection.getUrl());
-
         List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
         try {
-            String driverClassName = "";
-            String validationQuery = "";
-            if (matcher.find()) {
-                driverClassName = databaseDriverProperties.getObject().getProperty("drivers." + matcher.group(1));
-                validationQuery = databaseDriverProperties.getObject().getProperty("validationQueries." + matcher.group(1));
-            }
-
             BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
-                    driverClassName,
                     databaseConnection.getUrl(),
                     databaseConnection.getUsername(),
-                    databaseConnection.getPassword(),
-                    validationQuery
+                    databaseConnection.getPassword()
             );
 
             JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
