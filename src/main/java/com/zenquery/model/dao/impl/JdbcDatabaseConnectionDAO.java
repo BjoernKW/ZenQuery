@@ -26,8 +26,6 @@ import java.util.Properties;
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
-    private URI dbUrl;
-
     private Properties databaseDriverProperties;
 
     private DataSource dataSource;
@@ -37,10 +35,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     private QueryDAO queryDAO;
 
     private BasicDataSourceFactory dataSourceFactory;
-
-    public void setDbUrl(URI dbUrl) {
-        this.dbUrl = dbUrl;
-    }
 
     public void setDatabaseDriverProperties(Properties databaseDriverProperties) {
         this.databaseDriverProperties = databaseDriverProperties;
@@ -103,7 +97,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
                 keyHolder
         );
 
-        String selectAllUserTablesSql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.selectAllUserTables");
+        String selectAllUserTablesSql = databaseDriverProperties.getProperty(databaseConnection.getUrl() + ".queries.selectAllUserTables");
 
         BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                 databaseConnection.getUrl(),
