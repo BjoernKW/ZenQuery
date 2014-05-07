@@ -1,8 +1,12 @@
 package com.zenquery.model.dao.impl;
 
 import com.zenquery.model.DatabaseConnection;
+import com.zenquery.model.Query;
+import com.zenquery.model.Table;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
+import com.zenquery.util.BasicDataSourceFactory;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -15,16 +19,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
+    private Properties databaseDriverProperties;
+
     private DataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
 
     private QueryDAO queryDAO;
+
+    private BasicDataSourceFactory dataSourceFactory;
+
+    public void setDatabaseDriverProperties(Properties databaseDriverProperties) {
+        this.databaseDriverProperties = databaseDriverProperties;
+    }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -32,6 +45,10 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
     public void setQueryDAO(QueryDAO queryDAO) {
         this.queryDAO = queryDAO;
+    }
+
+    public void setDataSourceFactory(BasicDataSourceFactory dataSourceFactory) {
+        this.dataSourceFactory = dataSourceFactory;
     }
 
     public DatabaseConnection find(Integer id) {
@@ -79,6 +96,25 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
                 keyHolder
         );
 
+        BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
+                databaseConnection.getUrl(),
+                databaseConnection.getUsername(),
+                databaseConnection.getPassword()
+        );
+
+        String selectAllUserTablesSql = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllUserTables");
+
+
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        List<Table> tables =
+                jdbcTemplate.query(selectAllUserTablesSql, new TableMapper());
+        for (Table table : tables) {
+            Query query = new Query();
+            query.setDatabaseConnectionId(keyHolder.getKey().intValue());
+            query.setContent("SELECT * FROM " + table.getName());
+            queryDAO.insert(query);
+        }
+
         return keyHolder.getKey();
     }
 
@@ -118,6 +154,16 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
             databaseConnection.setPassword(rs.getString("password"));
 
             return databaseConnection;
+        }
+    }
+
+    private static class TableMapper implements ParameterizedRowMapper<Table> {
+        public Table mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Table table = new Table();
+
+            table.setName(rs.getString("table_name"));
+
+            return table;
         }
     }
 }
