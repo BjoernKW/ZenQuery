@@ -1,0 +1,108 @@
+05-07 16:00:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Feld "DATABASE_CONNECTION_ID" nicht gefunden
+Column "DATABASE_CONNECTION_ID" not found; SQL statement:
+CREATE TABLE queries (
+id bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
+key varchar(256) NOT NULL,
+database_connection_id bigint(20) NOT NULL,
+FOREIGN KEY (database_connection_id) REFERENCES public.database_connections(database_connection_id)
+) [42122-178]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:213)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:170)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:744)
+05-07 16:01:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Feld "DATABASE_CONNECTION_ID" nicht gefunden
+Column "DATABASE_CONNECTION_ID" not found; SQL statement:
+CREATE TABLE queries (
+id bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
+key varchar(256) NOT NULL,
+database_connection_id bigint NOT NULL,
+FOREIGN KEY (database_connection_id) REFERENCES public.database_connections(database_connection_id)
+) [42122-178]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:213)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:170)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:744)
+05-07 16:03:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Feld "DATABASE_CONNECTION_ID" nicht gefunden
+Column "DATABASE_CONNECTION_ID" not found; SQL statement:
+ALTER TABLE queries ADD FOREIGN KEY (database_connection_id) REFERENCES public.database_connections(database_connection_id) [42122-178]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:213)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:744)
+05-07 16:04:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Feld "QUERY_ID" nicht gefunden
+Column "QUERY_ID" not found; SQL statement:
+ALTER TABLE queries ADD FOREIGN KEY (query_id) REFERENCES public.queries(id) [42122-178]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.table.Table.getColumn(Table.java:637)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:73)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:186)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:744)
+05-07 16:08:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "QUERY_VERSIONS1" nicht gefunden
+Table "QUERY_VERSIONS1" not found; SQL statement:
+SELECT q.*, qv.content FROM queries AS q LEFT OUTER JOIN query_versions1 AS qv ON q.id = qv.query_id AND qv.is_current_version = TRUE WHERE q.database_connection_id = 1 [42102-178]
+05-07 16:11:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE VIEW TEST FROM[*] SELECT * FROM DATABASE_CONNECTIONS "; erwartet "., COMMENT, (, AS"
+Syntax error in SQL statement "CREATE VIEW TEST FROM[*] SELECT * FROM DATABASE_CONNECTIONS "; expected "., COMMENT, (, AS"; SQL statement:
+CREATE VIEW test FROM SELECT * FROM database_connections [42001-178]
