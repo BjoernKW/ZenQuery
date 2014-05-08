@@ -104,7 +104,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
         String selectAllUserTablesSql = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllUserTables");
 
-
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Table> tables =
                 jdbcTemplate.query(selectAllUserTablesSql, new TableMapper());
