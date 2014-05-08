@@ -6,6 +6,7 @@ import com.hp.gagawa.java.elements.Td;
 import com.hp.gagawa.java.elements.Tr;
 import com.hp.gagawa.java.elements.Th;
 import com.hp.gagawa.java.elements.Div;
+import com.hp.gagawa.java.elements.A;
 import com.thoughtworks.xstream.XStream;
 import com.zenquery.model.DatabaseConnection;
 import com.zenquery.model.Query;
@@ -162,6 +163,37 @@ public class ResultSetController {
         return html;
     }
 
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHHTML(
+            @PathVariable Integer id
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, null);
+
+        String html = getHTML("vertical", true, rows);
+
+        return html;
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHTML(
+            @PathVariable Integer id,
+            @PathVariable String variables
+    ) {
+        List<Map<String, Object>> rows = getResultRows(id, variables);
+
+        String html = getHTML("vertical", true, rows);
+
+        return html;
+    }
+
     private List<Map<String, Object>> getResultRows(Integer id, String variables) {
         Query query = queryDAO.find(id);
         DatabaseConnection databaseConnection = databaseConnectionDAO.find(query.getDatabaseConnectionId());
@@ -271,7 +303,7 @@ public class ResultSetController {
 
                 Object value = row.get(key);
                 if (value != null) {
-                    td.appendText(value.toString());
+                    appendValueToTd(td, value);
                 }
             }
 
@@ -312,7 +344,7 @@ public class ResultSetController {
 
                 Object value = row.get(key);
                 if (value != null) {
-                    tdValue.appendText(value.toString());
+                    appendValueToTd(tdValue, value);
                 }
 
                 entryTable.appendChild(attributeRow);
@@ -329,7 +361,7 @@ public class ResultSetController {
 
         html += "</div></body></html>";
 
-        return  html;
+        return html;
     }
 
     private String getVerticalResultListHTML(List<Map<String, Object>> rows) {
@@ -339,6 +371,20 @@ public class ResultSetController {
 
         html += "</div></body></html>";
 
-        return  html;
+        return html;
+    }
+
+    private void appendValueToTd(Td td, Object value) {
+        String text = value.toString();
+
+        if (text.startsWith("/api/")) {
+            A a = new A();
+            a.setHref(text + ".html");
+            a.appendText(text);
+
+            text = a.write();
+        }
+
+        td.appendText(text);
     }
 }
