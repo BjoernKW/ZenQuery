@@ -98,9 +98,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2186" max-vertical-offset="5940">
               <caret line="230" column="13" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,14 +106,14 @@
       <file leaf-file-name="JdbcDatabaseConnectionDAO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2669632" vertical-offset="991" max-vertical-offset="3240">
+            <state vertical-scroll-proportion="1.2697881" vertical-offset="991" max-vertical-offset="3240">
               <caret line="173" column="13" selection-start-line="173" selection-start-column="13" selection-end-line="173" selection-end-column="13" />
               <folding>
-                <marker date="1399591120000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
-                <marker date="1399591120000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
-                <marker date="1399591120000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
-                <marker date="1399591120000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
-                <marker date="1399591120000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
+                <marker date="1399592774000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1399592774000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1399592774000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
+                <marker date="1399592774000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
+                <marker date="1399592774000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -597,38 +595,6 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -655,6 +621,38 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -705,7 +703,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="574" y="146" width="1529" height="1053" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -724,7 +722,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2400807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2400807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -780,9 +778,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2565" max-vertical-offset="5250">
           <caret line="171" column="14" selection-start-line="171" selection-start-column="14" selection-end-line="171" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -798,11 +794,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1459" max-vertical-offset="3120">
           <caret line="140" column="82" selection-start-line="140" selection-start-column="82" selection-end-line="140" selection-end-column="82" />
           <folding>
-            <marker date="1399591120000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
-            <marker date="1399591120000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
-            <marker date="1399591120000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
+            <marker date="1399592774000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
+            <marker date="1399592774000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
+            <marker date="1399592774000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -851,9 +847,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1951" max-vertical-offset="4920">
           <caret line="171" column="14" selection-start-line="171" selection-start-column="14" selection-end-line="171" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -870,11 +864,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="2220">
           <caret line="109" column="78" selection-start-line="109" selection-start-column="78" selection-end-line="109" selection-end-column="78" />
           <folding>
-            <marker date="1399591120000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
-            <marker date="1399591120000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
-            <marker date="1399591120000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
+            <marker date="1399592774000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
+            <marker date="1399592774000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
+            <marker date="1399592774000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -944,11 +938,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1605" max-vertical-offset="2625">
           <caret line="107" column="45" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="45" />
           <folding>
-            <marker date="1399591120000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
-            <marker date="1399591120000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
-            <marker date="1399591120000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
+            <marker date="1399592774000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
+            <marker date="1399592774000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
+            <marker date="1399592774000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -1002,9 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2565" max-vertical-offset="5250">
           <caret line="171" column="20" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,22 +1159,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2186" max-vertical-offset="5940">
           <caret line="230" column="13" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2669632" vertical-offset="991" max-vertical-offset="3240">
+        <state vertical-scroll-proportion="1.2697881" vertical-offset="991" max-vertical-offset="3240">
           <caret line="173" column="13" selection-start-line="173" selection-start-column="13" selection-end-line="173" selection-end-column="13" />
           <folding>
-            <marker date="1399591120000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399591120000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
-            <marker date="1399591120000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
-            <marker date="1399591120000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
+            <marker date="1399592774000" expanded="true" signature="1933:1980" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2299:2333" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399592774000" expanded="true" signature="2662:2746" placeholder="INSERT INTO ..." />
+            <marker date="1399592774000" expanded="true" signature="7392:7482" placeholder="UPDATE datab..." />
+            <marker date="1399592774000" expanded="true" signature="8017:8062" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
