@@ -167,12 +167,3 @@ ALTER TABLE ONLY queries
 
 ALTER TABLE ONLY query_versions
     ADD CONSTRAINT query_versions_query_id_fkey FOREIGN KEY (query_id) REFERENCES queries(id);
-
-
---
--- TOC entry 2116 (class 2606 OID 16814)
--- Name: query_versions_query_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: willy
---
-
-ALTER TABLE ONLY query_versions
-    ADD CONSTRAINT query_versions_query_id_fkey1 FOREIGN KEY (query_id) REFERENCES queries(id);
