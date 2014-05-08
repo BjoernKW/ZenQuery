@@ -14,7 +14,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,8 +25,6 @@ import java.util.Properties;
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
-    private URI dbUrl;
-
     private Properties databaseDriverProperties;
 
     private DataSource dataSource;
@@ -37,10 +34,6 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
     private QueryDAO queryDAO;
 
     private BasicDataSourceFactory dataSourceFactory;
-
-    public void setDbUrl(URI dbUrl) {
-        this.dbUrl = dbUrl;
-    }
 
     public void setDatabaseDriverProperties(Properties databaseDriverProperties) {
         this.databaseDriverProperties = databaseDriverProperties;
@@ -103,13 +96,14 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
                 keyHolder
         );
 
-        String selectAllUserTablesSql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.selectAllUserTables");
-
         BasicDataSource dataSource = dataSourceFactory.getBasicDataSource(
                 databaseConnection.getUrl(),
                 databaseConnection.getUsername(),
                 databaseConnection.getPassword()
         );
+
+        String selectAllUserTablesSql = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllUserTables");
+
 
         jdbcTemplate = new JdbcTemplate(dataSource);
         List<Table> tables =
