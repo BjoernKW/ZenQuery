@@ -1,12 +1,11 @@
 package com.zenquery.model.dao.impl;
 
-import com.zenquery.model.DatabaseConnection;
-import com.zenquery.model.Query;
-import com.zenquery.model.Table;
+import com.zenquery.model.*;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.util.BasicDataSourceFactory;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
@@ -18,13 +17,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
  * Created by willy on 13.04.14.
  */
 public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
+    private static final Logger logger = Logger.getLogger(JdbcDatabaseConnectionDAO.class);
+
     private Properties databaseDriverProperties;
 
     private DataSource dataSource;
@@ -102,17 +105,76 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
                 databaseConnection.getPassword()
         );
 
+        Map<String, Long> tableQueryIDs = new HashMap<String, Long>();
+        Map<String, String> tablePrimaryKeys = new HashMap<String, String>();
+        Map<String, List<ForeignKey>> tableForeignKeys = new HashMap<String, List<ForeignKey>>();
+        Map<String, String> tableReferences = new HashMap<String, String>();
+
         String selectAllUserTablesSql = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllUserTables");
-
-
         jdbcTemplate = new JdbcTemplate(dataSource);
+
         List<Table> tables =
                 jdbcTemplate.query(selectAllUserTablesSql, new TableMapper());
+
+            for (Table table : tables) {
+                String tableName = table.getName();
+
+                String selectPrimaryKeyForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectPrimaryKeyForTable");
+                jdbcTemplate = new JdbcTemplate(dataSource);
+                String primaryKeyColumnName = jdbcTemplate.query(selectPrimaryKeyForTable, new Object[] { tableName }, new PrimaryKeyMapper()).get(0).getColumnName();
+
+                tablePrimaryKeys.put(tableName, primaryKeyColumnName);
+
+                Query queryForSingleEntity = new Query();
+                queryForSingleEntity.setDatabaseConnectionId(keyHolder.getKey().intValue());
+                queryForSingleEntity.setContent("SELECT * FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                Number tableQueryId = queryDAO.insert(queryForSingleEntity);
+
+                tableQueryIDs.put(tableName, tableQueryId.longValue());
+
+                String selectAllForeignKeysForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllForeignKeysForTable");
+                jdbcTemplate = new JdbcTemplate(dataSource);
+
+                tableForeignKeys.put(tableName, jdbcTemplate.query(selectAllForeignKeysForTable, new Object[] { tableName }, new ForeignKeyMapper()));
+            }
+
+            for (String tableName : tableForeignKeys.keySet()) {
+                List<ForeignKey> foreignKeys = tableForeignKeys.get(tableName);
+                String tableReference = "";
+
+                if (foreignKeys.size() > 0) {
+                    for (ForeignKey foreignKey : foreignKeys) {
+                        Long queryId = tableQueryIDs.get(foreignKey.getTargetTable());
+                        String resultSetForQueryUrl = "/api/v1/resultSetForQuery/" + queryId;
+
+                        tableReference += ", '" + resultSetForQueryUrl + "/' "
+                                + databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.concatOperator")
+                                + " " + foreignKey.getSourceKey() + " " + foreignKey.getTargetTable() + "_entity";
+                    }
+                }
+
+                tableReferences.put(tableName, tableReference);
+            }
+
+
+
         for (Table table : tables) {
+            String tableName = table.getName();
+            String tableReference = tableReferences.get(tableName) != null ? tableReferences.get(tableName) : "";
+            String primaryKeyColumnName = tablePrimaryKeys.get(tableName);
+
             Query query = new Query();
             query.setDatabaseConnectionId(keyHolder.getKey().intValue());
-            query.setContent("SELECT * FROM " + table.getName());
+            query.setContent("SELECT *" + tableReference + " FROM " + tableName);
             queryDAO.insert(query);
+
+            try {
+                Query queryForSingleEntity = queryDAO.find(tableQueryIDs.get(tableName).intValue());
+                queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                queryDAO.update(tableQueryIDs.get(tableName).intValue(), queryForSingleEntity);
+            } catch (Exception e) {
+                logger.debug(e);
+            }
         }
 
         return keyHolder.getKey();
@@ -164,6 +226,29 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
             table.setName(rs.getString("table_name"));
 
             return table;
+        }
+    }
+
+    private static class ForeignKeyMapper implements ParameterizedRowMapper<ForeignKey> {
+        public ForeignKey mapRow(ResultSet rs, int rowNum) throws SQLException {
+            ForeignKey foreignKey = new ForeignKey();
+
+            foreignKey.setSourceTable(rs.getString("source_table"));
+            foreignKey.setSourceKey(rs.getString("source_key"));
+            foreignKey.setTargetTable(rs.getString("target_table"));
+            foreignKey.setTargetKey(rs.getString("target_key"));
+
+            return foreignKey;
+        }
+    }
+
+    private static class PrimaryKeyMapper implements ParameterizedRowMapper<PrimaryKey> {
+        public PrimaryKey mapRow(ResultSet rs, int rowNum) throws SQLException {
+            PrimaryKey primaryKey = new PrimaryKey();
+
+            primaryKey.setColumnName(rs.getString("column_name"));
+
+            return primaryKey;
         }
     }
 }

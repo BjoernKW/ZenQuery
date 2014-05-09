@@ -39,6 +39,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.30" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.178" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-instrument:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.7.4" level="project" />
