@@ -171,7 +171,7 @@ public class ResultSetController {
 
         XStream stream = getXMLStream();
 
-        return stream.toXML(rows);
+        return stream.toXML(rows.toArray());
     }
 
     @RequestMapping(
@@ -187,7 +187,7 @@ public class ResultSetController {
 
         XStream stream = getXMLStream();
 
-        return stream.toXML(rows);
+        return stream.toXML(rows.toArray());
     }
 
     @RequestMapping(
@@ -203,7 +203,7 @@ public class ResultSetController {
 
         XStream stream = getXMLStream();
 
-        return stream.toXML(rows);
+        return stream.toXML(rows.toArray());
     }
 
     @RequestMapping(
@@ -220,7 +220,7 @@ public class ResultSetController {
 
         XStream stream = getXMLStream();
 
-        return stream.toXML(rows);
+        return stream.toXML(rows.toArray());
     }
 
     @RequestMapping(
