@@ -1,9 +1,6 @@
 package com.zenquery.model.dao.impl;
 
-import com.zenquery.model.DatabaseConnection;
-import com.zenquery.model.ForeignKey;
-import com.zenquery.model.Query;
-import com.zenquery.model.Table;
+import com.zenquery.model.*;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.util.BasicDataSourceFactory;
@@ -109,6 +106,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         );
 
         Map<String, Long> tableQueryIDs = new HashMap<String, Long>();
+        Map<String, String> tablePrimaryKeys = new HashMap<String, String>();
         Map<String, List<ForeignKey>> tableForeignKeys = new HashMap<String, List<ForeignKey>>();
         Map<String, String> tableReferences = new HashMap<String, String>();
 
@@ -118,21 +116,26 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         List<Table> tables =
                 jdbcTemplate.query(selectAllUserTablesSql, new TableMapper());
 
-        try {
             for (Table table : tables) {
                 String tableName = table.getName();
+
+                String selectPrimaryKeyForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectPrimaryKeyForTable");
+                jdbcTemplate = new JdbcTemplate(dataSource);
+                String primaryKeyColumnName = jdbcTemplate.query(selectPrimaryKeyForTable, new Object[] { tableName }, new PrimaryKeyMapper()).get(0).getColumnName();
+
+                tablePrimaryKeys.put(tableName, primaryKeyColumnName);
+
+                Query queryForSingleEntity = new Query();
+                queryForSingleEntity.setDatabaseConnectionId(keyHolder.getKey().intValue());
+                queryForSingleEntity.setContent("SELECT * FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                Number tableQueryId = queryDAO.insert(queryForSingleEntity);
+
+                tableQueryIDs.put(tableName, tableQueryId.longValue());
 
                 String selectAllForeignKeysForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllForeignKeysForTable");
                 jdbcTemplate = new JdbcTemplate(dataSource);
 
-                tableForeignKeys.put(tableName, jdbcTemplate.query(selectAllForeignKeysForTable, new Object[]{tableName}, new ForeignKeyMapper()));
-
-                Query queryForSingleEntity = new Query();
-                queryForSingleEntity.setDatabaseConnectionId(keyHolder.getKey().intValue());
-                queryForSingleEntity.setContent("SELECT * FROM " + tableName + " WHERE id = ?");
-                Number tableQueryId = queryDAO.insert(queryForSingleEntity);
-
-                tableQueryIDs.put(tableName, tableQueryId.longValue());
+                tableForeignKeys.put(tableName, jdbcTemplate.query(selectAllForeignKeysForTable, new Object[] { tableName }, new ForeignKeyMapper()));
             }
 
             for (String tableName : tableForeignKeys.keySet()) {
@@ -152,13 +155,13 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
                 tableReferences.put(tableName, tableReference);
             }
-        } catch (Exception e) {
-            logger.debug(e);
-        }
+
+
 
         for (Table table : tables) {
             String tableName = table.getName();
             String tableReference = tableReferences.get(tableName) != null ? tableReferences.get(tableName) : "";
+            String primaryKeyColumnName = tablePrimaryKeys.get(tableName);
 
             Query query = new Query();
             query.setDatabaseConnectionId(keyHolder.getKey().intValue());
@@ -167,7 +170,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
             try {
                 Query queryForSingleEntity = queryDAO.find(tableQueryIDs.get(tableName).intValue());
-                queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE id = ?");
+                queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
                 queryDAO.update(tableQueryIDs.get(tableName).intValue(), queryForSingleEntity);
             } catch (Exception e) {
                 logger.debug(e);
@@ -236,6 +239,16 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
             foreignKey.setTargetKey(rs.getString("target_key"));
 
             return foreignKey;
+        }
+    }
+
+    private static class PrimaryKeyMapper implements ParameterizedRowMapper<PrimaryKey> {
+        public PrimaryKey mapRow(ResultSet rs, int rowNum) throws SQLException {
+            PrimaryKey primaryKey = new PrimaryKey();
+
+            primaryKey.setColumnName(rs.getString("column_name"));
+
+            return primaryKey;
         }
     }
 }
