@@ -13,9 +13,12 @@ Creating new applications that make use of this data such as mobile apps is hard
 
 ### "The future is already here - it's just not very evenly distributed." - William Gibson
 
-While today REST APIs allow you to quickly and flexibly access data and services from a multitude of sources, putting internally available data to good use is still comparatively difficult. ZenQuery is an 'enterprise backend as a service' that alleviates this problem.
+While today REST APIs allow you to quickly and flexibly access data and services from a multitude of sources,
+putting internally available data to good use is still comparatively difficult. ZenQuery is an 'enterprise backend as a service'
+that alleviates this problem.
 
-ZenQuery provides you with an instant REST API for your SQL queries. Anything that can be expressed by SELECT * FROM ... ZenQuery turns into a conveniently accessible API.
+ZenQuery provides you with an instant REST API for your SQL queries. Anything that can be expressed by SELECT * FROM ...
+ZenQuery turns into a conveniently accessible API.
 
 ZenQuery is a Java EE application that's securely hosted on your servers. No data ever leaves your company!
 
