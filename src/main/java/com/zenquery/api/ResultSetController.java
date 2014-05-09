@@ -47,7 +47,7 @@ public class ResultSetController {
     List<Map<String, Object>> currentQuery(
             @PathVariable Integer id
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, null);
+        List<Map<String, Object>> rows = getRows(id, null, null);
 
         return rows;
     }
@@ -61,7 +61,36 @@ public class ResultSetController {
             @PathVariable Integer id,
             @PathVariable String variables
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, variables);
+        List<Map<String, Object>> rows = getRows(id, variables, null);
+
+        return rows;
+    }
+
+    @RequestMapping(
+            value = "/{id}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "application/json; charset=utf-8" })
+    public @ResponseBody
+    List<Map<String, Object>> currentQuery(
+            @PathVariable Integer id,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, null, size);
+
+        return rows;
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "application/json; charset=utf-8" })
+    public @ResponseBody
+    List<Map<String, Object>> currentQuery(
+            @PathVariable Integer id,
+            @PathVariable String variables,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, variables, size);
 
         return rows;
     }
@@ -74,7 +103,7 @@ public class ResultSetController {
     String currentQueryAsCSV(
             @PathVariable Integer id
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, null);
+        List<Map<String, Object>> rows = getRows(id, null, null);
 
         StringBuilder csvBuilder = getCsvBuilder(rows);
 
@@ -90,7 +119,40 @@ public class ResultSetController {
             @PathVariable Integer id,
             @PathVariable String variables
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, variables);
+        List<Map<String, Object>> rows = getRows(id, variables, null);
+
+        StringBuilder csvBuilder = getCsvBuilder(rows);
+
+        return csvBuilder.toString();
+    }
+
+    @RequestMapping(
+            value = "/{id}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/csv; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsCSV(
+            @PathVariable Integer id,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, null, size);
+
+        StringBuilder csvBuilder = getCsvBuilder(rows);
+
+        return csvBuilder.toString();
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/csv; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsCSV(
+            @PathVariable Integer id,
+            @PathVariable String variables,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, variables, size);
 
         StringBuilder csvBuilder = getCsvBuilder(rows);
 
@@ -105,7 +167,7 @@ public class ResultSetController {
     String currentQueryAsXML(
             @PathVariable Integer id
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, null);
+        List<Map<String, Object>> rows = getRows(id, null, null);
 
         XStream stream = getXMLStream();
 
@@ -121,7 +183,40 @@ public class ResultSetController {
             @PathVariable Integer id,
             @PathVariable String variables
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, variables);
+        List<Map<String, Object>> rows = getRows(id, variables, null);
+
+        XStream stream = getXMLStream();
+
+        return stream.toXML(rows);
+    }
+
+    @RequestMapping(
+            value = "/{id}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "application/xml; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsXML(
+            @PathVariable Integer id,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, null, size);
+
+        XStream stream = getXMLStream();
+
+        return stream.toXML(rows);
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "application/xml; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsXML(
+            @PathVariable Integer id,
+            @PathVariable String variables,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, variables, size);
 
         XStream stream = getXMLStream();
 
@@ -133,12 +228,12 @@ public class ResultSetController {
             method = RequestMethod.GET,
             produces = { "text/html; charset=utf-8" })
     public @ResponseBody
-    String currentQueryAsHHTML(
+    String currentQueryAsHTML(
             @PathVariable Integer id,
             @PathVariable String mode,
             @PathVariable Boolean complete
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, null);
+        List<Map<String, Object>> rows = getRows(id, null, null);
 
         String html = getHTML(mode, complete, rows);
 
@@ -156,7 +251,7 @@ public class ResultSetController {
             @PathVariable String mode,
             @PathVariable Boolean complete
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, variables);
+        List<Map<String, Object>> rows = getRows(id, variables, null);
 
         String html = getHTML(mode, complete, rows);
 
@@ -168,10 +263,10 @@ public class ResultSetController {
             method = RequestMethod.GET,
             produces = { "text/html; charset=utf-8" })
     public @ResponseBody
-    String currentQueryAsHHTML(
+    String currentQueryAsHTML(
             @PathVariable Integer id
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, null);
+        List<Map<String, Object>> rows = getRows(id, null, null);
 
         String html = getHTML("vertical", true, rows);
 
@@ -187,7 +282,77 @@ public class ResultSetController {
             @PathVariable Integer id,
             @PathVariable String variables
     ) {
-        List<Map<String, Object>> rows = getResultRows(id, variables);
+        List<Map<String, Object>> rows = getRows(id, variables, null);
+
+        String html = getHTML("vertical", true, rows);
+
+        return html;
+    }
+
+    @RequestMapping(
+            value = "/{mode}/{complete}/{id}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHTML(
+            @PathVariable Integer id,
+            @PathVariable String mode,
+            @PathVariable Boolean complete,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, null, size);
+
+        String html = getHTML(mode, complete, rows);
+
+        return html;
+    }
+
+    @RequestMapping(
+            value = "/{mode}/{complete}/{id}/{variables}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHTML(
+            @PathVariable Integer id,
+            @PathVariable String variables,
+            @PathVariable String mode,
+            @PathVariable Boolean complete,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, variables, size);
+
+        String html = getHTML(mode, complete, rows);
+
+        return html;
+    }
+
+    @RequestMapping(
+            value = "/{id}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHTML(
+            @PathVariable Integer id,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, null, size);
+
+        String html = getHTML("vertical", true, rows);
+
+        return html;
+    }
+
+    @RequestMapping(
+            value = "/{id}/{variables}/size/{size}",
+            method = RequestMethod.GET,
+            produces = { "text/html; charset=utf-8" })
+    public @ResponseBody
+    String currentQueryAsHTML(
+            @PathVariable Integer id,
+            @PathVariable String variables,
+            @PathVariable Integer size
+    ) {
+        List<Map<String, Object>> rows = getRows(id, variables, size);
 
         String html = getHTML("vertical", true, rows);
 
@@ -386,5 +551,15 @@ public class ResultSetController {
         }
 
         td.appendText(text);
+    }
+
+    private List<Map<String, Object>> getRows(Integer id, String variables, Integer size) {
+        List<Map<String, Object>> rows = getResultRows(id, variables);
+
+        if (size != null && size != 0 && size < rows.size()) {
+            rows = rows.subList(0, size);
+        }
+
+        return rows;
     }
 }
