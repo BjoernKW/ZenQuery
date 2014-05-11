@@ -17,8 +17,8 @@ ZenQuery is a Java EE application that's securely hosted on your servers. No dat
 
 ## Licensing
 
-Commercial / premium versions of ZenQuery will contain the ZenQuery source code. The free version is closed source
-for now.
+Commercial / premium versions of ZenQuery will contain the ZenQuery source code (licensed under
+[Affero GPL](http://www.gnu.org/licenses/agpl-3.0.html)). The free version is closed source for now.
 
 ## Requirements
 
