@@ -91,6 +91,7 @@ The ZenQuery REST API returns data in the following formats:
 If you have any questions, suggestions, problems or feature requests please contact us under
 [zenquery-support@fullmontymedia.com](mailto:zenquery-support@fullmontymedia.com)
 
+Please also visit [our website](http://www.zenqry.com/).
 
 ## <a name="license"/>License and version information
 
