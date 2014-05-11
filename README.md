@@ -75,15 +75,67 @@ fine. For production purposes, however, you should use your own, dedicated datab
 ZenQuery is available as a WAR release for usage in your favourite Servlet container / application server under
 [https://]
 
+First, you need to [configure](#configuration) a few settings before installing ZenQuery.
+
+Afterwards, install and deploy the downloaded WAR file as usual.
+
 #### <a name="configuration"/>Configuration
+
+In order to start and run properly two settings need to be configured for ZenQuery:
+
+* the database to store the application data in
+* security preferences
 
 #### Database
 
+DATABASE_URL=postgres://willy:willy@localhost:5432/ZenQuery
+
+* as400://
+* db2=jdbc:db2://
+* derby=jdbc:derby:
+* edbc=jdbc:ingres://
+* firebirdsql=jdbc:firebirdsql://
+* h2=jdbc:h2:./
+* hsqldb=jdbc:hsqldb:mem:
+* JTurbo=jdbc:JTurbo://
+* mysql=jdbc:mysql://
+* oracle=jdbc:oracle:thin:@
+* postgres=jdbc:postgresql://
+* postgresql=jdbc:postgresql://
+* sapdb=jdbc:sapdb://
+* sqlserver=jdbc:microsoft:sqlserver
+* sybase
+
+DDL script
+
+ZenQuery has been tested with H2, MySQL, Oracle Database and PostgreSQL as application databases. If you run into any
+problems with another RDBMS please don't hesitate to [contact us](mailto:zenquery-support@fullmontymedia.com).
+
 #### Security
+
+spring.profiles.active=local or spring.profiles.active=public
+
+Set password in spring-security-public.xml in src/main/webapp
 
 ## <a name="usage"/>Using ZenQuery
 
 ### Database Connections
+
+* jdbc:as400://
+* jdbc:db2://
+* jdbc:derby:
+* jdbc:ingres://
+* jdbc:firebirdsql://
+* jdbc:h2:
+* jdbc:hsqldb:mem:
+* jdbc:JTurbo://
+* jdbc:mysql://
+* jdbc:oracle:thin:@
+* jdbc:postgresql://
+* jdbc:postgresql://
+* jdbc:sapdb://
+* jdbc:microsoft:sqlserver
+* jdbc:sybase:Tds:
 
 ### Queries
 
@@ -92,6 +144,8 @@ ZenQuery is available as a WAR release for usage in your favourite Servlet conta
 Primary and foreign keys
 
 ### API
+
+\[optional\]
 
 #### Formats
 
