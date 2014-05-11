@@ -30,16 +30,16 @@ ZenQuery has the following minimum requirements:
 
 ## Getting started
 
-### Installlation
+### Installation
 
-There are two ways to install ZenQuery:
+There are two ways of installing ZenQuery:
 
-* using our stand-alone Apache Tomcat server
-* using a WAR (web application archive) with your own Servlet container or application server
+* using our [stand-alone Apache Tomcat server release](#stand-alone)
+* using our [WAR (web application archive) release](#war) with your own Servlet container or application server
 
-#### Stand-alone Apache Tomcat
+#### <a name="stand-alone">Stand-alone Apache Tomcat server</a>
 
-#### WAR
+#### <a name="war">WAR</a>
 
 ### Using ZenQuery
 
@@ -63,10 +63,10 @@ Primary and foreign keys
 * Entirely hosted on-premises. Your data stays with you all the time!
 * Conveniently edit your SQL queries and preview your data.
 * Version control for SQL queries.
-* Snaptshots
+* Snapshots (i.e. materialized views if supported by RDBMS)
 * Transitive Navigation
 * Variable Interpolation
-* Limit query results
+* Limit and filter query results
 
 ## Support
 
