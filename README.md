@@ -1,7 +1,17 @@
 ZenQuery
 ========
 
-## Introduction - Enterprise Backend as a Service
+## Table of Contents
+
+### [Introduction - Enterprise Backend as a Service](#introduction)
+### [Requirements](#requirements)
+### [Getting started](#getting-started)
+### [Using ZenQuery](#usage)
+### [Features](#features)
+### [Support](#support)
+### [License and version information](#license)
+
+## <a name="introduction"/>Introduction - Enterprise Backend as a Service
 
 ZenQuery allows you to easily access databases through a REST API.
 
@@ -15,12 +25,7 @@ It's like [Heroku Dataclips](https://devcenter.heroku.com/articles/dataclips) bu
 
 ZenQuery is a Java EE application that's securely hosted on your servers. No data ever leaves your company!
 
-## Licensing
-
-Commercial / premium versions of ZenQuery will contain the ZenQuery source code (licensed under
-[Affero GPL](http://www.gnu.org/licenses/agpl-3.0.html)). The free version is closed source for now.
-
-## Requirements
+## <a name="requirements"/>Requirements
 
 ZenQuery has the following minimum requirements:
 
@@ -28,7 +33,7 @@ ZenQuery has the following minimum requirements:
 * a Servlet container or application server (stand-alone option available)
 * a database server (embedded H2 database available)
 
-## Getting started
+## <a name="getting-started"/>Getting started
 
 ### Installation
 
@@ -37,17 +42,17 @@ There are two ways of installing ZenQuery:
 * using our [stand-alone Apache Tomcat server release](#stand-alone)
 * using our [WAR (web application archive) release](#war) with your own Servlet container or application server
 
-#### <a name="stand-alone"></a>Stand-alone Apache Tomcat server
+#### <a name="stand-alone"/>Stand-alone Apache Tomcat server
 
-#### <a name="war"></a>WAR
+#### <a name="war"/>WAR
 
-### Using ZenQuery
+## <a name="usage"/>Using ZenQuery
 
-#### Database Connections
+### Database Connections
 
-#### Queries
+### Queries
 
-##### Transitive Navigation
+#### Transitive Navigation
 
 Primary and foreign keys
 
@@ -62,7 +67,7 @@ The ZenQuery REST API returns data in the following formats:
 * HTML
 * CSV
 
-## Features
+## <a name="features"/>Features
 
 * Generate REST APIs from SQL queries.
 * Access your data in JSON, XML or CSV formats.
@@ -75,11 +80,17 @@ The ZenQuery REST API returns data in the following formats:
 * Variable Interpolation
 * Limit and filter query results
 
-## Support
+## <a name="support"/>Support
 
 If you have any questions, suggestions, problems or feature requests please contact us under
 [zenquery-support@fullmontymedia.com](mailto:zenquery-support@fullmontymedia.com)
 
-## Version information
+
+## <a name="license"/>License and version information
+
+Commercial / premium versions of ZenQuery will contain the ZenQuery source code (licensed under
+[Affero GPL](http://www.gnu.org/licenses/agpl-3.0.html)). The free version is closed source for now.
+
+### Version information
 
 Current version: 1.0
