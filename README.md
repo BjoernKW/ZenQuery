@@ -55,6 +55,13 @@ Primary and foreign keys
 
 #### Formats
 
+The ZenQuery REST API returns data in the following formats:
+
+* JSON
+* XML
+* HTML
+* CSV
+
 ## Features
 
 * Generate REST APIs from SQL queries.
