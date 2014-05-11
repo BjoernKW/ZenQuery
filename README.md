@@ -262,7 +262,7 @@ These are a few example URLs:
 ZenQuery also allows you to add arguments to an API call, which will be used for
 [interpolating variables in the SQL query](#interpolation). The arguments are appended to the URL after the query ID.
 Multiple arguments are comma-separated. Moreover, you can also limit the size of the result set by adding a *size*
-parameter
+parameter.
 
 Again, these are a few example URLs:
 
