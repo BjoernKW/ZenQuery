@@ -109,7 +109,8 @@ The format for the URL is
 `PROTOCOL://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
 
 A PostgreSQL DATABASE_URL for example would look like this:
-DATABASE_URL=postgres://username:password@localhost:5432/ZenQuery`
+
+`DATABASE_URL=postgres://username:password@localhost:5432/ZenQuery`
 
 The following protocols / RDBMS are available. Please note that only H2, MySQL and PostgreSQL drivers are included with
 ZenQuery. If you want to use one of the other RDBMS you have to add the appropriate JDBC driver to the shared libraries
