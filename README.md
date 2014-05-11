@@ -138,11 +138,27 @@ Set password in spring-security-public.xml in src/main/webapp
 
 ### Queries
 
+#### Arguments and variable interpolation
+
+SELECT * FROM table WHERE field = ?
+
 #### Transitive Navigation
 
 Primary and foreign keys
 
 ### API
+
+(/api/v1/resultSetForQuery/6.json)(/api/v1/resultSetForQuery/6.json)
+(/api/v1/resultSetForQuery/6.xml)(/api/v1/resultSetForQuery/6.xml)
+(/api/v1/resultSetForQuery/6.csv)
+(/api/v1/resultSetForQuery/vertical/false/6.html)
+(/api/v1/resultSetForQuery/vertical/true/6.html)
+(/api/v1/resultSetForQuery/horizontal/false/6.html)
+(/api/v1/resultSetForQuery/horizontal/true/6.html)
+
+(/api/v1/resultSetForQuery/6/45,SomeValue.json)
+(/api/v1/resultSetForQuery/6/size/3.json)
+(/api/v1/resultSetForQuery/6/45,SomeValue/size/3.json)
 
 [optional]
 
