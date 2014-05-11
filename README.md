@@ -45,12 +45,41 @@ ZenQuery has the following minimum requirements:
 
 There are two ways of installing ZenQuery:
 
-* using our [stand-alone Apache Tomcat server release](#stand-alone)
+* using our [stand-alone release](#stand-alone)
 * using our [WAR (web application archive) release](#war) with your own Servlet container or application server
 
-#### <a name="stand-alone"/>Stand-alone Apache Tomcat server
+#### <a name="stand-alone"/>Stand-alone
+
+ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat](http://tomcat.apache.org/)) under
+[https://]
+
+Unpack the archive and start the Tomcat server:
+```
+tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
+./bin/startup.sh
+```
+
+(under Windows use startup.bat instead)
+
+The server can be stopped with the following command:
+`./bin/shutdown.sh`
+
+(under Windows use shutdown.bat instead)
+
+The stand-alone version uses a pre-configured embedded H2 database for storing application data. For testing this is
+fine. For production purposes, however, you should use your own, dedicated database. See the section on
+[configuration](#configuration) below for further information.
 
 #### <a name="war"/>WAR
+
+ZenQuery is available as a WAR release for usage in your favourite Servlet container / application server under
+[https://]
+
+#### <a name="configuration"/>Configuration
+
+#### Database
+
+#### Security
 
 ## <a name="usage"/>Using ZenQuery
 
