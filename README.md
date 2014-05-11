@@ -159,9 +159,12 @@ the -D command line option for Java, e.g.:
 
 ## <a name="usage"/>Using ZenQuery
 
-Using ZenQuery is simple.
+Using ZenQuery is simple. ZenQuery has 2 main views:
 
-### Database Connections
+* [database connections](#database-connections)
+* [queries](#queries)
+
+### <a name="database-connections"/>Database Connections
 
 * jdbc:as400://
 * jdbc:db2://
@@ -179,7 +182,7 @@ Using ZenQuery is simple.
 * jdbc:microsoft:sqlserver
 * jdbc:sybase:Tds:
 
-### Queries
+### <a name="queries"/>Queries
 
 #### Arguments and variable interpolation
 
