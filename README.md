@@ -227,6 +227,8 @@ SELECT * FROM table WHERE field = ?
 SELECT * FROM table WHERE field = ? OR another_field = ?
 ```
 
+These arguments can then be supplied as [additional URL parameters](#formats) to your API call.s
+
 #### <a name="foreign-keys"/>Navigating entities referenced by foreign keys
 
 If your database tables make use of foreign keys for referencing entities ZenQuery will automatically link those to the
