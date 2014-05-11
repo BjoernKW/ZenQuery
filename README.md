@@ -3,13 +3,13 @@ ZenQuery
 
 ## Table of Contents
 
-### [Introduction - Enterprise Backend as a Service](#introduction)
-### [Requirements](#requirements)
-### [Getting started](#getting-started)
-### [Using ZenQuery](#usage)
-### [Features](#features)
-### [Support](#support)
-### [License and version information](#license)
+*[Introduction - Enterprise Backend as a Service](#introduction)*
+*[Requirements](#requirements)*
+*[Getting started](#getting-started)*
+*[Using ZenQuery](#usage)*
+*[Features](#features)*
+*[Support](#support)*
+*[License and version information](#license)*
 
 ## <a name="introduction"/>Introduction - Enterprise Backend as a Service
 
