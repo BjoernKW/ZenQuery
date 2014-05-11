@@ -133,9 +133,9 @@ directory of your Servlet container / application server:
 ZenQuery has been tested with H2, MySQL, Oracle Database and PostgreSQL as application databases. If you run into any
 problems with another RDBMS please don't hesitate to [contact us](mailto:zenquery-support@fullmontymedia.com).
 
-**Please note: Only H2, MySQL and PostgreSQL drivers are included with
-ZenQuery. If you want to use one of the other RDBMS you have to add the appropriate JDBC driver to the shared libraries
-directory of your Servlet container / application server.**
+**Please note: Only H2, MySQL and PostgreSQL drivers are included with ZenQuery. If you want to use one of the other
+RDBMS you have to add the appropriate JDBC driver to the shared libraries directory of your Servlet container /
+application server.**
 
 #### Security
 
@@ -167,35 +167,77 @@ Using ZenQuery is simple. ZenQuery has 2 main views:
 
 ### <a name="database-connections"/>Database Connections
 
-* jdbc:as400://
-* jdbc:db2://
-* jdbc:derby:
-* jdbc:ingres://
-* jdbc:firebirdsql://
-* jdbc:h2:
-* jdbc:hsqldb:mem:
-* jdbc:JTurbo://
-* jdbc:mysql://
-* jdbc:oracle:thin:@
-* jdbc:postgresql://
-* jdbc:postgresql://
-* jdbc:sapdb://
-* jdbc:microsoft:sqlserver
-* jdbc:sybase:Tds:
+Here you can add and edit and your database connections. A valid database connection consists of:
+
+* name
+* URL
+* username
+* password
+
+The URL has to be a valid JDBC connection URL such as:
+
+`jdbc:postgresql://localhost:5432/SomeDatabase`
+
+The following JDBC connection protocols / RDBMS are supported:
+
+* jdbc:as400:// (IBM DB2 AS400)
+* jdbc:db2:// (IBM DB2)
+* jdbc:derby: (Apache Derby)
+* jdbc:ingres:// (Ingres Database)
+* jdbc:firebirdsql:// (Firebird)
+* jdbc:h2: (H2)
+* jdbc:hsqldb:mem: (HSQLDB)
+* jdbc:JTurbo:// (Microsoft SQL Server, JTurbo driver)
+* jdbc:mysql:// (MySQL)
+* jdbc:oracle:thin:@ (Oracle Database)
+* jdbc:postgresql:// (PostgreSQL)
+* jdbc:sapdb:// (SAP DB)
+* jdbc:microsoft:sqlserver (Microsoft SQL Server)
+* jdbc:sybase:Tds: (Sybase)
+
+**Please note: Only H2, MySQL and PostgreSQL drivers are included with ZenQuery. If you want to use one of the other
+RDBMS you have to add the appropriate JDBC driver to the shared libraries directory of your Servlet container /
+application server.**
+
+After having entered a valid database connection will automatically create *SELECT * FROM* queries for each table and
+view in your database. If your database uses foreign keys ZenQuery will extend those queries to include [links to
+referenced database entity resources](#foreign-keys).
 
 ### <a name="queries"/>Queries
 
-#### Arguments and variable interpolation
+Clicking on the 'Queries' button from the top menu will show all queries. Clicking the respective button for each
+database connection will show only the queries for that connection.
 
+Clicking on 'Details' for a query will preview the result set for this query as well as reveal a few additional options:
+
+* Execute
+* Update
+* New
+* Previous versions
+
+Alongside these options ZenQuery displays [REST API](#rest-api) links for this query above and below the result set
+preview.
+
+#### <a name="interpolation"/>Arguments and variable interpolation
+
+ZenQuery allows you to use the *?* operator for dynamically supplying one or multiple arguments to a query, e.g.:
+
+```
 SELECT * FROM table WHERE field = ?
+SELECT * FROM table WHERE field = ? OR another_field = ?
+```
 
-#### Transitive Navigation
+#### <a name="foreign-keys"/>Navigating entities referenced by foreign keys
 
-Primary and foreign keys
+If your database tables make use of foreign keys for referencing entities ZenQuery will automatically link those to the
+referencing entity and add a link to the API resource for the referenced entity.
 
-### API
+### <a name="rest-api"/>REST API
 
-#### Formats
+ZenQuery turns each SQL query into an easily accessible REST API endpoint that returns data in
+[a variety of formats](#formats).
+
+#### <a name="formats"/>Parameters and formats
 
 The ZenQuery REST API returns data in the following formats:
 
@@ -204,7 +246,7 @@ The ZenQuery REST API returns data in the following formats:
 * HTML
 * CSV
 
-For example:
+These are a few example URLs:
 
 * [/api/v1/resultSetForQuery/6.json](/api/v1/resultSetForQuery/6.json) (JSON)
 * [/api/v1/resultSetForQuery/6.xml](/api/v1/resultSetForQuery/6.xml) (XML)
@@ -215,8 +257,12 @@ For example:
 * [/api/v1/resultSetForQuery/horizontal/true/6.html](/api/v1/resultSetForQuery/horizontal/true/6.html)
 (styled HTML table)
 
+ZenQuery also allows you to add arguments to an API call, which will be used for
+[interpolating variables in the SQL query](#interpolation). The arguments are appended to the URL after the query ID.
+Multiple arguments are comma-separated. Moreover, you can also limit the size of the result set by adding a *size*
+parameter
 
-For instance:
+Again, these are a few example URLs:
 
 * [/api/v1/resultSetForQuery/6/45,SomeValue.json](/api/v1/resultSetForQuery/6/45,SomeValue.json)
 (JSON with interpolated variables)
@@ -235,8 +281,8 @@ to 3)
 * Conveniently edit your SQL queries and preview your data.
 * Version control for SQL queries.
 * Snapshots (i.e. materialized views if supported by RDBMS)
-* Transitive Navigation
-* Variable Interpolation
+* Transitive navigation (i.e. navigating entities referenced by foreign keys)
+* Variable interpolation
 * Limit and filter query results
 
 ## <a name="support"/>Support
