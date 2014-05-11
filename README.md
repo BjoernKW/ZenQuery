@@ -148,19 +148,24 @@ Primary and foreign keys
 
 ### API
 
-(/api/v1/resultSetForQuery/6.json)(/api/v1/resultSetForQuery/6.json)
-(/api/v1/resultSetForQuery/6.xml)(/api/v1/resultSetForQuery/6.xml)
-(/api/v1/resultSetForQuery/6.csv)
-(/api/v1/resultSetForQuery/vertical/false/6.html)
-(/api/v1/resultSetForQuery/vertical/true/6.html)
-(/api/v1/resultSetForQuery/horizontal/false/6.html)
-(/api/v1/resultSetForQuery/horizontal/true/6.html)
+* [/api/v1/resultSetForQuery/6.json](/api/v1/resultSetForQuery/6.json) (JSON)
+* [/api/v1/resultSetForQuery/6.xml](/api/v1/resultSetForQuery/6.xml) (XML)
+* [/api/v1/resultSetForQuery/6.csv](/api/v1/resultSetForQuery/6.csv) (CSV)
+* [/api/v1/resultSetForQuery/vertical/false/6.html](/api/v1/resultSetForQuery/vertical/false/6.html) (HTML list)
+* [/api/v1/resultSetForQuery/vertical/true/6.html](/api/v1/resultSetForQuery/vertical/true/6.html) (styled HTML list)
+* [/api/v1/resultSetForQuery/horizontal/false/6.html](/api/v1/resultSetForQuery/horizontal/false/6.html) (HTML table)
+* [/api/v1/resultSetForQuery/horizontal/true/6.html](/api/v1/resultSetForQuery/horizontal/true/6.html)
+(styled HTML table)
 
-(/api/v1/resultSetForQuery/6/45,SomeValue.json)
-(/api/v1/resultSetForQuery/6/size/3.json)
-(/api/v1/resultSetForQuery/6/45,SomeValue/size/3.json)
+For instance:
 
-[optional]
+* [/api/v1/resultSetForQuery/6/45,SomeValue.json](/api/v1/resultSetForQuery/6/45,SomeValue.json)
+(JSON with interpolated variables)
+* [/api/v1/resultSetForQuery/6/size/3.json](/api/v1/resultSetForQuery/6/size/3.json)
+(JSON with number of results limited to 3)
+* [/api/v1/resultSetForQuery/6/45,SomeValue/size/3.json](/api/v1/resultSetForQuery/6/45,SomeValue/size/3.json)
+(JSON with interpolated variables and number of results limited
+to 3)
 
 #### Formats
 
