@@ -138,16 +138,28 @@ directory of your Servlet container / application server.**
 
 #### Security
 
-spring.profiles.active=local or spring.profiles.active=public
+In order to set your basic security preferences for ZenQuery the environment variable *spring.profiles.active* has to be
+set to either 'local' or 'public', i.e.:
 
-How you set this system property depends on your environment. A common way for doing so is using the -D command line
-option for Java, e.g.:
+`spring.profiles.active=local`
 
-`java -DDATABASE_URL=postgres://username:password@localhost:5432/ZenQuery ...`
+or
 
-Set password in spring-security-public.xml in src/main/webapp in the ZenQuery directory.
+`spring.profiles.active=public`
+
+'local' will disable HTTP basic authentication whereas 'public' will enable it. The default password is 'pP2XLieKb6'.
+This password can (and should be) changed in spring-security-public.xml in src/main/webapp in the ZenQuery directory.
+Please restart the server after having changed the password. Please note: If you turn HTTP basic authentication on your
+API calls will have to send an HTTP basic authentication header with the appropriate username / password, too.
+
+How you set the *spring.profiles.active* system property depends on your environment. A common way for doing so is using
+the -D command line option for Java, e.g.:
+
+`java -Dspring.profiles.active=local ...`
 
 ## <a name="usage"/>Using ZenQuery
+
+Using ZenQuery is simple.
 
 ### Database Connections
 
@@ -228,14 +240,14 @@ to 3)
 If you have any questions, suggestions, problems or feature requests please contact us under
 [zenquery-support@fullmontymedia.com](mailto:zenquery-support@fullmontymedia.com)
 
-Please also visit [our website](http://www.zenqry.com/).
+Please also visit [our website](http://www.zenqry.com/) for further information.
 
 ## <a name="license"/>License and version information
 
 Commercial / premium versions of ZenQuery will include the source code (under
 [Apache License](http://www.apache.org/licenses/)).
 
-The free version for now is closed source.
+The free version is closed source for now.
 
 ### Version information
 
