@@ -37,9 +37,9 @@ There are two ways of installing ZenQuery:
 * using our [stand-alone Apache Tomcat server release](#stand-alone)
 * using our [WAR (web application archive) release](#war) with your own Servlet container or application server
 
-#### <a name="stand-alone">Stand-alone Apache Tomcat server</a>
+#### <a name="stand-alone"></a>Stand-alone Apache Tomcat server
 
-#### <a name="war">WAR</a>
+#### <a name="war"></a>WAR
 
 ### Using ZenQuery
 
