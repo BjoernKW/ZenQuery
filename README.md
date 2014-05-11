@@ -185,7 +185,6 @@ The ZenQuery REST API returns data in the following formats:
 * JSON
 * XML
 * HTML
-* CSV
 
 
 * [/api/v1/resultSetForQuery/6.json](/api/v1/resultSetForQuery/6.json) (JSON)
