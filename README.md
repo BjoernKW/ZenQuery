@@ -182,10 +182,13 @@ Primary and foreign keys
 #### Formats
 
 The ZenQuery REST API returns data in the following formats:
+
 * JSON
 * XML
 * HTML
+* CSV
 
+For example:
 
 * [/api/v1/resultSetForQuery/6.json](/api/v1/resultSetForQuery/6.json) (JSON)
 * [/api/v1/resultSetForQuery/6.xml](/api/v1/resultSetForQuery/6.xml) (XML)
@@ -198,6 +201,7 @@ The ZenQuery REST API returns data in the following formats:
 
 
 For instance:
+
 * [/api/v1/resultSetForQuery/6/45,SomeValue.json](/api/v1/resultSetForQuery/6/45,SomeValue.json)
 (JSON with interpolated variables)
 * [/api/v1/resultSetForQuery/6/size/3.json](/api/v1/resultSetForQuery/6/size/3.json)
