@@ -95,7 +95,7 @@ Please also visit [our website](http://www.zenqry.com/).
 
 ## <a name="license"/>License and version information
 
-Commercial / premium versions of ZenQuery will contain the ZenQuery source code (licensed under
+Commercial / premium versions of ZenQuery will contain the ZenQuery source code (under
 [Apache License](http://www.apache.org/licenses/)). The free version is closed source for now.
 
 ### Version information
