@@ -54,6 +54,7 @@ ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat]
 [https://]
 
 Unpack the archive and start the Tomcat server:
+
 ```
 tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
 ./bin/startup.sh
@@ -62,6 +63,7 @@ tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
 (under Windows use startup.bat instead)
 
 The server can be stopped with the following command:
+
 `./bin/shutdown.sh`
 
 (under Windows use shutdown.bat instead)
@@ -99,9 +101,11 @@ Then you need to set the system property DATABASE_URL according to your database
 
 How you set this system property depends on your environment. A common way for doing so is using the -D command line
 option for Java, e.g.:
+
 `java -DDATABASE_URL=postgres://username:password@localhost:5432/ZenQuery ...`
 
 The format for the URL is
+
 `PROTOCOL://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
 
 A PostgreSQL DATABASE_URL for example would look like this:
@@ -138,6 +142,7 @@ spring.profiles.active=local or spring.profiles.active=public
 
 How you set this system property depends on your environment. A common way for doing so is using the -D command line
 option for Java, e.g.:
+
 `java -DDATABASE_URL=postgres://username:password@localhost:5432/ZenQuery ...`
 
 Set password in spring-security-public.xml in src/main/webapp in the ZenQuery directory.
@@ -177,11 +182,11 @@ Primary and foreign keys
 #### Formats
 
 The ZenQuery REST API returns data in the following formats:
-
 * JSON
 * XML
 * HTML
 * CSV
+
 
 * [/api/v1/resultSetForQuery/6.json](/api/v1/resultSetForQuery/6.json) (JSON)
 * [/api/v1/resultSetForQuery/6.xml](/api/v1/resultSetForQuery/6.xml) (XML)
@@ -192,8 +197,8 @@ The ZenQuery REST API returns data in the following formats:
 * [/api/v1/resultSetForQuery/horizontal/true/6.html](/api/v1/resultSetForQuery/horizontal/true/6.html)
 (styled HTML table)
 
-For instance:
 
+For instance:
 * [/api/v1/resultSetForQuery/6/45,SomeValue.json](/api/v1/resultSetForQuery/6/45,SomeValue.json)
 (JSON with interpolated variables)
 * [/api/v1/resultSetForQuery/6/size/3.json](/api/v1/resultSetForQuery/6/size/3.json)
