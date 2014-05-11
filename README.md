@@ -91,20 +91,19 @@ In order to start and run properly two settings need to be configured for ZenQue
 DATABASE_URL=postgres://willy:willy@localhost:5432/ZenQuery
 
 * as400://
-* db2=jdbc:db2://
-* derby=jdbc:derby:
-* edbc=jdbc:ingres://
-* firebirdsql=jdbc:firebirdsql://
-* h2=jdbc:h2:./
-* hsqldb=jdbc:hsqldb:mem:
-* JTurbo=jdbc:JTurbo://
-* mysql=jdbc:mysql://
-* oracle=jdbc:oracle:thin:@
-* postgres=jdbc:postgresql://
-* postgresql=jdbc:postgresql://
-* sapdb=jdbc:sapdb://
-* sqlserver=jdbc:microsoft:sqlserver
-* sybase
+* db2://
+* derby://
+* edbc://
+* firebirdsql://
+* h2://
+* hsqldb://
+* JTurbo://
+* mysql://
+* oracle://
+* postgres://
+* sapdb://
+* sqlserver://
+* sybase://
 
 DDL script
 
@@ -145,7 +144,7 @@ Primary and foreign keys
 
 ### API
 
-\[optional\]
+[optional]
 
 #### Formats
 
