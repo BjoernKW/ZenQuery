@@ -45,8 +45,8 @@ ZenQuery has the following minimum requirements:
 
 There are two ways of installing ZenQuery:
 
-* using our [stand-alone release](#stand-alone)
-* using our [WAR (web application archive) release](#war) with your own Servlet container or application server
+* using the [stand-alone release](#stand-alone)
+* using the [WAR (web application archive) release](#war) with your own Servlet container or application server
 
 #### <a name="stand-alone"/>Stand-alone
 
