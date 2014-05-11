@@ -1,34 +1,61 @@
 ZenQuery
 ========
 
-## Enterprise Backend as a Service
+## Introduction - Enterprise Backend as a Service
 
-ZenQuery allows you to easily access databases through a REST API without any programming knowledge required.
-Get SQL result sets as JSON, XML or CSV data, which can easily be processed by tools such as MS Excel or in your own applications.
+ZenQuery allows you to easily access databases through a REST API.
 
-### Set your data free
+All you have to do is enter your database connection settings and ZenQuery will generate REST API endpoints for all
+your database tables views. Moreover, you can easily add custom SQL queries for access via REST API calls.
 
-Many enterprise companies amass huge amounts of data in many different data stores. Data is kept in silos, which are usually hard to access.
-Creating new applications that make use of this data such as mobile apps is hard and often takes a lot of time and unnecessary overhead.
+ZenQuery provides SQL result sets as JSON, XML, HTML or CSV data.
 
-### "The future is already here - it's just not very evenly distributed." - William Gibson
-
-While today REST APIs allow you to quickly and flexibly access data and services from a multitude of sources,
-putting internally available data to good use is still comparatively difficult. ZenQuery is an 'enterprise backend as a service'
-that alleviates this problem.
-
-ZenQuery provides you with an instant REST API for your SQL queries. Anything that can be expressed by SELECT * FROM ...
-ZenQuery turns into a conveniently accessible API.
+ZenQuery is an Enterprise Backend as a Service along lines of [Parse](https://parse.com/) but for your own databases.
+It's like [Heroku Dataclips](https://devcenter.heroku.com/articles/dataclips) but for non-cloud, on-premises databases.
 
 ZenQuery is a Java EE application that's securely hosted on your servers. No data ever leaves your company!
 
 ## Licensing
 
+Commercial / premium versions of ZenQuery will contain the ZenQuery source code. The free version is closed source
+for now.
+
+## Requirements
+
+ZenQuery has the following minimum requirements:
+
+* Java 6
+* a Servlet container or application server (stand-alone option available)
+* a database server (embedded H2 database available)
+
 ## Getting started
 
-### Requirements
+### Installlation
 
-### Features
+There are two ways to install ZenQuery:
+
+* using our stand-alone Apache Tomcat server
+* using a WAR (web application archive) with your own Servlet container or application server
+
+#### Stand-alone Apache Tomcat
+
+#### WAR
+
+### Using ZenQuery
+
+#### Database Connections
+
+#### Queries
+
+##### Transitive Navigation
+
+Primary and foreign keys
+
+### API
+
+#### Formats
+
+## Features
 
 * Generate REST APIs from SQL queries.
 * Access your data in JSON, XML or CSV formats.
@@ -41,23 +68,11 @@ ZenQuery is a Java EE application that's securely hosted on your servers. No dat
 * Variable Interpolation
 * Limit query results
 
-### Installation
-
-### Start Using ZenQuery
-
-## Usage
-
-### Database Connections
-
-### Queries
-
-#### Transitive Navigation
-Primary and foreign keys
-
-### API
-
-#### Formats
-
 ## Support
 
+If you have any questions, suggestions, problems or feature requests please contact us under
+[zenquery-support@fullmontymedia.com](mailto:zenquery-support@fullmontymedia.com)
+
 ## Version information
+
+Current version: 1.0
