@@ -22,7 +22,7 @@ ZenQuery
 ZenQuery allows you to easily access databases through a REST API.
 
 All you have to do is enter your database connection settings and ZenQuery will generate REST API endpoints for all
-your database tables views. Moreover, you can easily add custom SQL queries for access via REST API calls.
+your database tables and views. Moreover, you can easily add custom SQL queries for access via REST API calls.
 
 ZenQuery provides SQL result sets as JSON, XML, HTML or CSV data.
 
@@ -51,7 +51,7 @@ There are two ways of installing ZenQuery:
 #### <a name="stand-alone"/>Stand-alone
 
 ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat](http://tomcat.apache.org/)) under
-[https://]
+[https://](https://)
 
 Unpack the archive and start the Tomcat server:
 
@@ -77,7 +77,7 @@ database. See the section on [configuration](#configuration) below for further i
 #### <a name="war"/>WAR
 
 ZenQuery is available as a WAR release for usage in your favourite Servlet container / application server under
-[https://]
+[https://](https://)
 
 First, you need to [configure](#configuration) a few settings before installing ZenQuery (see the section on
 [configuration](#configuration) below).
@@ -95,7 +95,12 @@ In order to start and run properly two settings need to be configured for ZenQue
 
 If you're using a dedicated database for ZenQuery (as you probably should for production) you first need to run a DDL
 script that creates the necessary tables. DDL scripts for the following databases are included in src/main/resources/sql
-in the ZenQuery directory.
+in the ZenQuery directory:
+
+* H2
+* MySQL
+* Oracle Database
+* PostgreSQL
 
 Then you need to set the system property DATABASE_URL according to your database connection settings.
 
@@ -199,9 +204,9 @@ The following JDBC connection protocols / RDBMS are supported:
 RDBMS you have to add the appropriate JDBC driver to the shared libraries directory of your Servlet container /
 application server.**
 
-After having entered a valid database connection will automatically create *SELECT * FROM* queries for each table and
-view in your database. If your database uses foreign keys ZenQuery will extend those queries to include [links to
-referenced database entity resources](#foreign-keys).
+After having entered a valid database connection ZenQuery will automatically create *SELECT * FROM* queries for each
+table and view in your database. If your database uses foreign keys ZenQuery will extend those queries to include
+[links to referenced database entity resources](#foreign-keys).
 
 ### <a name="queries"/>Queries
 
@@ -227,7 +232,7 @@ SELECT * FROM table WHERE field = ?
 SELECT * FROM table WHERE field = ? OR another_field = ?
 ```
 
-These arguments can then be supplied as [additional URL parameters](#formats) to your API call.s
+These arguments can then be supplied as [additional URL parameters](#formats) to your API calls.
 
 #### <a name="foreign-keys"/>Navigating entities referenced by foreign keys
 
@@ -278,14 +283,14 @@ to 3)
 
 * Generate REST APIs from SQL queries.
 * Access your data in JSON, XML or CSV formats.
-* Supports all major RDBMS (including Oracle Database, Microsoft SQL Server, IBM DB2, PostgreSQL and MySQL).
+* Supports all major RDBMS (including IBM DB2, Microsoft SQL Server, MySQL, Oracle Database and PostgreSQL).
 * Entirely hosted on-premises. Your data stays with you all the time!
 * Conveniently edit your SQL queries and preview your data.
 * Version control for SQL queries.
-* Snapshots (i.e. materialized views if supported by RDBMS)
-* Transitive navigation (i.e. navigating entities referenced by foreign keys)
-* Variable interpolation
-* Limit and filter query results
+* Snapshots (i.e. materialized views if supported by RDBMS).
+* Transitive navigation (i.e. navigating entities referenced by foreign keys).
+* Variable interpolation.
+* Limit and filter query results.
 
 ## <a name="support"/>Support
 
@@ -296,7 +301,7 @@ Please also visit [our website](http://www.zenqry.com/) for further information.
 
 ## <a name="license"/>License and version information
 
-Commercial / premium versions of ZenQuery will include the source code (under
+Commercial / premium versions of ZenQuery include the source code (under
 [Apache License](http://www.apache.org/licenses/)).
 
 The free version is closed source for now.
