@@ -116,6 +116,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         List<Table> tables =
                 jdbcTemplate.query(selectAllUserTablesSql, new TableMapper());
 
+        try {
             for (Table table : tables) {
                 String tableName = table.getName();
 
@@ -155,8 +156,9 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
                 tableReferences.put(tableName, tableReference);
             }
-
-
+        } catch (Exception e) {
+            logger.debug(e);
+        }
 
         for (Table table : tables) {
             String tableName = table.getName();
