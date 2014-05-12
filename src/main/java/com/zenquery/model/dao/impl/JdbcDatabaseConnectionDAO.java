@@ -105,7 +105,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
                 databaseConnection.getPassword()
         );
 
-        Map<String, Long> tableQueryIDs = new HashMap<String, Long>();
+        Map<String, Long> singleEntityQueries = new HashMap<String, Long>();
         Map<String, String> tablePrimaryKeys = new HashMap<String, String>();
         Map<String, List<ForeignKey>> tableForeignKeys = new HashMap<String, List<ForeignKey>>();
         Map<String, String> tableReferences = new HashMap<String, String>();
@@ -122,16 +122,20 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
                 String selectPrimaryKeyForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectPrimaryKeyForTable");
                 jdbcTemplate = new JdbcTemplate(dataSource);
-                String primaryKeyColumnName = jdbcTemplate.query(selectPrimaryKeyForTable, new Object[] { tableName }, new PrimaryKeyMapper()).get(0).getColumnName();
+                List<PrimaryKey> primaryKeys = jdbcTemplate.query(selectPrimaryKeyForTable, new Object[] { tableName }, new PrimaryKeyMapper());
 
-                tablePrimaryKeys.put(tableName, primaryKeyColumnName);
+                if (primaryKeys.size() > 0) {
+                    String primaryKeyColumnName = jdbcTemplate.query(selectPrimaryKeyForTable, new Object[] { tableName }, new PrimaryKeyMapper()).get(0).getColumnName();
 
-                Query queryForSingleEntity = new Query();
-                queryForSingleEntity.setDatabaseConnectionId(keyHolder.getKey().intValue());
-                queryForSingleEntity.setContent("SELECT * FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
-                Number tableQueryId = queryDAO.insert(queryForSingleEntity);
+                    tablePrimaryKeys.put(tableName, primaryKeyColumnName);
 
-                tableQueryIDs.put(tableName, tableQueryId.longValue());
+                    Query queryForSingleEntity = new Query();
+                    queryForSingleEntity.setDatabaseConnectionId(keyHolder.getKey().intValue());
+                    queryForSingleEntity.setContent("SELECT * FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                    Number tableQueryId = queryDAO.insert(queryForSingleEntity);
+
+                    singleEntityQueries.put(tableName, tableQueryId.longValue());
+                }
 
                 String selectAllForeignKeysForTable = databaseDriverProperties.getProperty(dataSource.getDriverClassName() + ".queries.selectAllForeignKeysForTable");
                 jdbcTemplate = new JdbcTemplate(dataSource);
@@ -145,7 +149,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
                 if (foreignKeys.size() > 0) {
                     for (ForeignKey foreignKey : foreignKeys) {
-                        Long queryId = tableQueryIDs.get(foreignKey.getTargetTable());
+                        Long queryId = singleEntityQueries.get(foreignKey.getTargetTable());
                         String resultSetForQueryUrl = "/api/v1/resultSetForQuery/" + queryId;
 
                         tableReference += ", '" + resultSetForQueryUrl + "/' "
@@ -171,9 +175,12 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
             queryDAO.insert(query);
 
             try {
-                Query queryForSingleEntity = queryDAO.find(tableQueryIDs.get(tableName).intValue());
-                queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
-                queryDAO.update(tableQueryIDs.get(tableName).intValue(), queryForSingleEntity);
+                Number tableQueryId = singleEntityQueries.get(tableName);
+                if (tableQueryId != null) {
+                    Query queryForSingleEntity = queryDAO.find(tableQueryId.intValue());
+                    queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                    queryDAO.update(singleEntityQueries.get(tableName).intValue(), queryForSingleEntity);
+                }
             } catch (Exception e) {
                 logger.debug(e);
             }
