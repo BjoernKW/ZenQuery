@@ -15,7 +15,7 @@ ZenQuery
 
 **[Support](#support)**
 
-**[License and version information](#license)**
+**[Version information](#license)**
 
 ## <a name="introduction"/>Introduction - Enterprise Backend as a Service
 
@@ -299,13 +299,6 @@ If you have any questions, suggestions, problems or feature requests please cont
 
 Please also visit [our website](http://www.zenqry.com/) for further information.
 
-## <a name="license"/>License and version information
-
-Commercial / premium versions of ZenQuery include the source code (under
-[Apache License](http://www.apache.org/licenses/)).
-
-The free version is closed source for now.
-
-### Version information
+## <a name="license"/>Version information
 
 Current version: 1.0
