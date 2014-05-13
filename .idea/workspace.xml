@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55df1619-c176-4790-817d-88667c2c9f19" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="55df1619-c176-4790-817d-88667c2c9f19" name="Default" comment="" />
     <ignored path="ZenQuery.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +36,7 @@
       <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="2040" max-vertical-offset="4605">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2040" max-vertical-offset="4605">
               <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding />
             </state>
@@ -62,14 +59,14 @@
       <file leaf-file-name="JdbcDatabaseConnectionDAO.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44241315" vertical-offset="2038" max-vertical-offset="3615">
+            <state vertical-scroll-proportion="0.30212235" vertical-offset="2038" max-vertical-offset="3615">
               <caret line="180" column="60" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="60" />
               <folding>
-                <marker date="1399980304000" expanded="true" signature="1812:1859" placeholder="SELECT * FRO..database_connections..." />
-                <marker date="1399980304000" expanded="true" signature="2178:2212" placeholder="SELECT * FRO..database_connections..." />
-                <marker date="1399980304000" expanded="true" signature="2541:2625" placeholder="INSERT INTO ..." />
-                <marker date="1399980304000" expanded="true" signature="8369:8459" placeholder="UPDATE datab..." />
-                <marker date="1399980304000" expanded="true" signature="8994:9039" placeholder="DELETE FROM ..." />
+                <marker date="1399981045000" expanded="true" signature="1812:1859" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1399981045000" expanded="true" signature="2178:2212" placeholder="SELECT * FRO..database_connections..." />
+                <marker date="1399981045000" expanded="true" signature="2541:2625" placeholder="INSERT INTO ..." />
+                <marker date="1399981045000" expanded="true" signature="8369:8459" placeholder="UPDATE datab..." />
+                <marker date="1399981045000" expanded="true" signature="8994:9039" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -201,7 +198,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -456,6 +452,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -512,6 +509,19 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="myFilePath" />
@@ -529,19 +539,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -597,7 +594,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29364163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -617,6 +613,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29364163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1025,14 +1022,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zenquery/model/dao/impl/JdbcDatabaseConnectionDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44241315" vertical-offset="2038" max-vertical-offset="3615">
+        <state vertical-scroll-proportion="0.30212235" vertical-offset="2038" max-vertical-offset="3615">
           <caret line="180" column="60" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="60" />
           <folding>
-            <marker date="1399980304000" expanded="true" signature="1812:1859" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399980304000" expanded="true" signature="2178:2212" placeholder="SELECT * FRO..database_connections..." />
-            <marker date="1399980304000" expanded="true" signature="2541:2625" placeholder="INSERT INTO ..." />
-            <marker date="1399980304000" expanded="true" signature="8369:8459" placeholder="UPDATE datab..." />
-            <marker date="1399980304000" expanded="true" signature="8994:9039" placeholder="DELETE FROM ..." />
+            <marker date="1399981045000" expanded="true" signature="1812:1859" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399981045000" expanded="true" signature="2178:2212" placeholder="SELECT * FRO..database_connections..." />
+            <marker date="1399981045000" expanded="true" signature="2541:2625" placeholder="INSERT INTO ..." />
+            <marker date="1399981045000" expanded="true" signature="8369:8459" placeholder="UPDATE datab..." />
+            <marker date="1399981045000" expanded="true" signature="8994:9039" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
