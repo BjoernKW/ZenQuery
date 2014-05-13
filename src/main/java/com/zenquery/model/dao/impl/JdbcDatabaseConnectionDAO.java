@@ -171,14 +171,14 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
 
             Query query = new Query();
             query.setDatabaseConnectionId(keyHolder.getKey().intValue());
-            query.setContent("SELECT *" + tableReference + " FROM " + tableName);
+            query.setContent("SELECT " + tableName + ".*" + tableReference + " FROM " + tableName);
             queryDAO.insert(query);
 
             try {
                 Number tableQueryId = singleEntityQueries.get(tableName);
                 if (tableQueryId != null) {
                     Query queryForSingleEntity = queryDAO.find(tableQueryId.intValue());
-                    queryForSingleEntity.setContent("SELECT *" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
+                    queryForSingleEntity.setContent("SELECT " + tableName + ".*" + tableReference + " FROM " + tableName + " WHERE " + primaryKeyColumnName + " = ?");
                     queryDAO.update(singleEntityQueries.get(tableName).intValue(), queryForSingleEntity);
                 }
             } catch (Exception e) {
