@@ -135,9 +135,6 @@ directory of your Servlet container / application server:
 * sqlserver (Microsoft SQL Server)
 * sybase (Sybase)
 
-ZenQuery has been tested with H2, MySQL, Oracle Database and PostgreSQL as application databases. If you run into any
-problems with another RDBMS please don't hesitate to [contact us](mailto:zenquery-support@fullmontymedia.com).
-
 **Please note: Only H2, MySQL and PostgreSQL drivers are included with ZenQuery. If you want to use one of the other
 RDBMS you have to add the appropriate JDBC driver to the shared libraries directory of your Servlet container /
 application server.**
