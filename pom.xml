@@ -17,6 +17,14 @@
         <jackson.version>2.2.2</jackson.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>local</id>
+            <name>Local</name>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -282,6 +290,13 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>1.4.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>license4j</groupId>
+            <artifactId>license4j-runtime-library</artifactId>
+            <version>4.3.5</version>
+            <scope>package</scope>
         </dependency>
     </dependencies>
     <build>
