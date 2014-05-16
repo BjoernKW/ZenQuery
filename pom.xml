@@ -296,7 +296,6 @@
             <groupId>license4j</groupId>
             <artifactId>license4j-runtime-library</artifactId>
             <version>4.3.5</version>
-            <scope>package</scope>
         </dependency>
     </dependencies>
     <build>
