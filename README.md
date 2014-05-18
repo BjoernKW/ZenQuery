@@ -62,6 +62,8 @@ tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
 
 (under Windows use startup.bat instead)
 
+ZenQuery is available under [http://localhost:8080/](http://localhost:8080/).
+
 The server can be stopped with the following command:
 
 `./bin/shutdown.sh`
