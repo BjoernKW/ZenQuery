@@ -51,7 +51,7 @@ There are two ways of installing ZenQuery:
 #### <a name="stand-alone"/>Stand-alone
 
 ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat](http://tomcat.apache.org/)) under
-[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz](https://http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz)
+[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz](http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz)
 
 Unpack the archive and start the Tomcat server:
 
