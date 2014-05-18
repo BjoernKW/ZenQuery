@@ -12,18 +12,43 @@
     <url>http://zenquery.com</url>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.0.3.RELEASE</spring.version>
         <spring.security.version>3.2.3.RELEASE</spring.security.version>
         <jackson.version>2.2.2</jackson.version>
+        <license.file>${project.basedir}/licenses/1400355014213.l4j</license.file>
     </properties>
 
     <repositories>
         <repository>
-            <id>local</id>
-            <name>Local</name>
+            <id>vendor</id>
+            <name>Vendor</name>
             <url>file://${project.basedir}/lib</url>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>free-limited</id>
+            <activation>
+                <property>
+                    <name>free-limited</name>
+                </property>
+            </activation>
+            <properties>
+                <license.file>${project.basedir}/licenses/1400355053273.l4j</license.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>server-unlimited</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <license.file>${project.basedir}/licenses/1400355014213.l4j</license.file>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -348,6 +373,25 @@
                 <version>2.9</version>
                 <configuration>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-license</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="Copy license file">
+                                <copy file="${license.file}" tofile="${project.basedir}/src/main/resources/license.l4j" overwrite="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
