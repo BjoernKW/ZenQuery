@@ -16,7 +16,6 @@
         <spring.version>4.0.3.RELEASE</spring.version>
         <spring.security.version>3.2.3.RELEASE</spring.security.version>
         <jackson.version>2.2.2</jackson.version>
-        <license.file>${project.basedir}/licenses/1400355014213.l4j</license.file>
     </properties>
 
     <repositories>
@@ -37,7 +36,31 @@
             </activation>
             <properties>
                 <license.file>${project.basedir}/licenses/1400355053273.l4j</license.file>
+                <license.file.default>${project.basedir}/licenses/1400355014213.l4j</license.file.default>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <id>copy-default-license</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target name="Copy default license file">
+                                        <copy file="${license.file.default}" tofile="${project.basedir}/src/main/resources/license.l4j" overwrite="true" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>server-unlimited</id>
@@ -381,7 +404,7 @@
                 <executions>
                     <execution>
                         <id>copy-license</id>
-                        <phase>prepare-package</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
