@@ -304,3 +304,5 @@ Please also visit [our website](http://www.zenqry.com/) for further information.
 ## <a name="license"/>Version information
 
 Current version: 1.0
+
+The current free version has a valid license until 15 August 2014.
