@@ -7,7 +7,7 @@
     <groupId>groupId</groupId>
     <artifactId>ZenQuery</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <name>ZenQuery</name>
     <url>http://zenquery.com</url>
 
@@ -344,6 +344,12 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>1.4.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.3</version>
         </dependency>
 
         <dependency>
