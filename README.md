@@ -51,7 +51,7 @@ There are two ways of installing ZenQuery:
 #### <a name="stand-alone"/>Stand-alone
 
 ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat](http://tomcat.apache.org/)) under
-[https://](https://)
+[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz](http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz)
 
 Unpack the archive and start the Tomcat server:
 
@@ -61,6 +61,8 @@ tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
 ```
 
 (under Windows use startup.bat instead)
+
+After that ZenQuery is available under [http://localhost:8080/](http://localhost:8080/).
 
 The server can be stopped with the following command:
 
@@ -77,7 +79,10 @@ database. See the section on [configuration](#configuration) below for further i
 #### <a name="war"/>WAR
 
 ZenQuery is available as a WAR release for usage in your favourite Servlet container / application server under
-[https://](https://)
+[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery.war](http://fullmontymedia.com/ZenQuery/downloads/ZenQuery.war)
+
+If you need a version that runs under JDK 1.6 (Java EE 6) please download ZenQuery from
+[http://fullmontymedia.com/ZenQuery/downloads/ZenQueryJDK16.war](http://fullmontymedia.com/ZenQuery/downloads/ZenQueryJDK16.war)
 
 First, you need to [configure](#configuration) a few settings before installing ZenQuery (see the section on
 [configuration](#configuration) below).
@@ -299,3 +304,5 @@ Please also visit [our website](http://www.zenqry.com/) for further information.
 ## <a name="license"/>Version information
 
 Current version: 1.0
+
+The current free version has a valid license until 15 August 2014.
