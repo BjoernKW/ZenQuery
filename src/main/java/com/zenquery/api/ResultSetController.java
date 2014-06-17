@@ -14,7 +14,6 @@ import com.zenquery.model.Query;
 import com.zenquery.model.dao.DatabaseConnectionDAO;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.util.BasicDataSourceFactory;
-import com.zenquery.util.LicenseUtil;
 import com.zenquery.util.MapEntryConverter;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
@@ -39,9 +38,6 @@ public class ResultSetController {
 
     @Autowired
     private BasicDataSourceFactory dataSourceFactory;
-
-    @Autowired
-    private LicenseUtil licenseUtil;
 
     @RequestMapping(
             value = "/{id}",
