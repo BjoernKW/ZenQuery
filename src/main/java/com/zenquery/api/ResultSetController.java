@@ -1,5 +1,6 @@
 package com.zenquery.api;
 
+import au.com.bytecode.opencsv.CSVWriter;
 import com.hp.gagawa.java.elements.Strong;
 import com.hp.gagawa.java.elements.Table;
 import com.hp.gagawa.java.elements.Td;
@@ -22,9 +23,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.io.StringWriter;
+import java.util.*;
 
 @Controller
 @RequestMapping("/api/v1/resultSetForQuery")
@@ -109,9 +109,7 @@ public class ResultSetController {
     ) {
         List<Map<String, Object>> rows = getRows(id, null, null);
 
-        StringBuilder csvBuilder = getCsvBuilder(rows);
-
-        return csvBuilder.toString();
+        return getCsvResults(rows);
     }
 
     @RequestMapping(
@@ -125,9 +123,7 @@ public class ResultSetController {
     ) {
         List<Map<String, Object>> rows = getRows(id, variables, null);
 
-        StringBuilder csvBuilder = getCsvBuilder(rows);
-
-        return csvBuilder.toString();
+        return getCsvResults(rows);
     }
 
     @RequestMapping(
@@ -141,9 +137,7 @@ public class ResultSetController {
     ) {
         List<Map<String, Object>> rows = getRows(id, null, size);
 
-        StringBuilder csvBuilder = getCsvBuilder(rows);
-
-        return csvBuilder.toString();
+        return getCsvResults(rows);
     }
 
     @RequestMapping(
@@ -158,9 +152,7 @@ public class ResultSetController {
     ) {
         List<Map<String, Object>> rows = getRows(id, variables, size);
 
-        StringBuilder csvBuilder = getCsvBuilder(rows);
-
-        return csvBuilder.toString();
+        return getCsvResults(rows);
     }
 
     @RequestMapping(
@@ -403,25 +395,38 @@ public class ResultSetController {
         return rows;
     }
 
-    private StringBuilder getCsvBuilder(List<Map<String, Object>> rows) {
-        StringBuilder csvBuilder = new StringBuilder();
+    private String getCsvResults(List<Map<String, Object>> rows) {
+        List<String[]> outputRows = new ArrayList<String[]>();
         Boolean first = true;
+
+        StringWriter stringWriter = new StringWriter();
+        CSVWriter csvWriter = new CSVWriter(stringWriter);
 
         for (Map<String, Object> row : rows) {
             if (first) {
-                for (String key : row.keySet()) {
-                    csvBuilder.append(key + ";");
-                }
-                csvBuilder.append("\r\n");
+                Set<String> keys = row.keySet();
+                String[] columnTitles = new String[keys.size()];
+                columnTitles = keys.toArray(columnTitles);
+                outputRows.add(columnTitles);
                 first = false;
             }
 
-            for (String key : row.keySet()) {
-                csvBuilder.append(row.get(key) + ";");
+            Collection<Object> values = row.values();
+            Object[] columnValues = new Object[values.size()];
+            columnValues = values.toArray(columnValues);
+
+            Integer numberOfValues = values.size();
+            String[] columnOutputValues = new String[numberOfValues];
+            for (int i = 0; i < numberOfValues; i++) {
+                Object columnValue = columnValues[i];
+                columnOutputValues[i] = columnValue.toString();
             }
-            csvBuilder.append("\r\n");
+            outputRows.add(columnOutputValues);
         }
-        return csvBuilder;
+
+        csvWriter.writeAll(outputRows);
+
+        return stringWriter.toString();
     }
 
     private XStream getXMLStream() {
