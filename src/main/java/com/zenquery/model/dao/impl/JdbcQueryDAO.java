@@ -51,6 +51,7 @@ public class JdbcQueryDAO implements QueryDAO {
         this.queryVersionDAO = queryVersionDAO;
     }
 
+    @Override
     public Query find(Integer id) {
         String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.find");
 
@@ -61,6 +62,7 @@ public class JdbcQueryDAO implements QueryDAO {
         return query;
     }
 
+    @Override
     public Query findByKey(String key) {
         String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findByKey");
 
@@ -71,6 +73,7 @@ public class JdbcQueryDAO implements QueryDAO {
         return query;
     }
 
+    @Override
     public List<Query> findByDatabaseConnectionId(Integer id) {
         String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findByDatabaseConnectionId");
 
@@ -81,6 +84,7 @@ public class JdbcQueryDAO implements QueryDAO {
         return queries;
     }
 
+    @Override
     public List<Query> findAll() {
         String sql = databaseDriverProperties.getProperty(dbUrl.getScheme() + ".queries.findAll");
 
@@ -91,6 +95,7 @@ public class JdbcQueryDAO implements QueryDAO {
         return queries;
     }
 
+    @Override
     public Number insert(final Query query) {
         final String sql = "INSERT INTO queries (key, database_connection_id) VALUES (?, ?)";
 
@@ -126,6 +131,7 @@ public class JdbcQueryDAO implements QueryDAO {
         return keyHolder.getKey();
     }
 
+    @Override
     public void update(Integer id, Query query) {
         QueryVersion previousQueryVersion = queryVersionDAO.findCurrentByQueryId(id);
 
@@ -143,6 +149,7 @@ public class JdbcQueryDAO implements QueryDAO {
         }
     }
 
+    @Override
     public void delete(Integer id) {
         queryVersionDAO.deleteByQueryId(id);
 
@@ -152,6 +159,7 @@ public class JdbcQueryDAO implements QueryDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
+    @Override
     public void deleteByDatabaseConnectionId(Integer id) {
         List<Query> queries = findByDatabaseConnectionId(id);
         for (Query query : queries) {
