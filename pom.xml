@@ -7,7 +7,7 @@
     <groupId>groupId</groupId>
     <artifactId>ZenQuery</artifactId>
     <packaging>war</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <name>ZenQuery</name>
     <url>http://zenquery.com</url>
 
@@ -35,7 +35,7 @@
                 </property>
             </activation>
             <properties>
-                <license.file>${project.basedir}/licenses/1400355053273.l4j</license.file>
+                <license.file>${project.basedir}/licenses/1404842718499.l4j</license.file>
                 <license.file.default>${project.basedir}/licenses/1400355014213.l4j</license.file.default>
             </properties>
             <build>
