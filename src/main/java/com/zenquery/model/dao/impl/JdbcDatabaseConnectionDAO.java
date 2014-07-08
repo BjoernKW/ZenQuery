@@ -54,6 +54,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         this.dataSourceFactory = dataSourceFactory;
     }
 
+    @Override
     public DatabaseConnection find(Integer id) {
         String sql = "SELECT * FROM database_connections WHERE id = ?";
 
@@ -64,6 +65,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnection;
     }
 
+    @Override
     public List<DatabaseConnection> findAll() {
         String sql = "SELECT * FROM database_connections";
 
@@ -74,6 +76,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return databaseConnections;
     }
 
+    @Override
     public Number insert(final DatabaseConnection databaseConnection) {
         final String sql = "INSERT INTO database_connections (name, url, username, password) VALUES (?, ?, ?, ?)";
 
@@ -189,6 +192,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         return keyHolder.getKey();
     }
 
+    @Override
     public void update(Integer id, DatabaseConnection databaseConnection) {
         String sql = "UPDATE database_connections SET name = ?, url = ?, username = ?, password = ? WHERE id = ?";
 
@@ -205,6 +209,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         );
     }
 
+    @Override
     public void delete(Integer id) {
         queryDAO.deleteByDatabaseConnectionId(id);
 
