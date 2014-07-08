@@ -7,7 +7,7 @@
     <groupId>groupId</groupId>
     <artifactId>ZenQuery</artifactId>
     <packaging>war</packaging>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <name>ZenQuery</name>
     <url>http://zenquery.com</url>
 
