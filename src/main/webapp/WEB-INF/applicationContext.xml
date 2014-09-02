@@ -38,7 +38,7 @@
     </bean>
 
     <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+          class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="#{ @databaseDriverProperties.getProperty('drivers.' + @dbUrl.getScheme()) }"/>
         <property name="url" value="#{ @databaseDriverProperties.getProperty('protocols.' + @dbUrl.getScheme()) + @dbUrl.getHost() + (@dbUrl.getPort() != -1 ? ':' + @dbUrl.getPort() : '') + @dbUrl.getPath() }"/>
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
