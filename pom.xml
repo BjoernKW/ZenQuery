@@ -357,6 +357,13 @@
             <artifactId>license4j-runtime-library</artifactId>
             <version>4.3.6</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.newrelic.agent.java</groupId>
+            <artifactId>newrelic-agent</artifactId>
+            <version>3.12.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>ZenQuery</finalName>
@@ -393,6 +400,18 @@
                                     <destFileName>jetty-runner.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-new-relic</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
+                            <includeArtifactIds>newrelic-agent</includeArtifactIds>
+                            <stripVersion>true</stripVersion>
                         </configuration>
                     </execution>
                 </executions>
