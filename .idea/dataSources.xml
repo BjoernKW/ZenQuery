@@ -6,11 +6,7 @@
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/ZenQuery</jdbc-url>
-      <user-name>willy</user-name>
-      <user-password>dfdddfc3dfc6dfc6dfd3</user-password>
-      <schema-pattern>ZenQuery.public</schema-pattern>
       <libraries />
     </data-source>
   </component>
 </project>
-
