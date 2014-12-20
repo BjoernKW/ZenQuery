@@ -5,10 +5,9 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryDAO;
 import com.zenquery.model.dao.QueryVersionDAO;
 import com.zenquery.util.StringUtil;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -172,7 +171,7 @@ public class JdbcQueryDAO implements QueryDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
-    private static class QueryMapper implements ParameterizedRowMapper<Query> {
+    private static class QueryMapper implements RowMapper<Query> {
         public Query mapRow(ResultSet rs, int rowNum) throws SQLException {
             Query query = new Query();
 
