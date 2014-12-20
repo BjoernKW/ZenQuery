@@ -13,9 +13,9 @@ ZenQuery
 
 **[Features](#features)**
 
-**[Support](#support)**
+**[UI](#support)**
 
-**[Version information](#license)**
+**[Support](#support)**
 
 ## <a name="introduction"/>Introduction - Enterprise Backend as a Service
 
@@ -29,7 +29,7 @@ ZenQuery provides SQL result sets as JSON, XML, HTML or CSV data.
 ZenQuery is an Enterprise Backend as a Service along lines of [Parse](https://parse.com/) but for your own databases.
 It's like [Heroku Dataclips](https://devcenter.heroku.com/articles/dataclips) but for non-cloud, on-premises databases.
 
-ZenQuery is a Java EE application that's securely hosted on your servers. No data ever leaves your company!
+ZenQuery is a JavaEE application that's securely hosted on your servers. No data ever leaves your company!
 
 ## <a name="requirements"/>Requirements
 
@@ -43,51 +43,7 @@ ZenQuery has the following minimum requirements:
 
 ### Installation
 
-There are two ways of installing ZenQuery:
-
-* using the [stand-alone release](#stand-alone)
-* using the [WAR (web application archive) release](#war) with your own Servlet container or application server
-
-#### <a name="stand-alone"/>Stand-alone
-
-ZenQuery is available as a stand-alone release (using the latest [Apache Tomcat](http://tomcat.apache.org/)) under
-[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz](http://fullmontymedia.com/ZenQuery/downloads/ZenQuery-standalone.tar.gz)
-
-Unpack the archive and start the Tomcat server:
-
-```
-tar -xzf ZenQuery-standalone.tar.gz && cd ZenQuery-standalone
-./bin/startup.sh
-```
-
-(under Windows use startup.bat instead)
-
-After that ZenQuery is available under [http://localhost:8080/](http://localhost:8080/).
-
-The server can be stopped with the following command:
-
-`./bin/shutdown.sh`
-
-(under Windows use shutdown.bat instead)
-
-The stand-alone version uses a pre-configured embedded H2 database for storing application data. This database is
-located under src/main/resources/sql (files: ZenQuery.mv.db and ZenQuery.trace.db) in the ZenQuery directory.
-
-For testing purposes this is perfectly fine. For production purposes, however, you should use your own, dedicated
-database. See the section on [configuration](#configuration) below for further information.
-
-#### <a name="war"/>WAR
-
-ZenQuery is available as a WAR release for usage in your favourite Servlet container / application server under
-[http://fullmontymedia.com/ZenQuery/downloads/ZenQuery.war](http://fullmontymedia.com/ZenQuery/downloads/ZenQuery.war)
-
-If you need a version that runs under JDK 1.6 (Java EE 6) please download ZenQuery from
-[http://fullmontymedia.com/ZenQuery/downloads/ZenQueryJDK16.war](http://fullmontymedia.com/ZenQuery/downloads/ZenQueryJDK16.war)
-
-First, you need to [configure](#configuration) a few settings before installing ZenQuery (see the section on
-[configuration](#configuration) below).
-
-Afterwards, install and deploy the downloaded WAR file as usual.
+ZenQuery can be built and installed as a standard web application archive (WAR). Any JavaEE 7 or JavaEE 6 servlet container should work.
 
 #### <a name="configuration"/>Configuration
 
@@ -294,15 +250,13 @@ to 3)
 * Variable interpolation.
 * Limit and filter query results.
 
+## <a name="ui"/>UI
+
+The ZenQuery [UI source code](https://github.com/BjoernKW/ZenQueryUI) is available [here](https://github.com/BjoernKW/ZenQueryUI).
+
 ## <a name="support"/>Support
 
 If you have any questions, suggestions, problems or feature requests please contact us under
-[zenquery-support@fullmontymedia.com](mailto:zenquery-support@fullmontymedia.com)
+[zenquery-support@fullmontty.com](mailto:zenquery-support@fullmontty.com)
 
 Please also visit [our website](http://www.zenqry.com/) for further information.
-
-## <a name="license"/>Version information
-
-Current version: 1.1
-
-The current free version has a valid license until 05 January 2015.
