@@ -4,7 +4,7 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryVersionDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -154,7 +154,7 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
-    private static class QueryVersionMapper implements ParameterizedRowMapper<QueryVersion> {
+    private static class QueryVersionMapper implements RowMapper<QueryVersion> {
         public QueryVersion mapRow(ResultSet rs, int rowNum) throws SQLException {
             QueryVersion queryVersion = new QueryVersion();
 

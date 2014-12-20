@@ -8,7 +8,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -219,7 +219,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
-    private static class DatabaseConnectionMapper implements ParameterizedRowMapper<DatabaseConnection> {
+    private static class DatabaseConnectionMapper implements RowMapper<DatabaseConnection> {
         public DatabaseConnection mapRow(ResultSet rs, int rowNum) throws SQLException {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -233,7 +233,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
-    private static class TableMapper implements ParameterizedRowMapper<Table> {
+    private static class TableMapper implements RowMapper<Table> {
         public Table mapRow(ResultSet rs, int rowNum) throws SQLException {
             Table table = new Table();
 
@@ -243,7 +243,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
-    private static class ForeignKeyMapper implements ParameterizedRowMapper<ForeignKey> {
+    private static class ForeignKeyMapper implements RowMapper<ForeignKey> {
         public ForeignKey mapRow(ResultSet rs, int rowNum) throws SQLException {
             ForeignKey foreignKey = new ForeignKey();
 
@@ -256,7 +256,7 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
-    private static class PrimaryKeyMapper implements ParameterizedRowMapper<PrimaryKey> {
+    private static class PrimaryKeyMapper implements RowMapper<PrimaryKey> {
         public PrimaryKey mapRow(ResultSet rs, int rowNum) throws SQLException {
             PrimaryKey primaryKey = new PrimaryKey();
 
