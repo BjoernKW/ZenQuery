@@ -8,7 +8,11 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+<<<<<<< HEAD
 import org.springframework.jdbc.core.RowMapper;
+=======
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -219,7 +223,11 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
+<<<<<<< HEAD
     private static class DatabaseConnectionMapper implements RowMapper<DatabaseConnection> {
+=======
+    private static class DatabaseConnectionMapper implements ParameterizedRowMapper<DatabaseConnection> {
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
         public DatabaseConnection mapRow(ResultSet rs, int rowNum) throws SQLException {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
@@ -233,7 +241,11 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
+<<<<<<< HEAD
     private static class TableMapper implements RowMapper<Table> {
+=======
+    private static class TableMapper implements ParameterizedRowMapper<Table> {
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
         public Table mapRow(ResultSet rs, int rowNum) throws SQLException {
             Table table = new Table();
 
@@ -243,7 +255,11 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
+<<<<<<< HEAD
     private static class ForeignKeyMapper implements RowMapper<ForeignKey> {
+=======
+    private static class ForeignKeyMapper implements ParameterizedRowMapper<ForeignKey> {
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
         public ForeignKey mapRow(ResultSet rs, int rowNum) throws SQLException {
             ForeignKey foreignKey = new ForeignKey();
 
@@ -256,7 +272,11 @@ public class JdbcDatabaseConnectionDAO implements DatabaseConnectionDAO {
         }
     }
 
+<<<<<<< HEAD
     private static class PrimaryKeyMapper implements RowMapper<PrimaryKey> {
+=======
+    private static class PrimaryKeyMapper implements ParameterizedRowMapper<PrimaryKey> {
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
         public PrimaryKey mapRow(ResultSet rs, int rowNum) throws SQLException {
             PrimaryKey primaryKey = new PrimaryKey();
 

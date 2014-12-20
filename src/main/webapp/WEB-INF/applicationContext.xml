@@ -13,6 +13,29 @@
         </property>
     </bean>
 
+<<<<<<< HEAD
+=======
+    <bean id="databasePropertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+                <value>file:${configFile}</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+    </bean>
+
+    <bean id="licenseProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:license.properties</value>
+            </list>
+        </property>
+    </bean>
+
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
     <bean class="java.net.URI" id="dbUrl">
         <constructor-arg value="${DATABASE_URL}"/>
     </bean>
@@ -46,4 +69,13 @@
     <bean class="com.zenquery.util.BasicDataSourceFactory" id="dataSourceFactory">
         <property name="databaseDriverProperties" ref="databaseDriverProperties" />
     </bean>
+<<<<<<< HEAD
+=======
+
+    <bean class="com.zenquery.util.LicenseUtil" id="licenseUtil" init-method="initialize">
+        <property name="licenseProperties" ref="licenseProperties" />
+        <property name="licenseFile" value="classpath:#{ @licenseProperties.getProperty('zenQuery.licenseFile') }"/>
+        <property name="publicKeyFile" value="classpath:#{ @licenseProperties.getProperty('zenQuery.publicKeyFile') }"/>
+    </bean>
+>>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
 </beans>
