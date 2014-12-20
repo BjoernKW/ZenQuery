@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="ZenQuery:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="ZenQuery.war">
-      <element id="artifact" artifact-name="ZenQuery:war exploded" />
-    </root>
-  </artifact>
-</component>
