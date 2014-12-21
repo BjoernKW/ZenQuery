@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class StartController {
     @RequestMapping(method = RequestMethod.GET)
     public String welcome() {
+        System.out.println("Circle CI test");
         return "index";
     }
 }
