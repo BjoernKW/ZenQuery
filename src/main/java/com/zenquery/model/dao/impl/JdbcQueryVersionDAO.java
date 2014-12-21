@@ -4,11 +4,7 @@ import com.zenquery.model.QueryVersion;
 import com.zenquery.model.dao.QueryVersionDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-<<<<<<< HEAD
 import org.springframework.jdbc.core.RowMapper;
-=======
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
->>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
@@ -158,11 +154,7 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
-<<<<<<< HEAD
     private static class QueryVersionMapper implements RowMapper<QueryVersion> {
-=======
-    private static class QueryVersionMapper implements ParameterizedRowMapper<QueryVersion> {
->>>>>>> 3494c72fd4e68b72a96b3b37a56b9a73fa639cbc
         public QueryVersion mapRow(ResultSet rs, int rowNum) throws SQLException {
             QueryVersion queryVersion = new QueryVersion();
 
