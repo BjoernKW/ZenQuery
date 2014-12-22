@@ -35,4 +35,5 @@
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 
     <mvc:resources mapping="/ui/**" location="/WEB-INF/ui/" />
+    <mvc:resources mapping="/bower_components/**" location="/WEB-INF/bower_components/" />
 </beans>
