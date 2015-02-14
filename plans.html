@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>ZenQuery - Enterprise Backend as a Service</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style type="text/css">
+            /* Space out content a bit */
+            body {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 18px;
+                font-weight: 200;
+            }
+            h3 {
+                font-size: 36px;
+            }
+            h4 {
+                font-size: 24px;
+            }
+            h3, h4 {
+                font-weight: 200;
+            }
+            /* Everything but the jumbotron gets side spacing for mobile first views */
+            .header, .marketing, .footer {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            /* Custom page header */
+            .header {
+                border-bottom: 1px solid #e5e5e5;
+            }
+            /* Make the masthead heading the same height as the navigation */
+            .header h3 {
+                margin-top: 0;
+                margin-bottom: 0;
+                line-height: 40px;
+                padding-bottom: 19px;
+            }
+            /* Custom page footer */
+            .footer {
+                padding-top: 19px;
+                color: #777;
+                border-top: 1px solid #e5e5e5;
+            }
+            /* Customize container */
+            @media(min-width: 768px) {
+                .container {
+                    max-width: 730px;
+                }
+            }
+            .container-narrow > hr {
+                margin: 30px 0;
+            }
+            /* Main marketing message and sign up button */
+            .jumbotron {
+                text-align: center;
+                border-bottom: 1px solid #e5e5e5;
+                background-image: url('img/background.jpg');
+            }
+            .jumbotron .btn {
+                font-size: 21px;
+                padding: 14px 24px;
+            }
+            /* Supporting marketing content */
+            .marketing {
+                margin: 40px 0;
+            }
+            .marketing p + h4 {
+                margin-top: 28px;
+            }
+            /* Responsive: Portrait tablets and up */
+            @media screen and(min-width: 768px) {
+                /* Remove the padding we set earlier */
+                .header, .marketing, .footer {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                /* Space out the masthead */
+                .header {
+                    margin-bottom: 30px;
+                }
+                /* Remove the bottom border on the jumbotron for visual effect */
+                .jumbotron {
+                    border-bottom: 0;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <a href="/#home">Home</a>
+                </li>
+                <li>
+                    <a href="/#what">What's ZenQuery?</a>
+                </li>
+                <li>
+                    <a href="/#features">Features</a>
+                </li>
+                <li>
+                    <a href="/#demo">Demo</a>
+                </li>
+                <li class="active">
+                    <a href="/plans">Plans and Pricing</a>
+                </li>
+                <li>
+                    <a href="/download">Download</a>
+                </li>
+                <li>
+                    <a href="/manual">Manual</a>
+                </li>
+                <li>
+                    <a href="/#contact">Contact</a>
+                </li>
+            </ul><h3 class="text-muted">ZenQuery</h3>
+        </div>
+        <div class="jumbotron">
+            <h1 id="pricing">Plans and Pricing</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>As of 20 December 2014 ZenQuery is open source (under the <a href="http://www.apache.org/licenses/">Apache License</a>). It includes all features of the previous Free, Standard and Enterprise editions.</p>
+                    <p>A commercial license and support is available. Please <a href="mailto:zenquery-support@fullmontty.com">contact us</a> if you need a license, support or if you have any other questions.</p>
+                </div>
+            </div>
+            <div class="footer">
+                <p>&copy; Full Monty Media 2014 | <a href="http://fullmontty.com/" target="_blank">contact and legal information</a><br><br>
+                    <small>Microsoft and Excel are registered trademarks of Microsoft Corporation, Redmond, WA, USA.</small></p>
+            </div>
+        </div><!-- /container -->
+        <script>
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] ||
+                function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-25326096-5', 'zenqry.com');
+            ga('send', 'pageview');
+            ga('set', 'anonymizeIp', true);
+        </script>
+    </body>
+
+</html>

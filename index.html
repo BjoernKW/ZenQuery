@@ -1,1 +1,235 @@
-My Page
+<!doctype html>
+
+<html>
+  
+  <head>
+    <title>ZenQuery - Enterprise Backend as a Service</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <style type="text/css">
+      /* Space out content a bit */
+      body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 18px;
+        font-weight: 200;
+      }
+      h3 {
+        font-size: 36px;
+      }
+      h4 {
+        font-size: 24px;
+      }
+      h3, h4 {
+        font-weight: 200;
+      }
+      /* Everything but the jumbotron gets side spacing for mobile first views */
+      .header, .marketing, .footer {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      /* Custom page header */
+      .header {
+        border-bottom: 1px solid #e5e5e5;
+      }
+      /* Make the masthead heading the same height as the navigation */
+      .header h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+      }
+      /* Custom page footer */
+      .footer {
+        padding-top: 19px;
+        color: #777;
+        border-top: 1px solid #e5e5e5;
+      }
+      /* Customize container */
+      @media(min-width: 768px) {
+        .container {
+          max-width: 730px;
+        }
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+        background-image: url('img/background.jpg');
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+      /* Supporting marketing content */
+      .marketing {
+        margin: 40px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      /* Responsive: Portrait tablets and up */
+      @media screen and(min-width: 768px) {
+        /* Remove the padding we set earlier */
+        .header, .marketing, .footer {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        /* Space out the masthead */
+        .header {
+          margin-bottom: 30px;
+        }
+        /* Remove the bottom border on the jumbotron for visual effect */
+        .jumbotron {
+          border-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class="active">
+          <a href="#home">Home</a>
+        </li>
+        <li>
+          <a href="#what">What's ZenQuery?</a>
+        </li>
+        <li>
+          <a href="#features">Features</a>
+        </li>
+        <li>
+          <a href="#demo">Demo</a>
+        </li>
+        <li>
+          <a href="/plans">Plans and Pricing</a>
+        </li>
+        <li>
+          <a href="/download">Download</a>
+        </li>
+        <li>
+          <a href="/manual">Manual</a>
+        </li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+      <h3 class="text-muted">ZenQuery</h3>
+    </div>
+    <div class="jumbotron">
+      <h1 id="home">Enterprise Backend as a Service</h1>
+      <p class="lead">ZenQuery allows you to easily access databases through a REST API without any programming knowledge required. Get SQL result sets as JSON, XML or CSV data, which can easily be processed by tools such as MS Excel or in your own applications.</p>
+      <p><a class="btn btn-lg btn-success" href="#contact">Sign up today</a></p>
+    </div>
+    <div class="container">
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h4 id="what">Set your data free</h4>
+          <p>Many enterprise companies amass huge amounts of data in many different data stores. Data is kept in silos, which are usually hard to access. Creating new applications that make use of this data such as mobile apps is hard and often takes a lot of time and unnecessary overhead.</p>
+          <h4>"The future is already here - it's just not very evenly distributed." - William Gibson</h4>
+          <p>While today REST APIs allow you to quickly and flexibly access data and services from a multitude of sources, putting internally available data to good use is still comparatively difficult. ZenQuery is an 'enterprise backend as a service' that alleviates this problem.<br><br>
+            ZenQuery provides you with an instant REST API for your SQL queries. Anything that can be expressed by <em class="text-muted">SELECT * FROM ...</em> ZenQuery turns into a conveniently accessible API.<br><br>
+            ZenQuery is a Java EE application that's securely hosted on your servers. No data ever leaves your company!</p>
+            <p>
+              <a href="/use_cases">Please click here for an overview of some ZenQuery use cases</a>.
+            </p>
+          <h4 id="features">Features</h4>
+          <p></p>
+          <ul class="list-group">
+            <li class="list-group-item">Generate REST APIs from SQL queries.</li>
+            <li class="list-group-item">Access your data in JSON, XML or CSV formats.</li>
+            <li class="list-group-item">Supports all major RDBMS (including Oracle Database, Microsoft SQL Server, IBM DB2, PostgreSQL and MySQL).</li>
+            <li class="list-group-item">Entirely hosted on-premises. Your data stays with you all the time!</li>
+            <li class="list-group-item">Conveniently edit your SQL queries and preview your data.</li>
+            <li class="list-group-item">Version control for SQL queries.</li>
+          </ul>
+          <p></p>
+        </div>
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h4 id="demo">Demo</h4>
+          <p>Please click here for trying out a ZenQuery demo (please use <em>ZenQuery</em> / <em>pP2XLieKb6</em> as username and password):<br><br>
+            <a class="btn btn-lg btn-success" target="_blank" href="https://zenquery.herokuapp.com/">Demo</a></p>
+        </div>
+      </div>
+      <div class="row marketing">
+        <div class="col-lg-12">
+          <h4 id="contact">Sign up</h4>
+          <p>Please <a href="mailto:zenquery-support@fullmontty.com">contact us</a> if you need a license, support or if you have any other questions.</p>
+          <p>Please sign up below for our newsletter.<!-- Begin MailChimp Signup Form -->
+            <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+              #mc_embed_signup {
+                background:#fff;
+                clear:left;
+                font:14px Helvetica, Arial, sans-serif;
+              }
+              /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+            </style></p>
+          <div id="mc_embed_signup">
+            <form action="http://fullmontymedia.us8.list-manage2.com/subscribe/post?u=deb6b3ebfc3848885e5f97df4&id=94846956c8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <input type="email" value name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;">
+                <input type="text" name="b_deb6b3ebfc3848885e5f97df4_94846956c8" value>
+              </div>
+              <div class="clear">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+              </div>
+            </form>
+          </div>
+          <!--End mc_embed_signup-->
+          <p></p>
+        </div>
+      </div>
+      <div class="footer">
+        <p>&copy; Full Monty Media 2014 |
+           <a href="http://fullmontty.com/" target="_blank">contact and legal information</a><br><br>
+          <small>Microsoft and Excel are registered trademarks of Microsoft Corporation, Redmond, WA, USA.</small></p>
+      </div>
+    </div>
+    <!-- /container -->
+    <script>
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] ||
+        function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-25326096-5', 'zenqry.com');
+      ga('send', 'pageview');
+      ga('set', 'anonymizeIp', true);
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>ZenQuery - Enterprise Backend as a Service</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style type="text/css">
+            /* Space out content a bit */
+            body {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 18px;
+                font-weight: 200;
+            }
+            h3 {
+                font-size: 36px;
+            }
+            h4 {
+                font-size: 24px;
+            }
+            h3, h4 {
+                font-weight: 200;
+            }
+            /* Everything but the jumbotron gets side spacing for mobile first views */
+            .header, .marketing, .footer {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            /* Custom page header */
+            .header {
+                border-bottom: 1px solid #e5e5e5;
+            }
+            /* Make the masthead heading the same height as the navigation */
+            .header h3 {
+                margin-top: 0;
+                margin-bottom: 0;
+                line-height: 40px;
+                padding-bottom: 19px;
+            }
+            /* Custom page footer */
+            .footer {
+                padding-top: 19px;
+                color: #777;
+                border-top: 1px solid #e5e5e5;
+            }
+            /* Customize container */
+            @media(min-width: 768px) {
+                .container {
+                    max-width: 730px;
+                }
+            }
+            .container-narrow > hr {
+                margin: 30px 0;
+            }
+            /* Main marketing message and sign up button */
+            .jumbotron {
+                text-align: center;
+                border-bottom: 1px solid #e5e5e5;
+                background-image: url('img/background.jpg');
+            }
+            .jumbotron .btn {
+                font-size: 21px;
+                padding: 14px 24px;
+            }
+            /* Supporting marketing content */
+            .marketing {
+                margin: 40px 0;
+            }
+            .marketing p + h4 {
+                margin-top: 28px;
+            }
+            /* Responsive: Portrait tablets and up */
+            @media screen and(min-width: 768px) {
+                /* Remove the padding we set earlier */
+                .header, .marketing, .footer {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                /* Space out the masthead */
+                .header {
+                    margin-bottom: 30px;
+                }
+                /* Remove the bottom border on the jumbotron for visual effect */
+                .jumbotron {
+                    border-bottom: 0;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <a href="/#home">Home</a>
+                </li>
+                <li>
+                    <a href="/#what">What's ZenQuery?</a>
+                </li>
+                <li>
+                    <a href="/#features">Features</a>
+                </li>
+                <li>
+                    <a href="/#demo">Demo</a>
+                </li>
+                <li>
+                    <a href="/plans">Plans and Pricing</a>
+                </li>
+                <li>
+                    <a href="/download">Download</a>
+                </li>
+                <li>
+                    <a href="/manual">Manual</a>
+                </li>
+                <li>
+                    <a href="/#contact">Contact</a>
+                </li>
+            </ul><h3 class="text-muted">ZenQuery</h3>
+        </div>
+        <div class="jumbotron">
+            <h1 id="pricing">Use Cases</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="use_case_1">Mobile app for local commerce</h4>
+                    <p>
+                      A news publisher has a great idea for a new mobile app: Personalized, local news and deals from local businesses.
+                    </p>
+                    <p>
+                      They have all the necessary data that's just waiting to be put to good use: Geotagged news, business and address data. 
+                    </p>
+                    <p>
+                      However, this data is buried in various databases.
+                    </p>
+                    <p>
+                      Normally the publishing company would have to build new custom software for getting the data out of their data silos and into their mobile app.
+                    </p>
+                    <p>
+                      With <strong>ZenQuery</strong> they can simply query their data from their new mobile app using a REST API that returns easily processible JSON-formatted data. 
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h4 id="use_case_2">Product details for online shops</h4>
+                    <p>
+                      A large retail company wants to bring its eCommerce offering into the 21st century.
+                    </p>
+                    <p>
+                      They already have an online shop but it's largely been neglected over the years:
+                      <ul>
+                        <li>It's hardly optimized for search engines.</li>
+                        <li>Product updates need to be done manually. Hence, updates are always late, if they're done at all.</li>
+                      </ul>
+                    </p>
+                    <p>
+                      <strong>ZenQuery</strong> allows this retailer to extract all their product details from their catalogue databases and render those as nicely formatted, search-engine-friendly HTML views.
+                    </p>
+                    <p>
+                      Just enter an SQL <span class="text-muted">SELECT</span> query and let <strong>ZenQuery</strong> do the rest.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="use_case_3">Management reports</h4>
+                    <p>
+                      The management of a large logistics provider wants to track the flow of goods and associated revenue on a corporate dashboard website. They also want to import this data regularly into an MS Excel sheet to further analyze this data.
+                    </p>
+                    <p>
+                      There's lots of complex data structures involved and the data changes rapidly. Up until now they would've had to develop a dedicated application that extracts the necessary data and transforms it into a format that can be easily processed by both their dashboard app and MS Excel.
+                    </p>
+                    <p>
+                      <strong>ZenQuery</strong> now provides this company with a simple REST API to their database that both renders JSON data for use in a dashboard web app and also returns CSV-formatted data that can be easily imported in MS Excel.
+                    </p>
+                    <p>
+                      <strong>ZenQuery</strong>'s powerful API also allows them to supply parameters for pivoting tables or filtering result sets.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h4 id="use_case_4">Product search on corporate websites</h4>
+                    <p>
+                      A manufacturing company sells a huge amount of diverse machine parts. They want to provide an easy-to-use product search engine on their corporate website that allows their customers to easily access product specifications.
+                    </p>
+                    <p>
+                      The company's product database has grown tremendously over the years. Making this data searchable will be no easy feat.
+                    </p>
+                    <p>
+                      <strong>ZenQuery</strong> solves this problem by providing a searchable REST interface to legacy databases and modern data stores alike. All you have to do is enter your database connection settings and <strong>ZenQuery</strong> automatically generates an API for all of your database tables and views.
+                    </p>
+                </div>
+            </div>
+            <div class="footer">
+                <p>&copy; Full Monty Media 2014 | <a href="http://fullmontty.com/" target="_blank">contact and legal information</a><br><br>
+                    <small>Microsoft and Excel are registered trademarks of Microsoft Corporation, Redmond, WA, USA.</small></p>
+            </div>
+        </div><!-- /container -->
+        <script>
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] ||
+                function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-25326096-5', 'zenqry.com');
+            ga('send', 'pageview');
+            ga('set', 'anonymizeIp', true);
+        </script>
+    </body>
+
+</html>
