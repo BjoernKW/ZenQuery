@@ -27,7 +27,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         this.dataSource = dataSource;
     }
 
-    @Override
     public QueryVersion find(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE id = ?";
 
@@ -38,7 +37,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Override
     public QueryVersion findByQueryIdAndVersion(Integer id, Integer version) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND version = ?";
 
@@ -49,7 +47,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Override
     public QueryVersion findCurrentByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND is_current_version = TRUE";
 
@@ -60,7 +57,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersion;
     }
 
-    @Override
     public List<QueryVersion> findByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ?";
 
@@ -71,7 +67,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersions;
     }
 
-    @Override
     public List<QueryVersion> findPreviousVersionsByQueryId(Integer id) {
         String sql = "SELECT * FROM query_versions WHERE query_id = ? AND is_current_version = FALSE ORDER BY ID DESC";
 
@@ -82,7 +77,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersions;
     }
 
-    @Override
     public List<QueryVersion> findAll() {
         String sql = "SELECT * FROM query_versions";
 
@@ -93,7 +87,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return queryVersions;
     }
 
-    @Override
     public Number insert(final QueryVersion queryVersion) {
         final String sql = "INSERT INTO query_versions (content, version, is_current_version, query_id) VALUES (?, ?, ?, ?)";
 
@@ -101,7 +94,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
-            @Override
             public PreparedStatement createPreparedStatement(Connection connection)
                     throws SQLException {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql, new String[] { "id" });
@@ -122,7 +114,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         return keyHolder.getKey();
     }
 
-    @Override
     public void update(Integer id, QueryVersion queryVersion) {
         String sql = "UPDATE query_versions SET content = ?, version = ?, is_current_version = ? WHERE id = ?";
 
@@ -138,7 +129,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         );
     }
 
-    @Override
     public void delete(Integer id) {
         String sql = "DELETE FROM query_versions WHERE id = ?";
 
@@ -146,7 +136,6 @@ public class JdbcQueryVersionDAO implements QueryVersionDAO {
         jdbcTemplate.update(sql, new Object[] { id });
     }
 
-    @Override
     public void deleteByQueryId(Integer id) {
         String sql = "DELETE FROM query_versions WHERE query_id = ?";
 
