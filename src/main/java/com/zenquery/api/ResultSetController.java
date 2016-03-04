@@ -415,7 +415,11 @@ public class ResultSetController {
             String[] columnOutputValues = new String[numberOfValues];
             for (int i = 0; i < numberOfValues; i++) {
                 Object columnValue = columnValues[i];
-                columnOutputValues[i] = columnValue.toString();
+                if (columnValue != null) {
+                  columnOutputValues[i] = columnValue.toString();
+                } else {
+                  columnOutputValues[i] = "";
+                }
             }
             outputRows.add(columnOutputValues);
         }
