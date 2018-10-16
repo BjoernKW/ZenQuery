@@ -257,6 +257,6 @@ The ZenQuery [UI source code](https://github.com/BjoernKW/ZenQueryUI) is availab
 ## <a name="support"/>Support
 
 If you have any questions, suggestions, problems or feature requests please contact us under
-[zenquery-support@fullmontty.com](mailto:zenquery-support@fullmontty.com)
+[zenquery-support@bjoernkw.com](mailto:zenquery-support@bjoernkw.com)
 
-Please also visit [our website](http://www.zenqry.com/) for further information.
+Please also visit [our website](https://www.zenqry.com/) for further information.
